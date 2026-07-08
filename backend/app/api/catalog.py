@@ -7,16 +7,25 @@ import random
 from fastapi import APIRouter
 from pydantic import BaseModel
 
+from .. import app_settings
 from ..db import catalog
 from ..db import connection
 from ..pipeline import character_creation as cc
+from ..pipeline import language
 
 router = APIRouter(prefix="/api/catalog", tags=["catalog"])
+
+
+def _apply_ui_language() -> None:
+    """Creation catalogs are pre-campaign; follow the global UI-language default so catalog
+    names come back in the language the player is currently seeing."""
+    language.set_language(app_settings.load().get("language"))
 
 
 @router.get("")
 async def get_all() -> dict:
     """All three catalogs at once (the creation screen loads everything on mount)."""
+    _apply_ui_language()
     conn = await connection.connect()
     try:
         return {
@@ -31,6 +40,7 @@ async def get_all() -> dict:
 
 @router.get("/traits")
 async def get_traits() -> dict:
+    _apply_ui_language()
     conn = await connection.connect()
     try:
         return {"traits": await catalog.get_traits(conn)}
@@ -40,6 +50,7 @@ async def get_traits() -> dict:
 
 @router.get("/classes")
 async def get_classes() -> dict:
+    _apply_ui_language()
     conn = await connection.connect()
     try:
         return {"classes": await catalog.get_classes(conn)}
@@ -49,6 +60,7 @@ async def get_classes() -> dict:
 
 @router.get("/fruits")
 async def get_fruits() -> dict:
+    _apply_ui_language()
     conn = await connection.connect()
     try:
         return {"fruits": await catalog.get_fruits(conn)}
@@ -64,6 +76,7 @@ class RollBody(BaseModel):
 @router.post("/roll-traits")
 async def roll_traits(body: RollBody) -> dict:
     """Roll 1d4+1 traits with stacking-exclusion applied. Each reroll is a fresh call."""
+    _apply_ui_language()
     conn = await connection.connect()
     try:
         traits = await catalog.get_traits(conn)

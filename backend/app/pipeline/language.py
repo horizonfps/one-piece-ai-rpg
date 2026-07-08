@@ -65,6 +65,7 @@ _ENGINE_STRINGS: dict[str, dict[str, str]] = {
     "pt-br": {
         "uncharted_island": "Ilha desconhecida",
         "open_sea": "em mar aberto",
+        "fruit_user_of": "usuário da {name}",
         "bound_for": "rumo a {name}",
         "at_location": " em {location}",
         "bounty_hunter_appeared": "Caçador de recompensa apareceu atrás do bando{where}: {who}{aff}.",
@@ -93,6 +94,7 @@ _ENGINE_STRINGS: dict[str, dict[str, str]] = {
     "en": {
         "uncharted_island": "Uncharted island",
         "open_sea": "open sea",
+        "fruit_user_of": "{name} user",
         "bound_for": "bound for {name}",
         "at_location": " at {location}",
         "bounty_hunter_appeared": "A bounty hunter came after the crew{where}: {who}{aff}.",

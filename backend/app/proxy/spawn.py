@@ -19,6 +19,10 @@ BINARY_PATH: Path = PROXY_DIR / "bin" / _BINARY_NAME
 CONFIG_NAME = "config.yaml"
 AUTHS_DIR: Path = PROXY_DIR / "auths"
 
+# Windows: the console binary would pop its own window (the launcher is --windowed, no console
+# to inherit). CREATE_NO_WINDOW keeps it hidden. No-op elsewhere.
+_NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+
 
 def binary_exists() -> bool:
     return BINARY_PATH.is_file()
@@ -64,6 +68,7 @@ class ProxyProcess:
                 cwd=str(PROXY_DIR),
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
+                creationflags=_NO_WINDOW,
             )
             self.error = None
             return True

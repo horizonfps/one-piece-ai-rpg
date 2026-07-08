@@ -17,7 +17,7 @@ CREATE TABLE trait_catalog (
     name               TEXT NOT NULL,              -- display PT-BR
     bucket             TEXT NOT NULL,              -- lineage|personality|body|constitution|luck|sensory|health
     polarity           TEXT NOT NULL,              -- positive|negative
-    rarity             TEXT NOT NULL,              -- common|rare|épico|lendário
+    rarity             TEXT NOT NULL,              -- common|rare|epic|legendary
     stacking_exclusion TEXT,                       -- group id (ex: genio_haki) ou NULL
     canon_anchor       TEXT,                       -- nota ou NULL
     description        TEXT NOT NULL,

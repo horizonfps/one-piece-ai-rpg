@@ -16,6 +16,7 @@ from ..pipeline import economy
 from ..pipeline import edit
 from ..pipeline import endgame
 from ..pipeline import faction
+from ..pipeline import language
 from ..pipeline import legend
 from ..pipeline import mushi
 from ..pipeline import plots
@@ -162,6 +163,7 @@ async def create_character(campaign_id: str, body: CharacterBody) -> dict:
         campaign = await repo.get_campaign(conn, campaign_id)
         if campaign is None:
             raise HTTPException(status_code=404, detail="campaign_not_found")
+        language.set_from_campaign(campaign)
         traits = await catalog.get_traits(conn)
         classes = await catalog.get_classes(conn)
         fruits = await catalog.get_fruits(conn)

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import random
 
+from . import language
 from . import world_state
 
 # Target tier at 17, cap STRONG. Higher tiers only via in-game progression.
@@ -264,5 +265,5 @@ def _visible_state(
     if class_display:
         parts.append(class_display.lower())
     if fruit_def is not None:
-        parts.append(f"usuário da {fruit_def['name_jp']}")
+        parts.append(language.engine_str("fruit_user_of", name=fruit_def["name_jp"]))
     return ", ".join(parts) if parts else name
