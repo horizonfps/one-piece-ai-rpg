@@ -1,0 +1,47 @@
+# Regras locais/pessoais (docs de trabalho, harnesses, tooling) ficam fora
+# daqui, em .git/info/exclude — não versionadas, não expõem o layout da máquina.
+
+# === Segredos / credenciais ===
+# CLIProxyAPI sobe, mas sem credenciais: auths/ tem OAuth tokens e
+# config.yaml tem a api-key (config.example.yaml fica)
+cliproxyapi/auths/
+cliproxyapi/config.yaml
+# .git do upstream renomeado para não virar repo embutido
+cliproxyapi/.git.upstream.bak/
+
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# === Python ===
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# === Node / frontend ===
+node_modules/
+frontend/dist/
+
+# === Empacotamento desktop (.exe) — infra e saída fora do repo ===
+/packaging/
+/release/
+
+# === Estado de runtime / saves ===
+backend/data/*.db
+backend/data/*.db-journal
+backend/data/app_settings.json
+
+# === Logs ===
+logs/
+*.log
+
+# === Lixo de editor / SO / backups ===
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,362 @@
+/* Base global — design system no estilo Linear. CSS escrito a dedo, sem UI lib.
+   Dark-first: fundo quase-preto, superfícies em camadas, bordas hairline, Inter
+   com tracking negativo, acento índigo. Fontes bundladas (local-first). */
+
+:root {
+  /* superfícies */
+  --bg: #08090a;
+  --bg-raised: #101012;
+  --bg-elevated: #16171a;
+  --bg-input: #141517;
+  --bg-overlay: rgba(8, 9, 10, 0.65);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+
+  /* linhas */
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  /* texto */
+  --ink: #f7f8f8;
+  --ink-body: #d0d6e0;
+  --ink-dim: #8a8f98;
+
+  /* marca + semânticas */
+  --accent: #5e6ad2;
+  --accent-hi: #828fff;
+  --accent-soft: rgba(94, 106, 210, 0.16);
+  --ok: #4cb782;
+  --ok-soft: rgba(76, 183, 130, 0.14);
+  --warn: #f2c94c;
+  --orange: #fc7840;
+  --down: #eb5757;
+  --down-soft: rgba(235, 87, 87, 0.12);
+
+  /* profundidade */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-3: 0 24px 64px rgba(0, 0, 0, 0.6);
+
+  --radius: 8px;
+  --radius-sm: 6px;
+
+  --sans: 'Inter Variable', Inter, 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'Cascadia Code', 'JetBrains Mono', Consolas, 'SF Mono', monospace;
+}
+
+:root[data-theme='light'] {
+  --bg: #fbfbfc;
+  --bg-raised: #ffffff;
+  --bg-elevated: #f1f2f4;
+  --bg-input: #ffffff;
+  --bg-overlay: rgba(25, 26, 30, 0.4);
+  --bg-hover: rgba(0, 0, 0, 0.045);
+
+  --line: rgba(0, 0, 0, 0.08);
+  --line-strong: rgba(0, 0, 0, 0.16);
+
+  --ink: #16181d;
+  --ink-body: #3c4149;
+  --ink-dim: #6f6e77;
+
+  --accent: #5e6ad2;
+  --accent-hi: #4c58c4;
+  --accent-soft: rgba(94, 106, 210, 0.12);
+  --ok: #2f9e6d;
+  --ok-soft: rgba(47, 158, 109, 0.12);
+  --warn: #b88a1f;
+  --orange: #d35c25;
+  --down: #d04545;
+  --down-soft: rgba(208, 69, 69, 0.1);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.07);
+  --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-3: 0 24px 64px rgba(0, 0, 0, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+/* O index.html pinta o <html> de escuro inline (anti-flash do boot). Sem esta regra, o
+   background do body não propaga pro canvas e a área além da 1ª viewport fica escura no
+   tema claro. !important porque precisa vencer o style inline. */
+html {
+  background: var(--bg) !important;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink-body);
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+/* scrollbar discreta */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 99px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#app {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.25rem;
+}
+
+main {
+  width: min(580px, 100%);
+}
+
+/* ---- cabeçalho das telas standalone ---- */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.kicker {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-dim);
+  margin: 0 0 0.45rem;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+  font-weight: 590;
+  letter-spacing: -0.022em;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--ink);
+}
+
+.sub {
+  margin: 0.5rem 0 0;
+  color: var(--ink-dim);
+  font-size: 0.82rem;
+  letter-spacing: -0.005em;
+}
+
+/* ---- painel (card de superfície) ---- */
+.panel {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem 1.6rem;
+  box-shadow: var(--shadow-2);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+h2 {
+  font-size: 0.95rem;
+  font-weight: 590;
+  letter-spacing: -0.012em;
+  margin: 0;
+  color: var(--ink);
+}
+
+h3 {
+  font-size: 0.7rem;
+  font-weight: 550;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  margin: 0 0 0.7rem;
+}
+
+/* ---- botões ---- */
+button {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: -0.008em;
+  color: var(--ink-body);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.42rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+button:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+/* primário (ação principal — índigo sólido) */
+button.primary,
+button.send {
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--shadow-1);
+}
+button.primary:hover:not(:disabled),
+button.send:hover:not(:disabled) {
+  background: var(--accent-hi);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* fantasma (sem chrome até hover) */
+button.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ink-dim);
+}
+button.ghost:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: transparent;
+  color: var(--ink);
+}
+
+/* destrutivo */
+button.danger {
+  background: transparent;
+  border-color: var(--down);
+  color: var(--down);
+}
+button.danger:hover:not(:disabled) {
+  background: var(--down-soft);
+  border-color: var(--down);
+  color: var(--down);
+}
+
+/* ---- campos ---- */
+input,
+select,
+textarea {
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+  background: var(--bg-input);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.48rem 0.65rem;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink-dim);
+  opacity: 0.75;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ---- texto auxiliar ---- */
+.hint {
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.line.down,
+.err {
+  color: var(--down);
+  font-size: 0.82rem;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--ink);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  padding: 0.08rem 0.35rem;
+  border-radius: 4px;
+}
+
+kbd {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--ink-dim);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 0.05rem 0.32rem;
+}
+
+dl {
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+dl > div {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0.7rem;
+}
+
+dt {
+  color: var(--ink-dim);
+  font-size: 0.82rem;
+}
+
+dd {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink);
+}

@@ -1,0 +1,5762 @@
+{
+ "_note": "Full-world island catalog. Ingested from onepieceworldmap.com data.js (coords [y,x], swapped from GeoJSON [x,y]). 9 East Blue entries kept verbatim from east_blue_islands.json (rich PT-BR); the rest ingested minimal (1-line PT-BR summary; real lore loads at runtime on arrival). marker_kind: place=navigable, poneglyph/entity/meta=map-only. Attribution: tiles+positions Library of Ohara, map data (C)Eiichiro Oda; personal/web-local use.",
+ "cluster": "World",
+ "islands": [
+  {
+   "id": "foosha",
+   "name": "Foosha Village",
+   "jp_name": "フーシャ村",
+   "cluster": "East Blue",
+   "region": "Dawn Island",
+   "coords": [
+    37500,
+    64398
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "fame",
+   "canon_arc_name": "Romance Dawn — infância de Luffy e a partida de Shanks na Foosha",
+   "current_state": {
+    "summary_text": "Pacata; vila independente na borda do Reino de Goa.",
+    "flags": [
+     "rural",
+     "moinhos"
+    ]
+   },
+   "description": "Vila pastoral na borda do Reino de Goa: 17 moinhos de vento no horizonte, pastagens com gado, estradas de terra entre campos. Tem um porto pequeno onde navio de passagem ancora.",
+   "related": [
+    {
+     "kind": "NPC",
+     "name": "Makino"
+    },
+    {
+     "kind": "NPC",
+     "name": "Woop Slap"
+    },
+    {
+     "kind": "LOCATION",
+     "name": "Monte Colubo"
+    }
+   ]
+  },
+  {
+   "id": "goa",
+   "name": "Goa Kingdom",
+   "jp_name": "ゴア王国",
+   "cluster": "East Blue",
+   "region": "Dawn Island",
+   "coords": [
+    37860,
+    64620
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "scar",
+   "canon_arc_name": "Incêndio do Gray Terminal (flashback de Sabo) — massacre dos descartados pelos nobres",
+   "current_state": {
+    "summary_text": "Monarquia aliada ao Governo Mundial; tensão de castas latente.",
+    "flags": [
+     "sistema de castas",
+     "Gray Terminal",
+     "alta muralha"
+    ]
+   },
+   "description": "Monarquia em Dawn Island com hierarquia social extrema: nobres em High Town murada, comuns em Central/Edge Town, e o Gray Terminal onde vivem os descartados pelo reino.",
+   "related": [
+    {
+     "kind": "LOCATION",
+     "name": "High Town"
+    },
+    {
+     "kind": "LOCATION",
+     "name": "Gray Terminal"
+    }
+   ]
+  },
+  {
+   "id": "branch153",
+   "name": "153rd Marine Branch",
+   "jp_name": "海軍第153支部",
+   "cluster": "East Blue",
+   "region": "Yotsuba Island",
+   "coords": [
+    38188,
+    60976
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "fame",
+   "canon_arc_name": "Romance Dawn — queda do Capitão Morgan em Shells Town (Morgan fugiu da custódia, segue foragido)",
+   "current_state": {
+    "summary_text": "Base da Marinha em Shells Town; comando atual reto.",
+    "flags": [
+     "base da Marinha",
+     "Shells Town"
+    ]
+   },
+   "description": "Base da Marinha em Shells Town. Por anos sob o tirânico Capitão Morgan, até sua deposição. Hoje serve à população com retidão.",
+   "related": [
+    {
+     "kind": "FACTION",
+     "name": "Marinha"
+    }
+   ]
+  },
+  {
+   "id": "orange",
+   "name": "Orange Town",
+   "jp_name": "オレンジの町",
+   "cluster": "East Blue",
+   "region": "Organ Archipelago",
+   "coords": [
+    34024,
+    57296
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "fame",
+   "canon_arc_name": "Orange Town — ocupação de Buggy the Clown (hoje um dos Imperadores, via Cross Guild)",
+   "current_state": {
+    "summary_text": "Cidade costeira; histórico de assédio pirata.",
+    "flags": [
+     "cidade costeira",
+     "arquitetura germânica"
+    ]
+   },
+   "description": "Pequena cidade no Organ Archipelago, fundada por refugiados de uma vila destruída por piratas. Resistiu a múltiplos ataques ao longo das décadas.",
+   "related": [
+    {
+     "kind": "NPC",
+     "name": "Prefeito Boodle"
+    }
+   ]
+  },
+  {
+   "id": "syrup",
+   "name": "Syrup Village",
+   "jp_name": "シロップ村",
+   "cluster": "East Blue",
+   "region": "Gecko Archipelago",
+   "coords": [
+    32736,
+    53120
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "fame",
+   "canon_arc_name": "Syrup Village — conspiração do Capitão Kuro contra Kaya (terra natal de Usopp)",
+   "current_state": {
+    "summary_text": "Vila quieta sobre falésias; afiliada ao Governo Mundial.",
+    "flags": [
+     "falésias",
+     "mansão Kaya"
+    ]
+   },
+   "description": "Vila quieta no Gecko Archipelago, construída sobre falésias íngremes. Famosa pela mansão de Kaya. Terra natal de Yasopp e Usopp.",
+   "related": [
+    {
+     "kind": "LOCATION",
+     "name": "Mansão Kaya"
+    }
+   ]
+  },
+  {
+   "id": "arlong",
+   "name": "Arlong Park",
+   "jp_name": "アーロンパーク",
+   "cluster": "East Blue",
+   "region": "Conomi Archipelago",
+   "coords": [
+    37574,
+    48804
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "remnants",
+   "canon_arc_name": "Saga do Arlong — Arlong Park, base dos fish-men dissidentes dos Sun Pirates (Arlong preso; ideologia supremacista sobrevive)",
+   "current_state": {
+    "summary_text": "Base do Arlong Crew destruída; estrutura em ruínas.",
+    "flags": [
+     "estrutura destruída",
+     "ocupação de 8 anos encerrada"
+    ]
+   },
+   "description": "Base do Arlong Crew, dissidência dos Sun Pirates. A torre era um pagode de cinco andares; foi destruída na derrota de Arlong.",
+   "related": [
+    {
+     "kind": "FACTION",
+     "name": "Sun Pirates"
+    }
+   ]
+  },
+  {
+   "id": "cocoyasi",
+   "name": "Cocoyasi Village",
+   "jp_name": "ココヤシ村",
+   "cluster": "East Blue",
+   "region": "Conomi Archipelago",
+   "coords": [
+    37720,
+    48978
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "fame",
+   "canon_arc_name": "Saga do Arlong — libertação de Cocoyasi (vila natal de Nami, dos Chapéus de Palha)",
+   "current_state": {
+    "summary_text": "Vila portuária libertada; bosque de tangerinas.",
+    "flags": [
+     "vila de coco",
+     "tangerinas"
+    ]
+   },
+   "description": "Pequena vila portuária no Conomi Archipelago. Oprimida por Arlong por anos até ser libertada. Cercada por um bosque de tangerinas.",
+   "related": [
+    {
+     "kind": "NPC",
+     "name": "Genzou"
+    }
+   ]
+  },
+  {
+   "id": "gosa",
+   "name": "Gosa Town",
+   "jp_name": "ゴサの町",
+   "cluster": "East Blue",
+   "region": "Conomi Archipelago",
+   "coords": [
+    37720,
+    49234
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "reconstruction",
+   "canon_arc_name": "Saga do Arlong — Gosa arrasada por recusar tributo a Arlong e reerguida após a queda dele",
+   "current_state": {
+    "summary_text": "Cidade portuária reconstruída após destruição.",
+    "flags": [
+     "reconstruída",
+     "cidade portuária"
+    ]
+   },
+   "description": "Cidade portuária a leste de Cocoyasi, destruída quando os cidadãos não pagaram tributo a Arlong e reconstruída após sua queda.",
+   "related": [
+    {
+     "kind": "NPC",
+     "name": "Chabo"
+    }
+   ]
+  },
+  {
+   "id": "branch16",
+   "name": "16th Marine Branch",
+   "jp_name": "海軍第16支部",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    38698,
+    47804
+   ],
+   "canonical": "canon",
+   "post_arc_mode": "remnants",
+   "canon_arc_name": "Saga do Arlong — 16ª Filial do corrupto Capitão Nezumi (subornado por Arlong; nunca punido)",
+   "current_state": {
+    "summary_text": "Base da Marinha sob comando corrupto.",
+    "flags": [
+     "base da Marinha",
+     "comando corrupto"
+    ]
+   },
+   "description": "Base da Marinha próxima ao Conomi Archipelago. Comandada pelo corrupto Capitão Nezumi, que tematizou a base com aparência de rato.",
+   "related": [
+    {
+     "kind": "FACTION",
+     "name": "Marinha"
+    }
+   ]
+  },
+  {
+   "id": "bluestar",
+   "name": "Bluestar",
+   "jp_name": "",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    45560,
+    4208
+   ],
+   "canonical": "canon",
+   "marker_kind": "meta",
+   "current_state": {
+    "summary_text": "Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "north-pole",
+   "name": "North Pole",
+   "jp_name": "北極",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    47840,
+    34944
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-line",
+   "name": "Red Line",
+   "jp_name": "赤い土の大陸/レッドライン",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    31568,
+    33216
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-line-2",
+   "name": "Red Line",
+   "jp_name": "赤い土の大陸/レッドライン",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    18256,
+    33216
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-line-3",
+   "name": "Red Line",
+   "jp_name": "赤い土の大陸/レッドライン",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    31568,
+    70368
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-line-4",
+   "name": "Red Line",
+   "jp_name": "赤い土の大陸/レッドライン",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    18256,
+    70368
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-line-5",
+   "name": "Red Line",
+   "jp_name": "赤い土の大陸/レッドライン",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    31568,
+    1632
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-line-6",
+   "name": "Red Line",
+   "jp_name": "赤い土の大陸/レッドライン",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    18256,
+    1632
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "south-pole",
+   "name": "South Pole",
+   "jp_name": "南極",
+   "cluster": "Bluestar",
+   "region": "Bluestar",
+   "coords": [
+    3264,
+    40528
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Bluestar.",
+    "flags": []
+   }
+  },
+  {
+   "id": "amazon-lily-empire",
+   "name": "Amazon Lily Empire",
+   "jp_name": "アマゾン・リリー帝国",
+   "cluster": "Calm Belt",
+   "region": "Island of Women",
+   "coords": [
+    23080,
+    63620
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Island of Women.",
+    "flags": []
+   }
+  },
+  {
+   "id": "bourbon-wolf",
+   "name": "Bourbon Wolf",
+   "jp_name": "バーボンウルフ",
+   "cluster": "Calm Belt",
+   "region": "Calm Belt",
+   "coords": [
+    21284,
+    63444
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Calm Belt.",
+    "flags": []
+   }
+  },
+  {
+   "id": "island-of-women",
+   "name": "Island of Women",
+   "jp_name": "女ヶ島",
+   "cluster": "Calm Belt",
+   "region": "Southern Paradise",
+   "coords": [
+    23400,
+    63256
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Calm Belt.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kuja-castle",
+   "name": "Kuja Castle",
+   "jp_name": "九蛇城/クジャ城",
+   "cluster": "Calm Belt",
+   "region": "Island of Women",
+   "coords": [
+    23117,
+    62387
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Island of Women.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rusukaina",
+   "name": "Rusukaina",
+   "jp_name": "ルスカイナ",
+   "cluster": "Calm Belt",
+   "region": "Southern Paradise",
+   "coords": [
+    23420,
+    61616
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Southern Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "baratie",
+   "name": "Baratie",
+   "jp_name": "海上レストランバラティエ",
+   "cluster": "East Blue",
+   "region": "Sambas Sea Region",
+   "coords": [
+    31000,
+    48172
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Sambas Sea Region.",
+    "flags": []
+   }
+  },
+  {
+   "id": "conomi-archipelago",
+   "name": "Conomi Archipelago",
+   "jp_name": "コノミ諸島",
+   "cluster": "East Blue",
+   "region": "North-Western",
+   "coords": [
+    39960,
+    48008
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Arquipélago no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cozia",
+   "name": "Cozia",
+   "jp_name": "コジア",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    39336,
+    41776
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "dawn-island",
+   "name": "Dawn Island",
+   "jp_name": "ドーン島",
+   "cluster": "East Blue",
+   "region": "North-Eastern",
+   "coords": [
+    38152,
+    64544
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "east-blue",
+   "name": "East Blue",
+   "jp_name": "東の海/イーストブルー",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    46736,
+    56000
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "frauce-kingdom",
+   "name": "Frauce Kingdom",
+   "jp_name": "フラウス王国",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    44776,
+    48456
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "gecko-archipelago",
+   "name": "Gecko Archipelago",
+   "jp_name": "ゲッコー諸島",
+   "cluster": "East Blue",
+   "region": "Central",
+   "coords": [
+    33832,
+    54376
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Arquipélago no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "goat-island",
+   "name": "Goat Island",
+   "jp_name": "ゴート島",
+   "cluster": "East Blue",
+   "region": "North-Eastern",
+   "coords": [
+    36918,
+    62138
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kumate-island",
+   "name": "Kumate Island",
+   "jp_name": "KUMATE ISLAND",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    34244,
+    59584
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "loguetown",
+   "name": "Loguetown",
+   "jp_name": "ローグタウン",
+   "cluster": "East Blue",
+   "region": "Pole Star Archipelago",
+   "coords": [
+    28712,
+    39716
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Pole Star Archipelago.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mirrorball-island",
+   "name": "Mirrorball Island",
+   "jp_name": "ミラボール島/ミラーボルアイランド",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    36309,
+    55700
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "nagagutsu-kingdom",
+   "name": "Nagagutsu Kingdom",
+   "jp_name": "ナガグツ王国",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    36233,
+    57742
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "organ-archipelago",
+   "name": "Organ Archipelago",
+   "jp_name": "オルガン諸島",
+   "cluster": "East Blue",
+   "region": "Central",
+   "coords": [
+    34808,
+    56944
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Arquipélago no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "oykot-kingdom",
+   "name": "Oykot Kingdom",
+   "jp_name": "オイコット王国",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    29824,
+    44880
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "pole-star-archipelago",
+   "name": "Pole Star Archipelago",
+   "jp_name": "ポルスター諸島",
+   "cluster": "East Blue",
+   "region": "South-Western",
+   "coords": [
+    29564,
+    39312
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Arquipélago no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rare-animal-island",
+   "name": "Rare Animal Island",
+   "jp_name": "珍獣島",
+   "cluster": "East Blue",
+   "region": "Central",
+   "coords": [
+    33000,
+    57940
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sahtsuruzo-kingdom",
+   "name": "Sahtsuruzo Kingdom",
+   "jp_name": "サーツルゾ王国",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    40224,
+    59499
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sambas-sea-region",
+   "name": "Sambas Sea Region",
+   "jp_name": "サンバス海域",
+   "cluster": "East Blue",
+   "region": "South-Western",
+   "coords": [
+    32824,
+    48144
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em South-Western.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shells-town",
+   "name": "Shells Town",
+   "jp_name": "シェルズタウン",
+   "cluster": "East Blue",
+   "region": "Yotsuba Island",
+   "coords": [
+    38900,
+    60972
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Yotsuba Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shimotsuki-village",
+   "name": "Shimotsuki Village",
+   "jp_name": "シモツキ村",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    45012,
+    61639
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sixis",
+   "name": "Sixis",
+   "jp_name": "シクシス",
+   "cluster": "East Blue",
+   "region": "East Blue",
+   "coords": [
+    35072,
+    62752
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "yotsuba-island",
+   "name": "Yotsuba Island",
+   "jp_name": "ヨツバ島",
+   "cluster": "East Blue",
+   "region": "North-Eastern",
+   "coords": [
+    40784,
+    63272
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no East Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "aoi-kingdom",
+   "name": "Aoi Kingdom",
+   "jp_name": "アオイ王国",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    26656,
+    25839
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "baltigo",
+   "name": "Baltigo",
+   "jp_name": "白土の島バルティゴ",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23830,
+    60199
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "calm-belt",
+   "name": "Calm Belt",
+   "jp_name": "凪の帯/カームベルト",
+   "cluster": "Grand Line",
+   "region": "Surrounding the Grand Line",
+   "coords": [
+    27520,
+    47656
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Surrounding the Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "calm-belt-2",
+   "name": "Calm Belt",
+   "jp_name": "凪の帯/カームベルト",
+   "cluster": "Grand Line",
+   "region": "Surrounding the Grand Line",
+   "coords": [
+    22956,
+    48832
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Surrounding the Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "calm-belt-3",
+   "name": "Calm Belt",
+   "jp_name": "凪の帯/カームベルト",
+   "cluster": "Grand Line",
+   "region": "Surrounding the Grand Line",
+   "coords": [
+    27520,
+    15552
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Surrounding the Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "calm-belt-4",
+   "name": "Calm Belt",
+   "jp_name": "凪の帯/カームベルト",
+   "cluster": "Grand Line",
+   "region": "Surrounding the Grand Line",
+   "coords": [
+    22956,
+    13744
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Surrounding the Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "eigisu-kingdom",
+   "name": "Eigisu Kingdom",
+   "jp_name": "エイギス王国",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23692,
+    55724
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "emerald-capital",
+   "name": "Emerald Capital",
+   "jp_name": "エメラルドの都",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    26266,
+    28370
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "foolshout-island",
+   "name": "Foolshout Island",
+   "jp_name": "フールシャウト島",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    27132,
+    64352
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-10-branch",
+   "name": "G-10 Branch",
+   "jp_name": "海軍G・L第１０支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    25490,
+    45370
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-11-branch",
+   "name": "G-11 Branch",
+   "jp_name": "海軍G・L第１１支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23970,
+    58879
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-12-branch",
+   "name": "G-12 Branch",
+   "jp_name": "海軍G・L第１２支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23788,
+    12879
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-13-branch",
+   "name": "G-13 Branch",
+   "jp_name": "海軍G・L第１３支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23900,
+    47852
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-3-branch",
+   "name": "G-3 Branch",
+   "jp_name": "海軍G・L第３支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    26772,
+    39776
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-4-branch",
+   "name": "G-4 Branch",
+   "jp_name": "海軍G・L第４支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    24424,
+    39476
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-6-branch",
+   "name": "G-6 Branch",
+   "jp_name": "海軍G・L第６支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    27412,
+    45835
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-7-branch",
+   "name": "G-7 Branch",
+   "jp_name": "海軍G・L第７支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23812,
+    15224
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-8-branch",
+   "name": "G-8 Branch",
+   "jp_name": "海軍G・L第８支部",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    25376,
+    57688
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "high-west",
+   "name": "High West",
+   "jp_name": "ハイウエスト",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    25296,
+    56208
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "hot-hot-sea",
+   "name": "Hot Hot Sea",
+   "jp_name": "熱々海",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    24564,
+    14900
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mt-kintoki",
+   "name": "Mt. Kintoki",
+   "jp_name": "金時山",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    27395,
+    58109
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "nakrowa",
+   "name": "Nakrowa",
+   "jp_name": "夢幻郷/ナクロワ",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    26972,
+    27164
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "porco-kingdom",
+   "name": "Porco Kingdom",
+   "jp_name": "ポルコ王国",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    27030,
+    38667
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shade-port",
+   "name": "Shade Port",
+   "jp_name": "シェード港",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23421,
+    45783
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "vodka-kingdom",
+   "name": "Vodka Kingdom",
+   "jp_name": "ウオッカ王国",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    23560,
+    11460
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "west-blue",
+   "name": "West Blue",
+   "jp_name": "西の海/ウエストブルー",
+   "cluster": "Grand Line",
+   "region": "Grand Line",
+   "coords": [
+    18832,
+    15952
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Grand Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "100-island",
+   "name": "100% Island",
+   "jp_name": "１００%島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25118,
+    18546
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "1st-2nd-research-institutes",
+   "name": "1st & 2nd Research Institutes",
+   "jp_name": "第一第二研究所",
+   "cluster": "New World",
+   "region": "Punk Hazard Island",
+   "coords": [
+    26120,
+    4300
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Punk Hazard Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "applenine-island",
+   "name": "Applenine Island",
+   "jp_name": "トンタッタ王国",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24320,
+    7064
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ballon-terminal",
+   "name": "Ballon Terminal",
+   "jp_name": "バロンターミナル",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    27644,
+    9364
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "biscuit-island",
+   "name": "Biscuit Island",
+   "jp_name": "ビスケット島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25092,
+    17372
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "black-island",
+   "name": "Black Island",
+   "jp_name": "ブラック島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25420,
+    18212
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "brock-coli-island",
+   "name": "Brock Coli Island",
+   "jp_name": "ブロックコリ島",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26096,
+    15532
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "buggy-town",
+   "name": "Buggy Town",
+   "jp_name": "バギー街",
+   "cluster": "New World",
+   "region": "Karai Bari Island",
+   "coords": [
+    26545,
+    18883
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Karai Bari Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cacao-island",
+   "name": "Cacao Island",
+   "jp_name": "カカオ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24390,
+    16640
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "candy-island",
+   "name": "Candy Island",
+   "jp_name": "キャンディ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24476,
+    17384
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cutlery-island",
+   "name": "Cutlery Island",
+   "jp_name": "カトラリー島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25344,
+    17950
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "doerena-kingdom",
+   "name": "Doerena Kingdom",
+   "jp_name": "ドエレナ王国",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    23808,
+    8824
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "dress-rosa",
+   "name": "Dress Rosa",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25644,
+    6420
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "dress-rosa-kingdom",
+   "name": "Dress Rosa Kingdom",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24992,
+    6980
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "dyed-goods-town",
+   "name": "Dyed Goods Town",
+   "jp_name": "染物の町",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26816,
+    11148
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "edd-war",
+   "name": "Edd War",
+   "jp_name": "エッド・ウオー",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25300,
+    10900
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "elbaph-island",
+   "name": "Elbaph Island",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26680,
+    23511
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "enishi",
+   "name": "Enishi",
+   "jp_name": "エニシ",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    27388,
+    25082
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "flavor-island",
+   "name": "Flavor Island",
+   "jp_name": "フレーバー島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25130,
+    16374
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "foodvalten",
+   "name": "Foodvalten",
+   "jp_name": "フードヴァルテン",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25128,
+    4572
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "foot-colony",
+   "name": "Foot Colony",
+   "jp_name": "フットコロニー",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    27048,
+    17663
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "fruits-island",
+   "name": "Fruits Island",
+   "jp_name": "フルーツ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25036,
+    18230
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "funwari-island",
+   "name": "Funwari Island",
+   "jp_name": "ふんわり島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24098,
+    17142
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "futoru-island",
+   "name": "Futoru Island",
+   "jp_name": "フトル島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25524,
+    17610
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "future-island-egghead",
+   "name": "Future Island Egghead",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25258,
+    21410
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-14-branch",
+   "name": "G-14 Branch",
+   "jp_name": "海軍G・L第１４支部",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24166,
+    22510
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-5-branch",
+   "name": "G-5 Branch",
+   "jp_name": "海軍G・L第５支部",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24088,
+    3563
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-9-branch",
+   "name": "G-9 Branch",
+   "jp_name": "海軍G・L第９支部",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    23860,
+    18051
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "gs-general-hospital",
+   "name": "GS General Hospital",
+   "jp_name": "海軍GS総合病院",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    23649,
+    23694
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "gartel-island",
+   "name": "Gartel Island",
+   "jp_name": "ガルテル島",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26956,
+    12252
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "grand-line-new-world",
+   "name": "Grand Line New World",
+   "jp_name": "偉大なる航路/グランドライン - 新世界",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25168,
+    9184
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "green-bit",
+   "name": "Green Bit",
+   "jp_name": "海獣の町",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26216,
+    5984
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "hachinosu-poneglyph",
+   "name": "Hachinosu Poneglyph",
+   "jp_name": "Type: Unknown",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    23548,
+    24894
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ice-island",
+   "name": "Ice Island",
+   "jp_name": "アイス島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24604,
+    18200
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "jam-island",
+   "name": "Jam Island",
+   "jp_name": "ジャム島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24712,
+    16762
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "jelly-island",
+   "name": "Jelly Island",
+   "jp_name": "ゼリー島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24114,
+    17658
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kaidou-s-darling-island",
+   "name": "Kaidou's Darling Island",
+   "jp_name": "カイドウのお気に入りの島",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24022,
+    4760
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kari-bari-island",
+   "name": "Kari Bari-Island",
+   "jp_name": "カライ・バリ島",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    27106,
+    18892
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kibo-island",
+   "name": "Kibo Island",
+   "jp_name": "キーボ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24604,
+    18502
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kimi-island",
+   "name": "Kimi Island",
+   "jp_name": "キミ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25262,
+    17094
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kinko-island",
+   "name": "Kinko Island",
+   "jp_name": "キンコ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24322,
+    18472
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "komugi-island",
+   "name": "Komugi Island",
+   "jp_name": "コムギ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24840,
+    18456
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "liqueur-island",
+   "name": "Liqueur Island",
+   "jp_name": "リキュール島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24358,
+    17074
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "loving-island",
+   "name": "Loving Island",
+   "jp_name": "ラビング島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24252,
+    18750
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "margarine-island",
+   "name": "Margarine Island",
+   "jp_name": "マーガリン島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25456,
+    17794
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "marine-hq",
+   "name": "Marine HQ",
+   "jp_name": "海軍本部",
+   "cluster": "New World",
+   "region": "New Marineford",
+   "coords": [
+    24824,
+    1924
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em New Marineford.",
+    "flags": []
+   }
+  },
+  {
+   "id": "milenge-island",
+   "name": "Milenge Island",
+   "jp_name": "ミレンゲ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24268,
+    17972
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "milk-island",
+   "name": "Milk Island",
+   "jp_name": "ミルク島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24994,
+    16964
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mirro-world",
+   "name": "Mirro World",
+   "jp_name": "鏡世界ミロワールド",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25264,
+    19426
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mogaro-kingdom",
+   "name": "Mogaro Kingdom",
+   "jp_name": "モガロ王国",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24440,
+    8020
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mokomo-dukedom",
+   "name": "Mokomo Dukedom",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25688,
+    12752
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mt-fuji",
+   "name": "Mt. Fuji",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    27054,
+    21029
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mt-fuji-lode-poneglyph",
+   "name": "Mt. Fuji Lode Poneglyph",
+   "jp_name": "Type: Lode Poneglyph",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26038,
+    20928
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mystoria-island",
+   "name": "Mystoria Island",
+   "jp_name": "ミストリア島",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26840,
+    2824
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "new-marineford",
+   "name": "New Marineford",
+   "jp_name": "ニューマリンフォード",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25234,
+    1392
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "new-world-poneglyph",
+   "name": "New World Poneglyph",
+   "jp_name": "Type: Unknown",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    27104,
+    13648
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "noko-island",
+   "name": "Noko Island",
+   "jp_name": "濃厚島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24570,
+    18776
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "nuts-island",
+   "name": "Nuts Island",
+   "jp_name": "ナッツ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24646,
+    17218
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "onigashima",
+   "name": "Onigashima",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26642,
+    21556
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "onigashima-2",
+   "name": "Onigashima",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26786,
+    20859
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "onigashima-poneglyph",
+   "name": "Onigashima Poneglyph",
+   "jp_name": "Type: Unknown",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26674,
+    20728
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "package-island",
+   "name": "Package Island",
+   "jp_name": "パッケージ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25262,
+    16718
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "piepie-island",
+   "name": "Piepie Island",
+   "jp_name": "パイパイ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25290,
+    18402
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "pirate-island-hachinosu",
+   "name": "Pirate Island Hachinosu",
+   "jp_name": "海賊島ハチノス",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24046,
+    24868
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "poripori-island",
+   "name": "Poripori Island",
+   "jp_name": "ポリポリ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25310,
+    17506
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "potato-island",
+   "name": "Potato Island",
+   "jp_name": "ポテト島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25244,
+    18172
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "prodence-kingdom",
+   "name": "Prodence Kingdom",
+   "jp_name": "プロデンス王国",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24360,
+    9856
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "punk-hazard-island",
+   "name": "Punk Hazard Island",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26260,
+    4084
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "raijin-island",
+   "name": "Raijin Island",
+   "jp_name": "ライジン島",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25872,
+    2984
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "risky-red-island",
+   "name": "Risky Red Island",
+   "jp_name": "リスキーレッド島",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24380,
+    2523
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rokumitsu-island",
+   "name": "Rokumitsu Island",
+   "jp_name": "ロクミツ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24132,
+    18214
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rum-wolf",
+   "name": "Rum Wolf",
+   "jp_name": "ラムウルフ",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    21752,
+    3544
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sanshoku-island",
+   "name": "Sanshoku Island",
+   "jp_name": "三色島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24704,
+    18908
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sea-beast-town",
+   "name": "Sea Beast Town",
+   "jp_name": "海獣の町",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24158,
+    5837
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sleepfog-belt",
+   "name": "Sleepfog-Belt",
+   "jp_name": "眠霧地帯",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24969,
+    22361
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "standing-kingdom",
+   "name": "Standing Kingdom",
+   "jp_name": "スタンディング王国",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    27000,
+    14944
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "tajine-kingdom",
+   "name": "Tajine Kingdom",
+   "jp_name": "タジン王国",
+   "cluster": "New World",
+   "region": "Seemingly",
+   "coords": [
+    25820,
+    13974
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Seemingly.",
+    "flags": []
+   }
+  },
+  {
+   "id": "tanega-island",
+   "name": "Tanega Island",
+   "jp_name": "タネガ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    24960,
+    18804
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "tontatta-kingdom",
+   "name": "Tontatta Kingdom",
+   "jp_name": "トンタッタ王国",
+   "cluster": "New World",
+   "region": "Green Bit",
+   "coords": [
+    26052,
+    6592
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Green Bit.",
+    "flags": []
+   }
+  },
+  {
+   "id": "topping-island",
+   "name": "Topping Island",
+   "jp_name": "トッピング島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25512,
+    16840
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "totto-land",
+   "name": "Totto Land",
+   "jp_name": "万国/トットランド",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25664,
+    17820
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "umit-shipping-hq",
+   "name": "UMIT Shipping HQ",
+   "jp_name": "UMITシッピング本社",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26632,
+    8800
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "unique-island",
+   "name": "Unique Island",
+   "jp_name": "ユニーク島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25400,
+    17188
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "vodka-wolf",
+   "name": "Vodka Wolf",
+   "jp_name": "ウオッカウルフ",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    29544,
+    4944
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "wano-country",
+   "name": "Wano Country",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26855,
+    21447
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "wano-country-poneglyph",
+   "name": "Wano Country Poneglyph",
+   "jp_name": "Type: Unknown",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26532,
+    20976
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "warland-kingdom",
+   "name": "Warland Kingdom",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    26281,
+    24374
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "whole-cake-chateau",
+   "name": "Whole Cake Chateau",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24744,
+    17964
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "whole-cake-island-lode-poneglyph",
+   "name": "Whole Cake Island Lode Poneglyph",
+   "jp_name": "Type: Lode Poneglyph",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24998,
+    17772
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "whole-cake-poneglyph-1",
+   "name": "Whole Cake Poneglyph 1",
+   "jp_name": "Type: Unknown, but likely a Rio Poneglyph",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24546,
+    17602
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "whole-cake-poneglyph-2",
+   "name": "Whole Cake Poneglyph 2",
+   "jp_name": "Type: Unknown, but likely a Rio Poneglyph",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    24608,
+    17943
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "yakigashi-island",
+   "name": "Yakigashi Island",
+   "jp_name": "ヤキガシ島",
+   "cluster": "New World",
+   "region": "Totto Land",
+   "coords": [
+    25310,
+    18840
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "yari",
+   "name": "Yari",
+   "jp_name": "YARI",
+   "cluster": "New World",
+   "region": "Supposedly",
+   "coords": [
+    26924,
+    16397
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Supposedly.",
+    "flags": []
+   }
+  },
+  {
+   "id": "zou",
+   "name": "Zou",
+   "jp_name": "",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25860,
+    11924
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "zou-lode-poneglyph",
+   "name": "Zou Lode Poneglyph",
+   "jp_name": "Type: Lode Poneglyph",
+   "cluster": "New World",
+   "region": "New World",
+   "coords": [
+    25770,
+    12174
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em New World.",
+    "flags": []
+   }
+  },
+  {
+   "id": "beasts-pirates",
+   "name": "Beasts Pirates",
+   "jp_name": "百獣海賊団",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    26284,
+    22206
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Beasts Pirates — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "big-mom-pirates",
+   "name": "Big Mom Pirates",
+   "jp_name": "ビッグ・マム海賊団",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    25164,
+    15884
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Big Mom Pirates — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "blackbeard-pirates",
+   "name": "Blackbeard Pirates",
+   "jp_name": "黒ひげ海賊団",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    23584,
+    25808
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Blackbeard Pirates — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cross-guild",
+   "name": "Cross Guild",
+   "jp_name": "クロス・ギルド",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    26792,
+    19642
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Cross Guild — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "lode-star-island",
+   "name": "Lode Star Island",
+   "jp_name": "水先星島/ロードスター島",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    25838,
+    29926
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Lode Star Island — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "lu-feld-conglomerate",
+   "name": "Lu Feld Conglomerate",
+   "jp_name": "ル・フェルド財閥",
+   "cluster": "Nomad",
+   "region": "Nomad",
+   "coords": [
+    26144,
+    59616
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Lu Feld Conglomerate — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-hair-pirates",
+   "name": "Red-Hair Pirates",
+   "jp_name": "赤髪海賊団",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    24176,
+    27581
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Red-Hair Pirates — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "revolutionary-army",
+   "name": "Revolutionary Army",
+   "jp_name": "革命軍",
+   "cluster": "Nomad",
+   "region": "Nomad",
+   "coords": [
+    26274,
+    63433
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Revolutionary Army — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sphinx",
+   "name": "Sphinx",
+   "jp_name": "スフィンク",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    25690,
+    26226
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Sphinx — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "straw-hat-crew",
+   "name": "Straw Hat Crew",
+   "jp_name": "麦わらの一味",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    24867,
+    23470
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Straw Hat Crew — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "whitebeard-pirates",
+   "name": "Whitebeard Pirates",
+   "jp_name": "白ひげ海賊団",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    24870,
+    25432
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Whitebeard Pirates — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "winner-island",
+   "name": "Winner Island",
+   "jp_name": "勝者島/ウィナー島",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    27452,
+    24040
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Winner Island — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "yukiryu-island",
+   "name": "Yukiryu Island",
+   "jp_name": "ユキリュウ島",
+   "cluster": "Nomad",
+   "region": "Operating Worldwide",
+   "coords": [
+    24416,
+    26621
+   ],
+   "canonical": "canon",
+   "marker_kind": "entity",
+   "current_state": {
+    "summary_text": "Yukiryu Island — presença no Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "deul-kingdom",
+   "name": "Deul Kingdom",
+   "jp_name": "ドイル王国",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    36222,
+    18772
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "downs",
+   "name": "Downs",
+   "jp_name": "ダウンズ",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    41416,
+    12958
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "flevance",
+   "name": "Flevance",
+   "jp_name": "フレバンス",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    34552,
+    18774
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "germa-empire",
+   "name": "Germa Empire",
+   "jp_name": "ジェルマ帝国",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    36744,
+    16088
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "gingapore-kingdom",
+   "name": "Gingapore Kingdom",
+   "jp_name": "ギンガポール王国",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    37632,
+    13548
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kuen-village",
+   "name": "Kuen Village",
+   "jp_name": "クエン村",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    33680,
+    21024
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "lvneel-kingdom",
+   "name": "Lvneel Kingdom",
+   "jp_name": "ルブニール王国",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    32096,
+    20416
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "micqueot",
+   "name": "Micqueot",
+   "jp_name": "ミッキュオ",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    33696,
+    18376
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "minion-island",
+   "name": "Minion Island",
+   "jp_name": "ミニオン島",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    40194,
+    10860
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "north-blue",
+   "name": "North Blue",
+   "jp_name": "北の海/ノースブルー",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    46736,
+    15952
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "notice",
+   "name": "Notice",
+   "jp_name": "ノーティス",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    42304,
+    10678
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "pepe-kingdom",
+   "name": "Pepe Kingdom",
+   "jp_name": "ぺぺ王国",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    33145,
+    22342
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rakesh",
+   "name": "Rakesh",
+   "jp_name": "ラケシュ",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    41820,
+    11972
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rubeck-island",
+   "name": "Rubeck Island",
+   "jp_name": "ルーベック島",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    40800,
+    9744
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "spider-miles",
+   "name": "Spider Miles",
+   "jp_name": "スパイダーマイルズ",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    40836,
+    12296
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "swallow-island",
+   "name": "Swallow Island",
+   "jp_name": "スワロー島",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    39496,
+    10210
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "whiteland-kingdom",
+   "name": "Whiteland Kingdom",
+   "jp_name": "ホワイトランド王国",
+   "cluster": "North Blue",
+   "region": "North Blue",
+   "coords": [
+    46120,
+    9335
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em North Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "77th-branch",
+   "name": "77th Branch",
+   "jp_name": "海軍第７７支部",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    31288,
+    67136
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "alabasta-kingdom",
+   "name": "Alabasta Kingdom",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25556,
+    50416
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "alabasta-poneglyph",
+   "name": "Alabasta Poneglyph",
+   "jp_name": "Type: Instructional Rio Poneglyph",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25944,
+    49680
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "banaro-island",
+   "name": "Banaro Island",
+   "jp_name": "タライ海流",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24514,
+    59679
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "bestland-kingdom",
+   "name": "Bestland Kingdom",
+   "jp_name": "ベストランド王国",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26484,
+    52188
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "boin-island-chain",
+   "name": "Boin Island Chain",
+   "jp_name": "ボーイン列島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    27500,
+    44460
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "bourgeois-kingdom",
+   "name": "Bourgeois Kingdom",
+   "jp_name": "ブルジョア王国",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26840,
+    47772
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "bulgemore-futuredom",
+   "name": "Bulgemore Futuredom",
+   "jp_name": "未来国バルジもアー",
+   "cluster": "Paradise",
+   "region": "Karakuri Island",
+   "coords": [
+    24148,
+    45387
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Karakuri Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cactus-island",
+   "name": "Cactus Island",
+   "jp_name": "サボテン島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25504,
+    39060
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cipher-pol-intelligence-bureau",
+   "name": "Cipher Pol Intelligence Bureau",
+   "jp_name": "サイファーポール諜報部",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24002,
+    37366
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "deep-sea",
+   "name": "Deep Sea",
+   "jp_name": "深海",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    23652,
+    68048
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "drum-island",
+   "name": "Drum Island",
+   "jp_name": "ドラム島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25220,
+    43268
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "elegia",
+   "name": "Elegia",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24648,
+    13936
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "elegia-castle",
+   "name": "Elegia Castle",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Elegia",
+   "coords": [
+    24077,
+    13855
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Elegia.",
+    "flags": []
+   }
+  },
+  {
+   "id": "elegia-kingdom",
+   "name": "Elegia Kingdom",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Elegia",
+   "coords": [
+    24284,
+    14444
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Elegia.",
+    "flags": []
+   }
+  },
+  {
+   "id": "enies-lobby",
+   "name": "Enies Lobby",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25044,
+    64428
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "first-stretch",
+   "name": "First Stretch",
+   "jp_name": "一番目の海",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25967,
+    38198
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "florian-triangle",
+   "name": "Florian Triangle",
+   "jp_name": "魔の三角地帯/フロリアン・トライアングル",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25736,
+    64048
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-2-branch",
+   "name": "G-2 Branch",
+   "jp_name": "海軍G・L第２支部",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    27178,
+    67000
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "giant-island-little-garden",
+   "name": "Giant Island Little Garden",
+   "jp_name": "巨人島リトルガーデン",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25856,
+    40510
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "goldfish-empire",
+   "name": "Goldfish Empire",
+   "jp_name": "金魚帝国",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24468,
+    40968
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "grand-line-paradise",
+   "name": "Grand Line Paradise",
+   "jp_name": "偉大なる航路/グランドライン - 楽園/パラダイス",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25616,
+    47176
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "guanhao",
+   "name": "Guanhao",
+   "jp_name": "グアンハオ",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24356,
+    62720
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "hachimakinamazu-village",
+   "name": "Hachimakinamazu Village",
+   "jp_name": "ハチマキナマズ村",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24330,
+    42092
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "harahettania",
+   "name": "Harahettania",
+   "jp_name": "ハラヘッターニャ",
+   "cluster": "Paradise",
+   "region": "Namakura island",
+   "coords": [
+    23440,
+    52548
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Namakura island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "impel-down",
+   "name": "Impel Down",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    23124,
+    65972
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "jaya-island",
+   "name": "Jaya Island",
+   "jp_name": "ジャヤ",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25916,
+    52882
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kamabakka-kingdom",
+   "name": "Kamabakka Kingdom",
+   "jp_name": "カマバッカ王国",
+   "cluster": "Paradise",
+   "region": "Momoiro Island",
+   "coords": [
+    26708,
+    63392
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Momoiro Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "karakuri-island",
+   "name": "Karakuri Island",
+   "jp_name": "からくり島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24543,
+    44633
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kenzan-island",
+   "name": "Kenzan Island",
+   "jp_name": "剣山島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24016,
+    49932
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kuraigana-island",
+   "name": "Kuraigana Island",
+   "jp_name": "クライガナ島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    23850,
+    57122
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kyuuka-island",
+   "name": "Kyuuka Island",
+   "jp_name": "キューカ島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26636,
+    42628
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "long-ring-long-land",
+   "name": "Long Ring Long Land",
+   "jp_name": "ロングリングロングランド",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25880,
+    58544
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "lulusia-kingdom",
+   "name": "Lulusia Kingdom",
+   "jp_name": "ルルシア王国",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    27032,
+    65579
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "marine-penitentiary",
+   "name": "Marine Penitentiary",
+   "jp_name": "海軍留置所",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26466,
+    43678
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "marineford",
+   "name": "Marineford",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24180,
+    68380
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "merveille",
+   "name": "Merveille",
+   "jp_name": "メルヴィユ",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26456,
+    66856
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mock-town",
+   "name": "Mock Town",
+   "jp_name": "モックタウン",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25456,
+    52502
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "momoiro-island",
+   "name": "Momoiro Island",
+   "jp_name": "モモイロ島/モモイロアイランド",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26976,
+    62700
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "namakura",
+   "name": "Namakura",
+   "jp_name": "ナマクラ島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    23706,
+    52070
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "nanimonai-island",
+   "name": "Nanimonai Island",
+   "jp_name": "何もない島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24660,
+    47968
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "one-man-resort",
+   "name": "One-Man Resort",
+   "jp_name": "ワンマンリゾート",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25017,
+    37767
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "pants-hazard",
+   "name": "Pants Hazard",
+   "jp_name": "パンツハザード",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    23518,
+    44287
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "pucci",
+   "name": "Pucci",
+   "jp_name": "プッチ",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    23898,
+    61385
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "renaisse",
+   "name": "Renaisse",
+   "jp_name": "ルネス",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26568,
+    45836
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rommel-kingdom",
+   "name": "Rommel Kingdom",
+   "jp_name": "ロンメル王国",
+   "cluster": "Paradise",
+   "region": "Supposedly",
+   "coords": [
+    24264,
+    54128
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Supposedly.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sabaody-archipelago",
+   "name": "Sabaody Archipelago",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25784,
+    67884
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Arquipélago no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "san-faldo",
+   "name": "San Faldo",
+   "jp_name": "サン・ファルド",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24770,
+    61999
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sandy-island",
+   "name": "Sandy Island",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26320,
+    49353
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shift-station",
+   "name": "Shift Station",
+   "jp_name": "シフト駅/シフトステーション",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25262,
+    61177
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shikkeahr-kingdom",
+   "name": "Shikkeahr Kingdom",
+   "jp_name": "シッケアール王国",
+   "cluster": "Paradise",
+   "region": "Kuraigana Island",
+   "coords": [
+    23590,
+    57588
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Kuraigana Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shipbuilding-island",
+   "name": "Shipbuilding Island",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26328,
+    61416
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "st-poplar",
+   "name": "St. Poplar",
+   "jp_name": "セント・ポプラ",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24570,
+    60902
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "tarai-current",
+   "name": "Tarai Current",
+   "jp_name": "タライ海流",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24072,
+    66476
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "tehna-gehna-kingdom",
+   "name": "Tehna Gehna Kingdom",
+   "jp_name": "テーナ・ゲーナ王国",
+   "cluster": "Paradise",
+   "region": "Kenzan Island",
+   "coords": [
+    23612,
+    50652
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Kenzan Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "tequila-wolf",
+   "name": "Tequila Wolf",
+   "jp_name": "テキーラウルフ",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    28960,
+    65032
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "thriller-bark",
+   "name": "Thriller Bark",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    25250,
+    65174
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ukkari-onsen-island",
+   "name": "Ukkari Onsen Island",
+   "jp_name": "うっかり温泉島",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    24752,
+    50520
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "vira",
+   "name": "Vira",
+   "jp_name": "ヴィラ",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    27176,
+    41080
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "water-seven",
+   "name": "Water Seven",
+   "jp_name": "",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    26148,
+    61696
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "whisky-peak",
+   "name": "Whisky Peak",
+   "jp_name": "ウイスキーピーク",
+   "cluster": "Paradise",
+   "region": "Cactus Island",
+   "coords": [
+    25244,
+    38796
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Cactus Island.",
+    "flags": []
+   }
+  },
+  {
+   "id": "yano-country",
+   "name": "Yano Country",
+   "jp_name": "ヤノ国",
+   "cluster": "Paradise",
+   "region": "Paradise",
+   "coords": [
+    22504,
+    58524
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Paradise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "corkwood",
+   "name": "Corkwood",
+   "jp_name": "コックウッド",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    22984,
+    30792
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "firescar-lode-poneglyph",
+   "name": "Firescar Lode Poneglyph",
+   "jp_name": "Type: Lode Poneglyph",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    21902,
+    70808
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "fish-man-island",
+   "name": "Fish-Man Island",
+   "jp_name": "",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    23740,
+    69652
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "g-1-branch",
+   "name": "G-1 Branch",
+   "jp_name": "",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    24850,
+    68424
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "holyland-mary-geoise",
+   "name": "Holyland Mary Geoise",
+   "jp_name": "聖地マリージョア",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    25616,
+    70136
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "land-of-gods",
+   "name": "Land of Gods",
+   "jp_name": "",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    24658,
+    69678
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "panda-island",
+   "name": "Panda Island",
+   "jp_name": "パンダ島",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    24892,
+    28436
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "pangaea-castle",
+   "name": "Pangaea Castle",
+   "jp_name": "パンゲア城",
+   "cluster": "Red Line",
+   "region": "Mary Geoise",
+   "coords": [
+    25436,
+    69954
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Mary Geoise.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-desert",
+   "name": "Red Desert",
+   "jp_name": "赤い砂漠",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    30000,
+    70208
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-port-e",
+   "name": "Red Port (E)",
+   "jp_name": "赤い港/レッドポート",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    24384,
+    940
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "red-port-w",
+   "name": "Red Port (W)",
+   "jp_name": "赤い港/レッドポート",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    24888,
+    69036
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Cidade em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "reverse-mountain",
+   "name": "Reverse Mountain",
+   "jp_name": "リヴァース・マウンテン",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    27440,
+    34784
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ryugu-kingdom",
+   "name": "Ryugu Kingdom",
+   "jp_name": "",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    23616,
+    70836
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sea-forest-poneglyph",
+   "name": "Sea Forest Poneglyph",
+   "jp_name": "Type: Unique Message",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    21902,
+    70604
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sea-trench",
+   "name": "Sea Trench",
+   "jp_name": "海溝",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    24184,
+    70144
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sun-tree-eve",
+   "name": "Sun Tree Eve",
+   "jp_name": "陽樹イブ",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    28984,
+    70208
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "twin-capes",
+   "name": "Twin Capes",
+   "jp_name": "双子岬",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    25988,
+    37204
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "world-govt",
+   "name": "World Govt.",
+   "jp_name": "",
+   "cluster": "Red Line",
+   "region": "Red Line",
+   "coords": [
+    25432,
+    70768
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Red Line.",
+    "flags": []
+   }
+  },
+  {
+   "id": "godland-skypiea",
+   "name": "Godland Skypiea",
+   "jp_name": "",
+   "cluster": "Sky",
+   "region": "Sky",
+   "coords": [
+    27768,
+    54832
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Sky.",
+    "flags": []
+   }
+  },
+  {
+   "id": "golden-bell-poneglyph",
+   "name": "Golden Bell Poneglyph",
+   "jp_name": "Type: Instructional Rio Poneglyph",
+   "cluster": "Sky",
+   "region": "Sky",
+   "coords": [
+    27582,
+    55388
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em Sky.",
+    "flags": []
+   }
+  },
+  {
+   "id": "punk-records",
+   "name": "Punk-Records",
+   "jp_name": "パンクレコーズ",
+   "cluster": "Sky",
+   "region": "Sky",
+   "coords": [
+    25552,
+    20319
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Sky.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shandora-poneglyph",
+   "name": "Shandora Poneglyph",
+   "jp_name": "Type: Directional Poneglyph",
+   "cluster": "Sky",
+   "region": "Sky",
+   "coords": [
+    27284,
+    54828
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em Sky.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sky-sea",
+   "name": "Sky Sea",
+   "jp_name": "",
+   "cluster": "Sky",
+   "region": "Sky",
+   "coords": [
+    28056,
+    54336
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Sky.",
+    "flags": []
+   }
+  },
+  {
+   "id": "weatheria",
+   "name": "Weatheria",
+   "jp_name": "ウェザリア",
+   "cluster": "Sky",
+   "region": "Sky",
+   "coords": [
+    27320,
+    59336
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Sky.",
+    "flags": []
+   }
+  },
+  {
+   "id": "world-economic-newspaper",
+   "name": "World Economic Newspaper",
+   "jp_name": "世界経済新聞",
+   "cluster": "Sky",
+   "region": "Nomad",
+   "coords": [
+    27112,
+    7810
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Nomad.",
+    "flags": []
+   }
+  },
+  {
+   "id": "baterilla",
+   "name": "Baterilla",
+   "jp_name": "バテリラ",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    19456,
+    44240
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "beef-kingdom",
+   "name": "Beef Kingdom",
+   "jp_name": "ビーフ王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    7224,
+    57472
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "birka",
+   "name": "Birka",
+   "jp_name": "ビルカ",
+   "cluster": "South Blue",
+   "region": "Either Paradise or",
+   "coords": [
+    21912,
+    61752
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em Either Paradise or.",
+    "flags": []
+   }
+  },
+  {
+   "id": "briss-kingdom",
+   "name": "Briss Kingdom",
+   "jp_name": "ブリス王億",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    16664,
+    40456
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cameron-kingdom",
+   "name": "Cameron Kingdom",
+   "jp_name": "キャメロン王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    10770,
+    66816
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "centaurea",
+   "name": "Centaurea",
+   "jp_name": "せンタウレア",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    7464,
+    55232
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "dias",
+   "name": "Dias",
+   "jp_name": "ディアス",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    16657,
+    47175
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "evil-black-drum-kingdom",
+   "name": "Evil Black Drum Kingdom",
+   "jp_name": "悪ブラックドラム王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    14696,
+    51864
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ice-country",
+   "name": "Ice Country",
+   "jp_name": "氷の国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    7344,
+    60152
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "jewel-ice-sheet",
+   "name": "Jewel Ice Sheet",
+   "jp_name": "宝玉氷床",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    6576,
+    59104
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "karate-island",
+   "name": "Karate Island",
+   "jp_name": "カラテの島",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    16056,
+    41936
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kutsukku-island",
+   "name": "Kutsukku Island",
+   "jp_name": "クツック島",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    8608,
+    62719
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "majiatsuka-kingdom",
+   "name": "Majiatsuka Kingdom",
+   "jp_name": "マジアツカ王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    16672,
+    43320
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "rushwan-kingdom",
+   "name": "Rushwan Kingdom",
+   "jp_name": "ロシュワン王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    10056,
+    48408
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "samba-kingdom",
+   "name": "Samba Kingdom",
+   "jp_name": "サンバ王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    14416,
+    50000
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "samuwanai-island",
+   "name": "Samuwanai Island",
+   "jp_name": "サムワナイ島",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    15632,
+    50416
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sorbet-kingdom",
+   "name": "Sorbet Kingdom",
+   "jp_name": "ソルベ王奥",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    9648,
+    51096
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "south-blue",
+   "name": "South Blue",
+   "jp_name": "南の海/サウスブルー",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    18832,
+    56000
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "south-fire-kingdom",
+   "name": "South Fire Kingdom",
+   "jp_name": "南ファイヤー王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    19376,
+    66024
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "taya-kingdom",
+   "name": "Taya Kingdom",
+   "jp_name": "タヤ王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    11834,
+    49015
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "torino-kingdom",
+   "name": "Torino Kingdom",
+   "jp_name": "トリノ王国",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    19720,
+    60363
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "tumi",
+   "name": "Tumi",
+   "jp_name": "トゥミ",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    18792,
+    64616
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "vespa-kingdom-territory",
+   "name": "Vespa Kingdom Territory",
+   "jp_name": "ベスパ王国領",
+   "cluster": "South Blue",
+   "region": "South Blue",
+   "coords": [
+    13252,
+    41742
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em South Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "80th-branch",
+   "name": "80th Branch",
+   "jp_name": "海軍第８０支部",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    19888,
+    23512
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Base da Marinha em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "aspacchee",
+   "name": "Aspacchee",
+   "jp_name": "アスパッチ",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    19422,
+    9009
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "bollywood-kingdom",
+   "name": "Bollywood Kingdom",
+   "jp_name": "バリウッド王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    15576,
+    9680
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "cefran-conglomerate",
+   "name": "Cefran Conglomerate",
+   "jp_name": "スフラン財閥",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    9224,
+    22272
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "czach-kingdom",
+   "name": "Czach Kingdom",
+   "jp_name": "チャコ王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    12584,
+    11320
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "enoa-academy",
+   "name": "Enoa Academy",
+   "jp_name": "エノア学院",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    19677,
+    5138
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "esperia-kingdom",
+   "name": "Esperia Kingdom",
+   "jp_name": "エスペリア王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    8418,
+    5554
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "euro-peninsula",
+   "name": "Euro Peninsula",
+   "jp_name": "ユーロ半島",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    13959,
+    4878
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "five-great-families-of-the-west",
+   "name": "Five Great Families of the West",
+   "jp_name": "西の五大ファミリー",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    11449,
+    7679
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "god-valley",
+   "name": "God Valley",
+   "jp_name": "ゴッドバーレ",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    17888,
+    10680
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ilisia-kingdom",
+   "name": "Ilisia Kingdom",
+   "jp_name": "イリシア王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    12104,
+    21984
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "jambalaya-kingdom",
+   "name": "Jambalaya Kingdom",
+   "jp_name": "ジャンバラヤ王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    14752,
+    11184
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kamigata",
+   "name": "Kamigata",
+   "jp_name": "カミガタ",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    16904,
+    4920
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "kano-country",
+   "name": "Kano Country",
+   "jp_name": "花ノ国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    21280,
+    9984
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "las-camp",
+   "name": "Las Camp",
+   "jp_name": "ラスキャンプ",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    21088,
+    23912
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "mt-mauri",
+   "name": "Mt. Mauri",
+   "jp_name": "マウリ火山",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    12736,
+    19664
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ohara",
+   "name": "Ohara",
+   "jp_name": "オハラ",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    15864,
+    11070
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ohara-poneglyph-1",
+   "name": "Ohara Poneglyph 1",
+   "jp_name": "Type: Instructional Rio Poneglyph",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    15304,
+    10161
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ohara-poneglyph-2",
+   "name": "Ohara Poneglyph 2",
+   "jp_name": "Type: Instructional Rio Poneglyph",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    15297,
+    11771
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "ringo-kingdom",
+   "name": "Ringo Kingdom",
+   "jp_name": "リンゴ王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    14416,
+    12563
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "sankan-kingdom",
+   "name": "Sankan Kingdom",
+   "jp_name": "サンカン王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    10192,
+    5689
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "shishano-kingdom",
+   "name": "Shishano Kingdom",
+   "jp_name": "シシャノ王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    14529,
+    6983
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "somewhere-kingdom",
+   "name": "Somewhere Kingdom",
+   "jp_name": "どこかの王国",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    6710,
+    9643
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Reino em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "toroa",
+   "name": "Toroa",
+   "jp_name": "トロア",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    16528,
+    11864
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Local em West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "twinsnakes-island",
+   "name": "Twinsnakes Island",
+   "jp_name": "双蛇島/ソウジャ島",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    13740,
+    20638
+   ],
+   "canonical": "canon",
+   "marker_kind": "place",
+   "current_state": {
+    "summary_text": "Ilha no West Blue.",
+    "flags": []
+   }
+  },
+  {
+   "id": "west-blue-poneglyph",
+   "name": "West Blue Poneglyph",
+   "jp_name": "Type: Unknown",
+   "cluster": "West Blue",
+   "region": "West Blue",
+   "coords": [
+    10664,
+    20312
+   ],
+   "canonical": "canon",
+   "marker_kind": "poneglyph",
+   "current_state": {
+    "summary_text": "Poneglyph em West Blue.",
+    "flags": []
+   }
+  }
+ ]
+}

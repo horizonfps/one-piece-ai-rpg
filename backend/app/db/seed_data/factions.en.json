@@ -1,0 +1,70 @@
+{
+ "_note": "Catálogo seed de facções rastreáveis (FASE 19). Cada entry vira um story_card kind='story_card' data.type='FACTION'. O id é a chave de faction_reputations (player/crew/NPC). Facções emergentes (crew pirata nova com peso regional) ganham card FACTION via npc_generator e entram no tracking sem precisar estar aqui. Vila/gangue anônima NÃO entra (fica em relationship_delta). Crew pirata canônica (mesmo Yonko) não é instituição e não entra no seed (decisão 2026-06-10): relação com bandos vive em relationship/alianças.",
+ "factions": [
+  {
+   "id": "marinha",
+   "type": "FACTION",
+   "name": "Marines",
+   "aliases": [
+    "Marines",
+    "Riflemen"
+   ],
+   "description": "Armed branch of the World Government. Institutional stance toward the crew modulated by each Marine's moral_code.",
+   "current_state": {
+    "summary_text": "Global maritime law-enforcement institution."
+   }
+  },
+  {
+   "id": "world_government",
+   "type": "FACTION",
+   "name": "World Government",
+   "aliases": [
+    "WG",
+    "Government"
+   ],
+   "description": "Political and bureaucratic body that governs affiliated nations. Distinct from the Marines (armed branch).",
+   "current_state": {
+    "summary_text": "Central political power of the known world."
+   }
+  },
+  {
+   "id": "cipher_pol",
+   "type": "FACTION",
+   "name": "Cipher Pol",
+   "aliases": [
+    "CP",
+    "CP0",
+    "Cipher Pol Aigis Zero"
+   ],
+   "description": "Clandestine intelligence structure of the World Government. Reputation distinct from the general WG because it operates in secret.",
+   "current_state": {
+    "summary_text": "Secret service of the World Government."
+   }
+  },
+  {
+   "id": "revolution",
+   "type": "FACTION",
+   "name": "Revolutionary Army",
+   "aliases": [
+    "Revolutionaries",
+    "Revolutionary Army"
+   ],
+   "description": "Armed movement that fights the World Government and the tyranny of the Celestial Dragons.",
+   "current_state": {
+    "summary_text": "Global insurgency against the World Government."
+   }
+  },
+  {
+   "id": "cross_guild",
+   "type": "FACTION",
+   "name": "Cross Guild",
+   "aliases": [
+    "Guild"
+   ],
+   "description": "Organization that offers contracts against Marines and protects pirates for payment.",
+   "current_state": {
+    "summary_text": "Anti-Marine mercenary syndicate."
+   }
+  }
+ ]
+}

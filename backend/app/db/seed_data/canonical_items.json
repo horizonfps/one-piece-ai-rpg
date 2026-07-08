@@ -1,0 +1,120 @@
+{
+  "_note": "Catálogo seed de ITEM cards canônicos (FASE 17 §'Items canônicos seed'). Cada entry vira um story_card kind='story_card' data.type='ITEM' por campanha (espelha o padrão das FACTIONs). São itens canônicos centrais que o canon cita solto e que precisam de entidade própria: Kairoseki (formas físicas), Log Pose e Eternal Pose. Itens novos da campanha entram on-the-fly via item_generator. O id de cada card é a chave de inventory_entry.item_card_id e do gate de existência. canonical='canon' (não 'generated'). Item NÃO tem tier de poder (isso é de NPC). A Eternal Pose é semeada como template genérico (tracked_island_id vazio): instâncias específicas por ilha são especializadas pelo item_generator quando uma LOCATION relevante existe (a campanha nasce no East Blue, sem ilhas de Grand Line cardificadas). Fonte canon: onepiece.fandom.com (Seastone, Log Pose, Eternal Pose).",
+  "items": [
+    {
+      "id": "algemas_kairoseki",
+      "type": "ITEM",
+      "subtype": "kairoseki",
+      "name": "Algemas de Kairoseki",
+      "aliases": ["Seastone Cuffs", "algemas de pedra-do-mar"],
+      "canonical": "canon",
+      "description": "Algemas com o trinco feito de kairoseki, a pedra que anula poderes de Fruta do Diabo por contato direto. Tiram a habilidade do prisioneiro sem afetar a mobilidade: ele anda normalmente, mas não acessa a fruta. Abrem só com a chave específica. Padrão da Marinha e do Governo Mundial para prender usuários de fruta.",
+      "current_state": {
+        "summary_text": "Equipamento comum de capitães da Marinha e de prisões do Governo Mundial; aparece no mercado negro de quando em quando.",
+        "flags": []
+      },
+      "state_history": [],
+      "related_card_ids": [],
+      "knowledge_tier_to_know_exists": "common",
+      "knowledge_tier_to_know_details": "regional",
+      "created_at_turn_index": 0,
+      "last_updated_turn_index": 0
+    },
+    {
+      "id": "balas_kairoseki",
+      "type": "ITEM",
+      "subtype": "kairoseki",
+      "name": "Balas de Kairoseki",
+      "aliases": ["Prison Bullets", "Kangoku Dan", "rede de captura"],
+      "canonical": "canon",
+      "description": "Projéteis e redes com kairoseki disparados por bazuca para capturar usuários de fruta em fuga, anulando o poder ao envolver o alvo. Só parte da malha é kairoseki; o resto é cabo de aço, então um alvo forte o bastante pode rasgar a rede. Equipamento de unidades de captura da Marinha.",
+      "current_state": {
+        "summary_text": "Munição militar de captura; estoque de guarnições da Marinha e de prisões, raro fora delas.",
+        "flags": []
+      },
+      "state_history": [],
+      "related_card_ids": [],
+      "knowledge_tier_to_know_exists": "regional",
+      "knowledge_tier_to_know_details": "specialized",
+      "created_at_turn_index": 0,
+      "last_updated_turn_index": 0
+    },
+    {
+      "id": "lamina_kairoseki",
+      "type": "ITEM",
+      "subtype": "kairoseki",
+      "name": "Lâmina de Kairoseki",
+      "aliases": ["arma com ponta de kairoseki", "jutte de kairoseki"],
+      "canonical": "canon",
+      "description": "Arma de combate corpo-a-corpo com a ponta ou o gume embutidos em kairoseki; o resto é metal comum. Permite imobilizar e enfraquecer um usuário de fruta no contato, como o jutte de certos oficiais graduados da Marinha. O portador carrega sem se afetar, já que o kairoseki só age por contato direto e contínuo.",
+      "current_state": {
+        "summary_text": "Arma de oficiais da Marinha treinados contra usuários de fruta; fabricação restrita.",
+        "flags": []
+      },
+      "state_history": [],
+      "related_card_ids": [],
+      "knowledge_tier_to_know_exists": "regional",
+      "knowledge_tier_to_know_details": "specialized",
+      "created_at_turn_index": 0,
+      "last_updated_turn_index": 0
+    },
+    {
+      "id": "jaula_kairoseki",
+      "type": "ITEM",
+      "subtype": "kairoseki",
+      "name": "Jaula de Kairoseki",
+      "aliases": ["Seastone Cage", "cela de pedra-do-mar"],
+      "canonical": "canon",
+      "description": "Estrutura de contenção com barras de kairoseki que drena o poder de um usuário de fruta preso dentro, mesmo sem encostar nas barras; o contato direto também enfraquece o corpo. Modelo das celas de prisões do Governo Mundial. Uma parede de prisão fixa embutida com kairoseki é tratada como propriedade do próprio local, não como item carregável.",
+      "current_state": {
+        "summary_text": "Infraestrutura de prisões do Governo Mundial e de navios-prisão; não é item de mercado.",
+        "flags": []
+      },
+      "state_history": [],
+      "related_card_ids": [],
+      "knowledge_tier_to_know_exists": "regional",
+      "knowledge_tier_to_know_details": "classified",
+      "created_at_turn_index": 0,
+      "last_updated_turn_index": 0
+    },
+    {
+      "id": "log_pose_padrao",
+      "type": "ITEM",
+      "subtype": "log_pose",
+      "name": "Log Pose",
+      "aliases": ["bússola de registro"],
+      "canonical": "canon",
+      "description": "Bússola indispensável para navegar a Grand Line, onde o magnetismo das ilhas inutiliza a bússola comum. Registra o campo magnético da ilha atual e aponta para a próxima, refazendo a rota a cada ilha; o tempo de registro varia de horas a anos. As rotas são de mão única. Este é o modelo de agulha única da primeira metade da Grand Line; o New World usa um de três agulhas.",
+      "current_state": {
+        "summary_text": "Instrumento padrão de navegadores da Grand Line; raro e cobiçado nos Blues, onde poucos sabem operá-lo.",
+        "flags": []
+      },
+      "state_history": [],
+      "related_card_ids": [],
+      "knowledge_tier_to_know_exists": "common",
+      "knowledge_tier_to_know_details": "regional",
+      "created_at_turn_index": 0,
+      "last_updated_turn_index": 0
+    },
+    {
+      "id": "eternal_pose",
+      "type": "ITEM",
+      "subtype": "eternal_pose",
+      "name": "Eternal Pose",
+      "aliases": ["bússola permanente"],
+      "canonical": "canon",
+      "description": "Variante da Log Pose que aponta sempre para uma mesma ilha, sem nunca resetar. Tem formato de ampulheta com um único orbe e uma agulha suspensa. Encurta muito a viagem até um destino fixo e é usada por quem tem porto de origem numa ilha específica e pela Marinha. Este é o modelo de referência; uma Eternal Pose real é gravada para uma ilha concreta.",
+      "current_state": {
+        "summary_text": "Card de referência (sem ilha-destino gravada). Uma instância apontando para uma ilha específica é gerada quando a ilha existe no mundo.",
+        "flags": [],
+        "tracked_island_id": ""
+      },
+      "state_history": [],
+      "related_card_ids": [],
+      "knowledge_tier_to_know_exists": "common",
+      "knowledge_tier_to_know_details": "regional",
+      "created_at_turn_index": 0,
+      "last_updated_turn_index": 0
+    }
+  ]
+}

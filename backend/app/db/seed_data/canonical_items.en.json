@@ -1,0 +1,137 @@
+{
+ "_note": "Catálogo seed de ITEM cards canônicos (FASE 17 §'Items canônicos seed'). Cada entry vira um story_card kind='story_card' data.type='ITEM' por campanha (espelha o padrão das FACTIONs). São itens canônicos centrais que o canon cita solto e que precisam de entidade própria: Kairoseki (formas físicas), Log Pose e Eternal Pose. Itens novos da campanha entram on-the-fly via item_generator. O id de cada card é a chave de inventory_entry.item_card_id e do gate de existência. canonical='canon' (não 'generated'). Item NÃO tem tier de poder (isso é de NPC). A Eternal Pose é semeada como template genérico (tracked_island_id vazio): instâncias específicas por ilha são especializadas pelo item_generator quando uma LOCATION relevante existe (a campanha nasce no East Blue, sem ilhas de Grand Line cardificadas). Fonte canon: onepiece.fandom.com (Seastone, Log Pose, Eternal Pose).",
+ "items": [
+  {
+   "id": "algemas_kairoseki",
+   "type": "ITEM",
+   "subtype": "kairoseki",
+   "name": "Seastone Handcuffs",
+   "aliases": [
+    "Seastone Cuffs",
+    "Seastone handcuffs"
+   ],
+   "canonical": "canon",
+   "description": "Handcuffs with a latch made of Seastone, the stone that nullifies Devil Fruit powers through direct contact. They strip the prisoner's ability without affecting mobility: he walks normally but cannot access the fruit. They open only with a specific key. Standard issue for the Marines and the World Government for restraining Devil Fruit users.",
+   "current_state": {
+    "summary_text": "Common equipment of Marine captains and World Government prisons; appears on the black market from time to time.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "regional",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0
+  },
+  {
+   "id": "balas_kairoseki",
+   "type": "ITEM",
+   "subtype": "kairoseki",
+   "name": "Seastone Bullets",
+   "aliases": [
+    "Prison Bullets",
+    "Kangoku Dan",
+    "capture net"
+   ],
+   "canonical": "canon",
+   "description": "Projectiles and nets containing Seastone fired from a bazooka to capture fleeing Devil Fruit users, nullifying their power by enveloping the target. Only part of the mesh is Seastone; the rest is steel cable, so a target strong enough can tear through the net. Equipment used by Marine capture units.",
+   "current_state": {
+    "summary_text": "Military capture ammunition; stocked by Marine garrisons and prisons, rare outside them.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "regional",
+   "knowledge_tier_to_know_details": "specialized",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0
+  },
+  {
+   "id": "lamina_kairoseki",
+   "type": "ITEM",
+   "subtype": "kairoseki",
+   "name": "Seastone Blade",
+   "aliases": [
+    "weapon with a Seastone tip",
+    "Seastone jutte"
+   ],
+   "canonical": "canon",
+   "description": "A melee weapon with its tip or edge embedded with Seastone; the rest is ordinary metal. It allows the wielder to immobilize and weaken a Devil Fruit user on contact, like the jutte carried by certain high-ranking Marine officers. The bearer carries it without being affected, since Seastone only acts through direct and continuous contact.",
+   "current_state": {
+    "summary_text": "Weapon of Marine officers trained against Devil Fruit users; restricted manufacture.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "regional",
+   "knowledge_tier_to_know_details": "specialized",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0
+  },
+  {
+   "id": "jaula_kairoseki",
+   "type": "ITEM",
+   "subtype": "kairoseki",
+   "name": "Seastone Cage",
+   "aliases": [
+    "Seastone Cage",
+    "Seastone cell"
+   ],
+   "canonical": "canon",
+   "description": "A containment structure with Seastone bars that drains the power of a Devil Fruit user held inside, even without touching the bars; direct contact also weakens the body. The standard model for World Government prison cells. A fixed prison wall embedded with Seastone is treated as a property of the location itself, not as a portable item.",
+   "current_state": {
+    "summary_text": "Infrastructure of World Government prisons and prison ships; not a market item.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "regional",
+   "knowledge_tier_to_know_details": "classified",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0
+  },
+  {
+   "id": "log_pose_padrao",
+   "type": "ITEM",
+   "subtype": "log_pose",
+   "name": "Log Pose",
+   "aliases": [
+    "Log Pose"
+   ],
+   "canonical": "canon",
+   "description": "An indispensable compass for navigating the Grand Line, where the magnetic fields of islands render ordinary compasses useless. It records the magnetic field of the current island and points to the next, resetting the route at each island; recording time varies from hours to years. Routes are one-way. This is the single-needle model used in the first half of the Grand Line; the New World uses a three-needle model.",
+   "current_state": {
+    "summary_text": "Standard instrument of Grand Line navigators; rare and coveted in the Blues, where few know how to operate it.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "regional",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0
+  },
+  {
+   "id": "eternal_pose",
+   "type": "ITEM",
+   "subtype": "eternal_pose",
+   "name": "Eternal Pose",
+   "aliases": [
+    "permanent compass"
+   ],
+   "canonical": "canon",
+   "description": "A variant of the Log Pose that always points to the same island and never resets. It has an hourglass shape with a single orb and a suspended needle. It greatly shortens travel to a fixed destination and is used by those whose home port is on a specific island and by the Marines. This is the reference model; an actual Eternal Pose is engraved for a concrete island.",
+   "current_state": {
+    "summary_text": "Reference card (no destination island engraved). An instance pointing to a specific island is generated when that island exists in the world.",
+    "flags": [],
+    "tracked_island_id": ""
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "regional",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0
+  }
+ ]
+}

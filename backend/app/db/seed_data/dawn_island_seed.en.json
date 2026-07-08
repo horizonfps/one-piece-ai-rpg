@@ -1,0 +1,284 @@
+{
+ "campaign_name": "Foosha Village — Dawn Island",
+ "initial_player_age": 17,
+ "current_arc": "East Blue — Foosha Village",
+ "start_location": "foosha/party_bar",
+ "player_character": {
+  "name": "[JOGADOR]",
+  "tier": "NORMAL",
+  "fruit": null,
+  "haki": [],
+  "inventory_summary": "",
+  "visible_state": "17-year-old from Foosha Village, about to set sail for the sea"
+ },
+ "player_snapshot": {
+  "tier": "NORMAL",
+  "bounty": {
+   "current_amount": 0,
+   "scheduled_day": null,
+   "history": []
+  },
+  "alignment": {
+   "value": 0.0,
+   "bucket": "neutral"
+  },
+  "alignment_descriptor": "village youth, still without a history in the world",
+  "breakthroughs": [],
+  "fruit": null,
+  "haki": [],
+  "current_arc": "East Blue — Foosha Village",
+  "player_visible_state": "17-year-old from Foosha Village, about to set sail for the sea",
+  "player_public_facts": [
+   "A native of Foosha Village, known by the whole village his entire life.",
+   "Grew up alongside Monkey D. Luffy, who left Foosha and became a famous pirate."
+  ]
+ },
+ "crew_snapshot": {
+  "size": 0,
+  "members": [],
+  "missing_roles_hint": []
+ },
+ "npcs": [
+  {
+   "name": "Makino",
+   "race": "Human",
+   "age_at_creation": 30,
+   "affiliation": "civilian_foosha",
+   "tier": "NORMAL",
+   "class": "civilian",
+   "devil_fruit": null,
+   "haki_profile": [],
+   "base_backstory": "Grew up in Foosha and took over the Party's Bar while still young, turning it into the village's gathering point and informal heart. She watched generations of children set sail for the sea — among them Luffy, who grew up at her counter and is today a famous pirate. She now raises a young child and keeps up with what happens in the world through the newspapers that arrive at the bar.",
+   "voice_notes": "",
+   "traits": [
+    "Maternal",
+    "Serene",
+    "World-Aware"
+   ],
+   "alignment_baseline": 0.7,
+   "knowledge_clearance": "regional",
+   "gossip_trait": "normal",
+   "narrative_armor": "none",
+   "current_location": "foosha/",
+   "current_goal": "Run the bar and raise her young child in peace, keeping an eye on the news that arrives from the sea.",
+   "long_term_dream": "To see the young people of Foosha who set sail for the sea return safe and sound one day.",
+   "mood": "Warm and calm",
+   "status": "alive",
+   "id": "ba5e0a0c0f01",
+   "subtype": "village_bartender",
+   "aliases": [],
+   "canonical": "canon",
+   "description": "A woman with dark green hair tied back and an apron over a simple dress, always with a bar cloth in hand and, more often than not, her baby nearby. She knows every floorboard in the bar and moves through it without looking where she steps. Her smile comes easily; her worry, hidden behind it.",
+   "current_state": {
+    "tier": "NORMAL",
+    "summary_text": "Bartender of the Party's Bar and heart of the village; raising a young child and following the fame of those who left Foosha through the press.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "common",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0,
+   "relationships": {
+    "player": {
+     "affinity": 0.7,
+     "bond_tier": 1,
+     "last_interaction_turn_index": null,
+     "what_they_know_about_other": [
+      "jovem da vila que ela viu crescer, quase como filho"
+     ]
+    }
+   },
+   "personal_event_log": [],
+   "last_tick_index": 0,
+   "last_seen_by_player_index": null
+  },
+  {
+   "name": "Woop Slap",
+   "race": "Human",
+   "age_at_creation": 65,
+   "affiliation": "civilian_foosha",
+   "tier": "NORMAL",
+   "class": "civilian",
+   "devil_fruit": null,
+   "haki_profile": [],
+   "base_backstory": "Mayor of Foosha for decades, he has watched generations be born and leave the village. He despises pirates on principle and grumbles that Foosha became famous throughout the world for having launched an enemy of the World Government onto the sea. Beneath the sour exterior lies a veiled pride in those the village raised, which he would never admit aloud.",
+   "voice_notes": "",
+   "traits": [
+    "Grumpy",
+    "Anti-Piracy",
+    "Covert-Protector"
+   ],
+   "alignment_baseline": 0.5,
+   "knowledge_clearance": "regional",
+   "gossip_trait": "normal",
+   "narrative_armor": "none",
+   "current_location": "foosha/",
+   "current_goal": "Keep order in the village and grumble that Foosha is now only known because of a pirate.",
+   "long_term_dream": "To see Foosha carry on quietly into his generation, far from any pirate flag.",
+   "mood": "Grumbling and watchful",
+   "status": "alive",
+   "id": "b0007513a002",
+   "subtype": "village_mayor",
+   "aliases": [],
+   "canonical": "canon",
+   "description": "A short old man with a white pointed mustache and goatee and a stern face, walking with the support of a cane and inspecting everything along the way. His brow is perpetually furrowed; his cane strikes the ground to the rhythm of his impatience.",
+   "current_state": {
+    "tier": "NORMAL",
+    "summary_text": "Old, grumpy mayor of Foosha; anti-piracy by word, with a veiled pride in those the village sent to sea.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "common",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0,
+   "relationships": {
+    "player": {
+     "affinity": 0.5,
+     "bond_tier": 1,
+     "last_interaction_turn_index": null,
+     "what_they_know_about_other": [
+      "jovem da vila que ele conhece desde sempre e finge não se importar"
+     ]
+    }
+   },
+   "personal_event_log": [],
+   "last_tick_index": 0,
+   "last_seen_by_player_index": null,
+   "dormant": true
+  },
+  {
+   "name": "Gyoru",
+   "race": "Human",
+   "age_at_creation": 52,
+   "affiliation": "civilian_foosha",
+   "tier": "NORMAL",
+   "class": "civilian",
+   "devil_fruit": null,
+   "haki_profile": [],
+   "base_backstory": "Runs Foosha's fish shop and supplies Makino's bar and the whole village. He is the first to know everything that goes on in the village: who arrives, who leaves, what news came from outside. A simple man, he speaks loudly and laughs easily.",
+   "voice_notes": "",
+   "traits": [
+    "Talkative",
+    "Hard-Working",
+    "Good-Humored"
+   ],
+   "alignment_baseline": 0.5,
+   "knowledge_clearance": "regional",
+   "gossip_trait": "loud",
+   "narrative_armor": "none",
+   "current_location": "foosha/",
+   "current_goal": "Run the fish shop and stay on top of everything happening in the village.",
+   "long_term_dream": "To see Foosha prosperous and full of life.",
+   "mood": "Lively and talkative",
+   "status": "alive",
+   "id": "61020a000007",
+   "subtype": "village_fishmonger",
+   "aliases": [],
+   "canonical": "canon",
+   "description": "A stocky man with a mustache and bandana, a work apron, and an easy-going manner. He hauls crates around the village and greets everyone by name.",
+   "current_state": {
+    "tier": "NORMAL",
+    "summary_text": "Owner of Foosha's fish shop, the chatty gossip who knows everything in the village.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "common",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0,
+   "relationships": {
+    "player": {
+     "affinity": 0.5,
+     "bond_tier": 1,
+     "last_interaction_turn_index": null,
+     "what_they_know_about_other": [
+      "jovem da vila que ele vê crescer no porto desde pequeno"
+     ]
+    }
+   },
+   "personal_event_log": [],
+   "last_tick_index": 0,
+   "last_seen_by_player_index": null,
+   "dormant": true
+  },
+  {
+   "name": "Luffy",
+   "race": "Human",
+   "age_at_creation": 19,
+   "affiliation": "straw_hat_pirates",
+   "tier": "TITAN",
+   "class": "brawler",
+   "devil_fruit": "Gomu Gomu no Mi (Hito Hito no Mi, Modelo Nika)",
+   "haki_profile": [
+    "HAOSHOKU",
+    "BUSOSHOKU",
+    "KENBUNSHOKU"
+   ],
+   "base_backstory": "A childhood friend of the player, raised informally by the village and Makino's bar. He left Foosha at 17 chasing the dream of becoming King of the Pirates and is today the captain of the Straw Hat Pirates, one of the most famous and wanted pirates on the sea. Foosha follows his every exploit through the newspapers.",
+   "voice_notes": "",
+   "traits": [
+    "Fearless",
+    "Hungry",
+    "Stubborn"
+   ],
+   "alignment_baseline": 0.9,
+   "knowledge_clearance": "common",
+   "gossip_trait": "normal",
+   "narrative_armor": "none",
+   "current_location": "grand_line/",
+   "current_goal": "Find the One Piece and become King of the Pirates.",
+   "long_term_dream": "To become King of the Pirates.",
+   "mood": "Lively and fearless",
+   "status": "alive",
+   "id": "1fff70a00005",
+   "subtype": "pirate_captain",
+   "aliases": [
+    "Straw Hat",
+    "Straw Hat"
+   ],
+   "canonical": "canon",
+   "description": "A lean, dark-skinned young man with a wide grin and a scar under his left eye, a straw hat with a worn brim on his head. Away from Foosha for years, sailing the Grand Line at the head of his own crew.",
+   "current_state": {
+    "tier": "TITAN",
+    "summary_text": "Childhood friend of the player; left Foosha and became captain of the Straw Hat Pirates, one of the most famous pirates on the sea.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "common",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0,
+   "relationships": {
+    "player": {
+     "affinity": 0.7,
+     "bond_tier": 1,
+     "last_interaction_turn_index": null,
+     "what_they_know_about_other": [
+      "amigo de infância de Foosha, hoje um pirata famoso longe no mar"
+     ]
+    }
+   },
+   "personal_event_log": [],
+   "last_tick_index": 0,
+   "last_seen_by_player_index": null,
+   "dormant": true
+  }
+ ],
+ "world_state": {
+  "chaos_meter": {
+   "value": 0.0,
+   "bucket": "calm"
+  },
+  "crew_alignment": {
+   "value": 0.0,
+   "bucket": "neutral"
+  },
+  "events_background": []
+ }
+}

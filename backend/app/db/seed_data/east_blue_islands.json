@@ -1,0 +1,94 @@
+{
+  "_note": "Catálogo de referência do East Blue (FASE 9, Fatia B). Geografia + dados canônicos compartilhados entre campanhas; o `fog` é per-campanha e injetado pelo seed (world_map.build_initial_world). coords = [y, x] no espaço do tile-set onepieceworldmap.com (mesmas do PoC/Map.svelte EXEMPLO_ISLANDS). `post_arc_mode`/`canon_arc_name` são hint de TOM pro arc_generator (FASE 10, item 2): o estado canônico REAL vem do briefing do research em runtime. Régua de timeline: presente = Luffy saindo de Egghead (Luffy ~19; partiu de Foosha aos 17), então os arcos do East Blue foram resolvidos ~2 anos e meio atrás, POR ELE — a história do East Blue já aconteceu sem o jogador → vacuum/copycat (rescaldo fresco) em geral NÃO se aplicam; assentado=fame, trauma aberto=scar, reconstrução=reconstruction, corrupção/ideologia persistente=remnants. Ressalva de licença: tiles/coords são obra proprietária do Library of Ohara — uso pessoal/web-local com atribuição; pedir permissão antes de distribuir (ver project_map_tiles_proprietary_license).",
+  "cluster": "East Blue",
+  "islands": [
+    {
+      "id": "foosha", "name": "Foosha Village", "jp_name": "フーシャ村",
+      "cluster": "East Blue", "region": "Dawn Island", "coords": [37500, 64398],
+      "canonical": "canon",
+      "post_arc_mode": "fame", "canon_arc_name": "Romance Dawn — infância de Luffy e a partida de Shanks na Foosha",
+      "current_state": {"summary_text": "Pacata; vila independente na borda do Reino de Goa.", "flags": ["rural", "moinhos"]},
+      "description": "Vila pastoral na borda do Reino de Goa: 17 moinhos de vento no horizonte, pastagens com gado, estradas de terra entre campos. Tem um porto pequeno onde navio de passagem ancora.",
+      "related": [
+        {"kind": "NPC", "name": "Makino"},
+        {"kind": "NPC", "name": "Woop Slap"},
+        {"kind": "LOCATION", "name": "Monte Colubo"}
+      ]
+    },
+    {
+      "id": "goa", "name": "Goa Kingdom", "jp_name": "ゴア王国",
+      "cluster": "East Blue", "region": "Dawn Island", "coords": [37860, 64620],
+      "canonical": "canon",
+      "post_arc_mode": "scar", "canon_arc_name": "Incêndio do Gray Terminal (flashback de Sabo) — massacre dos descartados pelos nobres",
+      "current_state": {"summary_text": "Monarquia aliada ao Governo Mundial; tensão de castas latente.", "flags": ["sistema de castas", "Gray Terminal", "alta muralha"]},
+      "description": "Monarquia em Dawn Island com hierarquia social extrema: nobres em High Town murada, comuns em Central/Edge Town, e o Gray Terminal onde vivem os descartados pelo reino.",
+      "related": [
+        {"kind": "LOCATION", "name": "High Town"},
+        {"kind": "LOCATION", "name": "Gray Terminal"}
+      ]
+    },
+    {
+      "id": "branch153", "name": "153rd Marine Branch", "jp_name": "海軍第153支部",
+      "cluster": "East Blue", "region": "Yotsuba Island", "coords": [38188, 60976],
+      "canonical": "canon",
+      "post_arc_mode": "fame", "canon_arc_name": "Romance Dawn — queda do Capitão Morgan em Shells Town (Morgan fugiu da custódia, segue foragido)",
+      "current_state": {"summary_text": "Base da Marinha em Shells Town; comando atual reto.", "flags": ["base da Marinha", "Shells Town"]},
+      "description": "Base da Marinha em Shells Town. Por anos sob o tirânico Capitão Morgan, até sua deposição. Hoje serve à população com retidão.",
+      "related": [{"kind": "FACTION", "name": "Marinha"}]
+    },
+    {
+      "id": "orange", "name": "Orange Town", "jp_name": "オレンジの町",
+      "cluster": "East Blue", "region": "Organ Archipelago", "coords": [34024, 57296],
+      "canonical": "canon",
+      "post_arc_mode": "fame", "canon_arc_name": "Orange Town — ocupação de Buggy the Clown (hoje um dos Imperadores, via Cross Guild)",
+      "current_state": {"summary_text": "Cidade costeira; histórico de assédio pirata.", "flags": ["cidade costeira", "arquitetura germânica"]},
+      "description": "Pequena cidade no Organ Archipelago, fundada por refugiados de uma vila destruída por piratas. Resistiu a múltiplos ataques ao longo das décadas.",
+      "related": [{"kind": "NPC", "name": "Prefeito Boodle"}]
+    },
+    {
+      "id": "syrup", "name": "Syrup Village", "jp_name": "シロップ村",
+      "cluster": "East Blue", "region": "Gecko Archipelago", "coords": [32736, 53120],
+      "canonical": "canon",
+      "post_arc_mode": "fame", "canon_arc_name": "Syrup Village — conspiração do Capitão Kuro contra Kaya (terra natal de Usopp)",
+      "current_state": {"summary_text": "Vila quieta sobre falésias; afiliada ao Governo Mundial.", "flags": ["falésias", "mansão Kaya"]},
+      "description": "Vila quieta no Gecko Archipelago, construída sobre falésias íngremes. Famosa pela mansão de Kaya. Terra natal de Yasopp e Usopp.",
+      "related": [{"kind": "LOCATION", "name": "Mansão Kaya"}]
+    },
+    {
+      "id": "arlong", "name": "Arlong Park", "jp_name": "アーロンパーク",
+      "cluster": "East Blue", "region": "Conomi Archipelago", "coords": [37574, 48804],
+      "canonical": "canon",
+      "post_arc_mode": "remnants", "canon_arc_name": "Saga do Arlong — Arlong Park, base dos fish-men dissidentes dos Sun Pirates (Arlong preso; ideologia supremacista sobrevive)",
+      "current_state": {"summary_text": "Base do Arlong Crew destruída; estrutura em ruínas.", "flags": ["estrutura destruída", "ocupação de 8 anos encerrada"]},
+      "description": "Base do Arlong Crew, dissidência dos Sun Pirates. A torre era um pagode de cinco andares; foi destruída na derrota de Arlong.",
+      "related": [{"kind": "FACTION", "name": "Sun Pirates"}]
+    },
+    {
+      "id": "cocoyasi", "name": "Cocoyasi Village", "jp_name": "ココヤシ村",
+      "cluster": "East Blue", "region": "Conomi Archipelago", "coords": [37720, 48978],
+      "canonical": "canon",
+      "post_arc_mode": "fame", "canon_arc_name": "Saga do Arlong — libertação de Cocoyasi (vila natal de Nami, dos Chapéus de Palha)",
+      "current_state": {"summary_text": "Vila portuária libertada; bosque de tangerinas.", "flags": ["vila de coco", "tangerinas"]},
+      "description": "Pequena vila portuária no Conomi Archipelago. Oprimida por Arlong por anos até ser libertada. Cercada por um bosque de tangerinas.",
+      "related": [{"kind": "NPC", "name": "Genzou"}]
+    },
+    {
+      "id": "gosa", "name": "Gosa Town", "jp_name": "ゴサの町",
+      "cluster": "East Blue", "region": "Conomi Archipelago", "coords": [37720, 49234],
+      "canonical": "canon",
+      "post_arc_mode": "reconstruction", "canon_arc_name": "Saga do Arlong — Gosa arrasada por recusar tributo a Arlong e reerguida após a queda dele",
+      "current_state": {"summary_text": "Cidade portuária reconstruída após destruição.", "flags": ["reconstruída", "cidade portuária"]},
+      "description": "Cidade portuária a leste de Cocoyasi, destruída quando os cidadãos não pagaram tributo a Arlong e reconstruída após sua queda.",
+      "related": [{"kind": "NPC", "name": "Chabo"}]
+    },
+    {
+      "id": "branch16", "name": "16th Marine Branch", "jp_name": "海軍第16支部",
+      "cluster": "East Blue", "region": "East Blue", "coords": [38698, 47804],
+      "canonical": "canon",
+      "post_arc_mode": "remnants", "canon_arc_name": "Saga do Arlong — 16ª Filial do corrupto Capitão Nezumi (subornado por Arlong; nunca punido)",
+      "current_state": {"summary_text": "Base da Marinha sob comando corrupto.", "flags": ["base da Marinha", "comando corrupto"]},
+      "description": "Base da Marinha próxima ao Conomi Archipelago. Comandada pelo corrupto Capitão Nezumi, que tematizou a base com aparência de rato.",
+      "related": [{"kind": "FACTION", "name": "Marinha"}]
+    }
+  ]
+}

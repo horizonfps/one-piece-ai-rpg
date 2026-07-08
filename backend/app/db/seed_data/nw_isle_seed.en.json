@@ -1,0 +1,210 @@
+{
+ "campaign_name": "Kravenholm — doca norte",
+ "initial_player_age": 19,
+ "current_arc": "pós-Marineford / era atual (saga final)",
+ "start_location": "Kravenholm/Doca Norte",
+ "player_character": {
+  "name": "[JOGADOR]",
+  "tier": "MONSTER",
+  "fruit": "Goro Goro no Mi",
+  "haki": [
+   "KENBUNSHOKU",
+   "BUSOSHOKU",
+   "HAOSHOKU"
+  ],
+  "inventory_summary": "",
+  "visible_state": "pirate captain newly arrived on the island, coat worn from the crossing"
+ },
+ "player_snapshot": {
+  "tier": "MONSTER",
+  "bounty": {
+   "current_amount": 800000000,
+   "scheduled_day": null,
+   "history": []
+  },
+  "alignment": {
+   "value": 1.0,
+   "bucket": "good"
+  },
+  "alignment_descriptor": "protects the weak, stands against tyrants (people's hero)",
+  "breakthroughs": [],
+  "fruit": "Goro Goro no Mi",
+  "haki": [
+   "KENBUNSHOKU",
+   "BUSOSHOKU",
+   "HAOSHOKU"
+  ],
+  "current_arc": "pós-Marineford / era atual (saga final)",
+  "player_visible_state": "MONSTER-tier pirate captain, user of the Goro Goro no Mi, newly arrived on the island",
+  "player_public_facts": [
+   "pirate with a high bounty (Supernova)",
+   "ship in need of repair"
+  ]
+ },
+ "crew_snapshot": {
+  "size": 5,
+  "members": [
+   {
+    "name": "Sable",
+    "role": "navigator",
+    "tier": "ELITE"
+   }
+  ],
+  "missing_roles_hint": [
+   "shipwright"
+  ]
+ },
+ "npcs": [
+  {
+   "name": "Dasha",
+   "race": "Mink",
+   "age_at_creation": 34,
+   "birth_year_canon": 1528,
+   "affiliation": "civilian_nw_isle_seed1",
+   "tier": "STRONG",
+   "class": "brawler",
+   "devil_fruit": null,
+   "haki_profile": [
+    "KENBUNSHOKU"
+   ],
+   "base_backstory": "Born on the northern coast of a New World island, she grew up as the daughter of a cargo broker who died in a settling of scores with pirates — she learned early that words buy time that fists cannot. She spent years as a go-between for scattered Mink communities and human merchants of the New World, building a reputation as someone who keeps her word. She took on the role of settlement spokesperson by the community's choice, not out of ambition.",
+   "voice_notes": "",
+   "traits": [
+    "Pragmatic",
+    "Wire-tight Restraint",
+    "Table Voice",
+    "Clan Loyalty"
+   ],
+   "alignment_baseline": 0.6,
+   "knowledge_clearance": "regional",
+   "gossip_trait": "normal",
+   "narrative_armor": "none",
+   "current_location": "",
+   "current_goal": "Reopen access to the settlement's port before the community takes matters into its own hands against Grevik.",
+   "long_term_dream": "Ensure that the Mink settlement on the northern coast has permanent commercial autonomy, without depending on the tolerance of pirates or Marines.",
+   "mood": "Restrained — close to the limit",
+   "status": "alive",
+   "id": "fd144c987949",
+   "subtype": "civilian_spokesperson_mink",
+   "aliases": [],
+   "canonical": "canon",
+   "description": "A grey-furred Mink with broad shoulders beneath a travel-worn leather coat. She carries the posture of someone who measures every step before taking it. Her gaze lands steadily on whoever speaks to her.",
+   "current_state": {
+    "tier": "STRONG",
+    "summary_text": "Spokesperson of the Mink settlement, negotiating the reopening of the dock sealed by Grevik.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "regional",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0,
+   "relationships": {},
+   "personal_event_log": [],
+   "last_tick_index": 0,
+   "last_seen_by_player_index": null
+  },
+  {
+   "name": "Sable",
+   "race": "Human",
+   "age_at_creation": 26,
+   "birth_year_canon": 1521,
+   "affiliation": "player_crew",
+   "tier": "ELITE",
+   "class": "navigator",
+   "devil_fruit": null,
+   "haki_profile": [
+    "KENBUNSHOKU"
+   ],
+   "base_backstory": "She grew up in a family of cartographers contracted by the Marines in the North Blue, but deserted before delivering a map of a route that would have cost civilian lives. She spent two years selling pirate nautical charts in the Sabaody underworld before crossing paths with the captain — and deciding that sailing for someone with a vision was better than selling maps to those who did not know how to use them. She carries with her an encrypted logbook containing every route she has ever charted, including the ones that should never have existed.",
+   "voice_notes": "",
+   "traits": [
+    "Meticulous",
+    "Distrustful",
+    "Reverence for the Sea",
+    "Surgical Coldness",
+    "Silent Loyalty"
+   ],
+   "alignment_baseline": 0.6,
+   "knowledge_clearance": "specialized",
+   "gossip_trait": "silent",
+   "narrative_armor": "crew_armor",
+   "current_location": "",
+   "current_goal": "Ensure the crew crosses the unstable currents of the New World without losing another member",
+   "long_term_dream": "Complete the definitive map of the New World — including the routes the Marines erased from the official records",
+   "mood": "Alert and restrained",
+   "status": "alive",
+   "id": "337b703232ba",
+   "subtype": "crew_navigator",
+   "aliases": [],
+   "canonical": "canon",
+   "description": "A human woman with angular features, hair pulled back, fingers always near a bound logbook. She moves with economy of gesture. She taps the table twice with her index finger before answering what she considers obvious.",
+   "current_state": {
+    "tier": "ELITE",
+    "summary_text": "Navigator of the crew, attentive to the unstable currents surrounding the island.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "regional",
+   "knowledge_tier_to_know_details": "specialized",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0,
+   "relationships": {},
+   "personal_event_log": [],
+   "last_tick_index": 0,
+   "last_seen_by_player_index": null
+  },
+  {
+   "name": "Grevik",
+   "race": "Human",
+   "age_at_creation": 54,
+   "birth_year_canon": 1532,
+   "affiliation": "civilian_kravenholm",
+   "tier": "ELITE",
+   "class": "brawler",
+   "devil_fruit": null,
+   "haki_profile": [
+    "BUSOSHOKU"
+   ],
+   "base_backstory": "Born the son of a miner in Kravenholm, he learned smithing before he learned to read — he spent thirty years building the reputation of the island's finest blacksmith through the undeniable quality of his work. When the anomalous ore appeared in the fissures, he was the one who identified its properties before anyone else, and used that to consolidate a position on the council that no election could take from him. He genuinely believes that without him the island would destroy the resource through ignorance — and it is that sincere conviction that makes the control he exercises difficult to contest.",
+   "voice_notes": "",
+   "traits": [
+    "Pragmatic",
+    "Autocratic",
+    "Genuine Competence",
+    "Distrust of Amateurs"
+   ],
+   "alignment_baseline": -0.8,
+   "knowledge_clearance": "specialized",
+   "gossip_trait": "silent",
+   "narrative_armor": "none",
+   "current_location": "",
+   "current_goal": "Maintain the monopoly over the fissures and the dock while extracting and processing the anomalous ore at a controlled scale.",
+   "long_term_dream": "Forge something from the anomalous ore that no blacksmith in the world has ever managed to replicate — and have the entire world know it was him.",
+   "mood": "calculated and entrenched",
+   "status": "alive",
+   "id": "d4d33ec36e1c",
+   "subtype": "council_blacksmith",
+   "aliases": [],
+   "canonical": "canon",
+   "description": "A man in his early fifties, forearms marked by the forge and a short grey beard. He speaks slowly, like someone hammering one statement at a time. His presence fills the room before his voice does.",
+   "current_state": {
+    "tier": "ELITE",
+    "summary_text": "Controls the fissures and the Kravenholm foundry, entrenched in the monopoly over the anomalous ore.",
+    "flags": []
+   },
+   "state_history": [],
+   "related_card_ids": [],
+   "knowledge_tier_to_know_exists": "common",
+   "knowledge_tier_to_know_details": "specialized",
+   "created_at_turn_index": 0,
+   "last_updated_turn_index": 0,
+   "relationships": {},
+   "personal_event_log": [],
+   "last_tick_index": 0,
+   "last_seen_by_player_index": null
+  }
+ ]
+}
