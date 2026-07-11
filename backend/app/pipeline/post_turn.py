@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import copy
 import random
+import re
+import unicodedata
 import uuid
 
 import aiosqlite
@@ -741,12 +743,22 @@ async def apply_post_turn(
     fruit_usage = (turn_meta or {}).get("fruit_usage") or []
     if fruit_usage:
         usage_log = list(psnap.get("fruit_usage_log") or [])
+        player_root = _canon_fruit_id(psnap.get("fruit")).split("-", 1)[0]
+        npc_fruit_roots = {_canon_fruit_id(n.get("devil_fruit")).split("-", 1)[0] for n in npcs.values()}
+        npc_fruit_roots.discard("")
+        npc_fruit_roots.discard(player_root)
         added = 0
         for fu in fruit_usage:
             if not isinstance(fu, dict):
                 continue
             summary = (fu.get("usage_summary") or "").strip()
             if not summary:
+                continue
+            # Player-only channel: drop a use whose fruit is a present NPC's (Narrator mislogged it).
+            if _canon_fruit_id(fu.get("fruit_id")).split("-", 1)[0] in npc_fruit_roots:
+                report["rejected"].append(
+                    {"channel": "fruit_usage", "why": "fruta pertence a um NPC, não ao player", "fruit_id": fu.get("fruit_id")}
+                )
                 continue
             usage_log.append({
                 "turn_index": turn_index,
@@ -846,6 +858,15 @@ def _merge_player_snapshot(fresh: dict, base: dict, working: dict) -> dict:
         if k not in working:
             out.pop(k, None)
     return out
+
+
+def _canon_fruit_id(raw) -> str:
+    """Canonical devil-fruit slug: strip diacritics, lowercase, spaces/underscores -> hyphens."""
+    if isinstance(raw, dict):
+        raw = raw.get("id") or raw.get("name") or ""
+    s = unicodedata.normalize("NFKD", str(raw or ""))
+    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    return re.sub(r"[\s_]+", "-", s.strip().lower())
 
 
 def _bounty_amount(bounty) -> int:

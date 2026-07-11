@@ -258,6 +258,18 @@ def _world_memory_bullets(crystals: list[dict]) -> list[str]:
     return out
 
 
+_PHASE_ORDER = {"early": 0, "mid": 1, "late": 2}
+
+
+def _derive_campaign_phase(stored: str, bounty: int) -> str:
+    """Effective campaign phase for island-complexity calibration. Floors the phase at what the
+    player's bounty implies so it can't stay frozen at the seed 'early'; a higher Director-set phase
+    still wins."""
+    derived = "late" if bounty >= 100_000_000 else "mid" if bounty >= 10_000_000 else "early"
+    stored = stored if stored in _PHASE_ORDER else "early"
+    return derived if _PHASE_ORDER[derived] >= _PHASE_ORDER[stored] else stored
+
+
 # --------------------------------------------------------------------------------------
 # Arrival research (no plot; island born neutral)
 # --------------------------------------------------------------------------------------
@@ -277,7 +289,11 @@ async def run_island_research(
     campaign = await repo.get_campaign(conn, campaign_id)
     metadata = dict((campaign or {}).get("metadata") or {})
     world = metadata.get("world") or {}
-    campaign_phase = str(metadata.get("campaign_phase") or "early")
+    stored_phase = str(metadata.get("campaign_phase") or "early")
+    player_sc = await repo.get_player_story_card(conn, campaign_id)
+    _b = (((player_sc or {}).get("data") or {}).get("player_snapshot") or {}).get("bounty")
+    bounty = int(_b.get("current_amount", 0) or 0) if isinstance(_b, dict) else int(_b or 0)
+    campaign_phase = _derive_campaign_phase(stored_phase, bounty)
     meta = resolve_island_meta(world, island_slug, {}, campaign_phase=campaign_phase)
 
     briefing_md = ""

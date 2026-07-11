@@ -2652,6 +2652,7 @@ async def _run_turn_events_inner(
             prose=prose, turn_meta=turn_meta, agent_outputs=agent_outputs,
             pre_turn_decisions=decisions, scene=scene,
             active_directives=active_directives_text,
+            turn_index=turn_index,
         )
         post_decisions = await director.call_post_turn(
             post_state,

@@ -3906,6 +3906,29 @@ def _nemesis_summary(metadata: dict, npcs: dict, pre_turn_decisions: dict) -> di
     }
 
 
+_EVENT_STALE_AFTER_TURNS = 5  # a plausible ambient event the player never reached stops counting as live
+
+
+def _live_background_events(events: list | None, turn_index: int | None) -> list:
+    """world_pulse projection: hide a plausible ambient event the player never reached once it is
+    stale, so it stops being cited as the live world event. Read-only; the stored event is untouched,
+    closure stays LLM-authored, mirroring the foreshadow pool."""
+    events = list(events or [])
+    if turn_index is None:
+        return events
+    out = []
+    for ev in events:
+        stale = (
+            isinstance(ev, dict)
+            and ev.get("status") in ("active", "brewing")
+            and ev.get("player_insertion_plausibility") == "plausible"
+            and turn_index - int(ev.get("triggered_at_turn_index", turn_index) or turn_index) >= _EVENT_STALE_AFTER_TURNS
+        )
+        if not stale:
+            out.append(ev)
+    return out
+
+
 def build_post_turn_state(
     player_action: dict,
     state: dict,
@@ -3916,6 +3939,7 @@ def build_post_turn_state(
     pre_turn_decisions: dict,
     scene: dict,
     active_directives: list[str] | None = None,
+    turn_index: int | None = None,
 ) -> dict:
     """Build the post-turn input contract. active_directives[] is injected so the Director
     honors player authority in the deltas."""
@@ -4021,7 +4045,7 @@ def build_post_turn_state(
         "active_cards": active_cards,
         # Crew fleet for deciding hull_condition_change_events / ship_swap_events; read, not output.
         "crew_fleet": ship.fleet_summary(crew_obj, ship_cards),
-        "events_background_recent": metadata.get("events_background") or [],
+        "events_background_recent": _live_background_events(metadata.get("events_background"), turn_index),
         # Current public myth per target; the legend_update decision patches against this.
         "legend_state": legend.legend_brief(metadata),
         # Active alliances (matchmaking + spawn-blocking gate) + recent hunter encounters (the

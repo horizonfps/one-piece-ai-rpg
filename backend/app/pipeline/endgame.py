@@ -596,18 +596,25 @@ def _weapon_name(player_card: dict) -> str:
     return str(weapon or "")
 
 
-def _full_inventory(player_card: dict) -> list[str]:
-    """Raw inventory names for the epilogue; the Opus picks what is iconic (no engine curation)."""
+def _full_inventory(player_card: dict, item_cards: dict | None = None) -> list[str]:
+    """Raw inventory names for the epilogue; the Opus picks what is iconic (no engine curation).
+    Resolves item_card_id -> card name (mirrors economy.inventory_summary) so a card-backed item is
+    not dropped; falls back to the chargen starting loadout when nothing was ever carded."""
     psnap = (player_card or {}).get("player_snapshot") or {}
-    pc = (player_card or {}).get("player_character") or {}
+    cards = item_cards or {}
     out: list[str] = []
     for entry in psnap.get("inventory") or []:
-        name = entry.get("display_name") or entry.get("name") if isinstance(entry, dict) else entry
+        if isinstance(entry, dict):
+            name = entry.get("display_name") or entry.get("name")
+            if not name and entry.get("item_card_id"):
+                name = (cards.get(entry["item_card_id"]) or {}).get("name") or entry["item_card_id"]
+        else:
+            name = entry
         if name:
             out.append(str(name))
-    summary = pc.get("inventory_summary")
-    if not out and summary:
-        out.append(str(summary))
+    if not out:
+        loadout = ((player_card or {}).get("character_creation") or {}).get("starting_loadout") or []
+        out = [str(x) for x in loadout if x]
     return out
 
 
@@ -646,7 +653,7 @@ def build_epilogue_input(
             "current_age": int(current_age or 0),
             "visible_state": psnap.get("player_visible_state", ""),
             "weapon": _weapon_name(player_card),
-            "inventory": _full_inventory(player_card),
+            "inventory": _full_inventory(player_card, item_cards),
         },
         "crew_final": _crew_final(npcs),
         "world_state_final": world,

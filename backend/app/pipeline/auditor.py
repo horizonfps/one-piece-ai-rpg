@@ -194,6 +194,18 @@ def _scene_card_for_audit(data: dict) -> dict:
     return out
 
 
+def _player_card_for_audit(data: dict) -> dict:
+    """Player card for the Auditor, minus the vestigial player_snapshot.current_arc (a stale seed
+    field nothing authoritative reads; the live arc rides scene.location + game_clock)."""
+    out = dict(data or {})
+    snap = out.get("player_snapshot")
+    if isinstance(snap, dict) and "current_arc" in snap:
+        snap = dict(snap)
+        snap.pop("current_arc", None)
+        out["player_snapshot"] = snap
+    return out
+
+
 def _memory_bullets(crystals: list[dict] | None) -> str:
     out: list[str] = []
     for c in crystals or []:
@@ -290,7 +302,7 @@ async def run_audit(
         sections.append((
             "player_card (ficha do jogador; card_id para corrigir belly/alignment/tier é 'player': "
             "confira que a prosa não agiu/falou/decidiu por ele e que os deltas do jogador batem)",
-            player_card,
+            _player_card_for_audit(player_card),
         ))
     if present_cast is not None:
         sections.append((
