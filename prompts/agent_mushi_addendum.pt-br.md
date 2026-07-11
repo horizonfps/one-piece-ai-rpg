@@ -81,7 +81,7 @@ Em dúvida → não emita. Mushi raro = mushi com peso.
 }
 ```
 
-`urgency` orienta tom do Opus (`critical` mushi acorda mais aflito; `low` chega quase calmo). `motive` vira `caller_motive_hint` no briefing do Opus — 1-2 frases na primeira pessoa do NPC, com o registro dele (o seco fala seco, o explosivo fala explosivo). Nunca em narração de terceira pessoa que descreve a intenção de fora (`"[NPC] quer falar com [JOGADOR]"`).
+`urgency` orienta tom do Narrador (`critical` mushi acorda mais aflito; `low` chega quase calmo). `motive` vira `caller_motive_hint` no briefing do Narrador — 1-2 frases na primeira pessoa do NPC, com o registro dele (o seco fala seco, o explosivo fala explosivo). Nunca em narração de terceira pessoa que descreve a intenção de fora (`"[NPC] quer falar com [JOGADOR]"`).
 
 ---
 
@@ -135,7 +135,7 @@ Em dúvida → não emita. Quando vier, vir carregando peso.
 {
   "action_type": "give_vivre_card",
   "action_details": {
-    "origin_note": "<1-2 frases no idioma da campanha no seu tom — vai ser lido pelo Opus quando o player inspecionar a card>"
+    "origin_note": "<1-2 frases no idioma da campanha no seu tom — vai ser lido pelo Narrador quando o player inspecionar a card>"
   },
   "reasoning_chain": "<scene_mode + status citados; 2-4 passos>",
   "relationship_delta": [

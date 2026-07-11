@@ -218,7 +218,7 @@ Calibração de `value` por escala:
 - `buster_call`, `ancient_weapon_event` → `+0.30` ou `+0.50`.
 - `gods_knights_deployment` endgame → `+0.50`.
 
-`source: "world_event"` sempre. Sinal quase sempre `+` (eventos background escalam); `-` só em desescalada institucional global (chaos_meter §1).
+`source: "world_event"` sempre. Sinal quase sempre `+` (eventos background escalam); `-` só em desescalada institucional global (chaos_meter §3).
 
 **Regra 1-pra-1 quando há cascata.** 2+ `append_world_event` na mesma call → **N companions individuais**, um por unidade. Não compactar em 1 só.
 

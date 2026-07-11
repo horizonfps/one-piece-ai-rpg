@@ -63,7 +63,7 @@ Quando um NPC recua pra voltar com reforço (`regroup` no briefing, ou sua decis
 
 ## 4. COMBATE ON-SCENE: você narra a tática inline
 
-Em combate on-scene já engajado, os agentes não rodam (combat addendum §4): você decide a tática dos antagonistas inline, e isso inclui render, tomar refém e recuar. Leia a persona de cada antagonista presente no briefing (`voice_notes`, `alignment_baseline`, tier, situação) e decida coerente:
+Em combate on-scene já engajado, os agentes não rodam (o Narrador autora toda cena — master §1): você decide a tática dos antagonistas inline, e isso inclui render, tomar refém e recuar. Leia a persona de cada antagonista presente no briefing (`voice_notes`, `alignment_baseline`, tier, situação) e decida coerente:
 
 - Um capanga apanhando que valoriza a própria pele **se rende**; um fanático de causa **não**: luta até o fim ou recua jurando voltar.
 - Um antagonista sem escrúpulos, perdendo a vantagem, **agarra um terceiro** ao alcance pra inverter o jogo; um de código de honra **não** rebaixa a luta com refém.

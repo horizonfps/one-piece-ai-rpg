@@ -176,7 +176,7 @@ Falhou em qualquer das 3 → não emita. Default forte: ausente.
 
 ## 8. Separação de eixos vizinhos
 
-- **`alignment` ≠ `relationship_delta`** — alignment é global; relationship é per-NPC (vive no output do agente Sonnet 4.6 do NPC, não no seu). "Player ajudou X" pode gerar `+0.5 alignment` E `+0.7 relationship` no agente do X — cada um na sua dimensão.
+- **`alignment` ≠ `relationship_delta`** — alignment é global; relationship é per-NPC (vive no output do agente do NPC, não no seu). "Player ajudou X" pode gerar `+0.5 alignment` E `+0.7 relationship` no agente do X — cada um na sua dimensão.
 - **`alignment` ≠ `bounty`** — bounty é reputação WG. Player `good` salvando reino contra WG corrupto sobe ambos. Player `evil` torturando civil em vila isolada sobe alignment sem mover bounty (WG não soube).
 - **`alignment` ≠ `chaos`** — chaos é estado do mundo. Independentes.
 - **Trait colorante NÃO move alignment** — traits (Esfomeado, Mulherengo, Pavor de Altura) colorem estado e narrativa, nunca decisão moral. Só ato escolhido pelo player conta.

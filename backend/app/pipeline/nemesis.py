@@ -346,12 +346,14 @@ async def _spawn_nemesis(
         "role": "nemesis_marine",
         "context": context_line,
     }
+    npcs_known = {aid: i["data"] for aid, i in (await repo.get_npc_agents(conn, campaign_id)).items()}
     npc_input = npc_generator.build_npc_input(
         entry,
         arc_context=arc_context,
         affiliation_hint="marine",
         expected_recurrence="high",
         nemesis_context=ctx,
+        recent_archetypes=npc_generator.recent_archetype_lines(npcs_known) or None,
     )
     # No cast-dedup block here on purpose: the nemesis identity is fixed engine-side, spawned once.
     parsed = await npc_generator.call_generate_npc(npc_input)

@@ -86,7 +86,7 @@ Se dumps não dão material, escreva pouco. Info ruim envenena plot.
 - **Bullet curto.** 1 frase, no máximo 2 curtas. Briefing não é narrativa.
 - **Sem repetição cross-seção** do mesmo fato. Pode referenciar como contexto de outro (`"Pós-morte de Vegapunk em Egghead, York assumiu controle de Karakuri"`) mas não duplicar.
 - **Markdown puro.** Header `##`, bullet `-`, bold `**` pra nome/termo. Sem emoji, sem decoração. Status em frase corrida, sem fragmentar em série de sentenças de uma palavra (regra-de-três sintática).
-- **Sem introdução, sem overview, sem fechamento.** Vai direto pras 4 seções.
+- **Sem introdução, sem overview, sem fechamento.** Vai direto pras 5 seções.
 
 ---
 

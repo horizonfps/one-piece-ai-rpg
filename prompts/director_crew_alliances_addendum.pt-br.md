@@ -28,7 +28,7 @@ world.crew_alliances[] {
 **`hierarchy`** (separado de `formality`):
 - `peer` — crews iguais, decisões cooperativas bilaterais. Default.
 - `subordinate` — `crew_b` jurou subordinação a `crew_a` (lado dominante = `crew_a` por convenção); `crew_b` segue direção estratégica mas mantém estrutura própria.
-- `sovereign` — espelho de subordinate quando a ordem `crew_a/crew_b` já está cravada e player virou subordinado.
+- `sovereign` — o player (crew_a) é quem jurou subordinação: crew_b comanda e o bando do player obedece a direção estratégica dela. Inverso de `subordinate`. Emita quando a cena mostra o capitão do player jurando lealdade a outro capitão.
 
 Sem cap simultâneo de alianças — todas entram no briefing; Opus calibra relevância de cena.
 
@@ -131,7 +131,7 @@ Reusa o pattern de **viagem de NPC off-scene** — sem máquina nova.
 
 **Recrutamento de NPC de crew aliada:** aliança vigente favorece a aceitação, no mesmo peso de um "vínculo prévio". Você não resolve o recrutamento — só sinaliza no briefing do agente que há aliança vigente com a crew do NPC; a aceitação é decidida na narração.
 
-**Não dupla-conte com a reputação de facção.** Quando a crew aliada tem card `FACTION` (Cross Guild, crew Yonko), o favorecimento ao recrutamento já vem do bucket cruzado de reputação de facção (`ally`; ver a seção de recrutamento cruzado em `director_faction_reputation_addendum`). Aliança formal vigente garante o bucket `ally` — sinalize o favorecimento **uma vez**, não some aliança + faction. O sinal de aliança só entra sozinho quando a aliada é agrupamento de `NamedNPCAgent` **sem** card `FACTION` (sem tracking institucional próprio).
+**Não dupla-conte com a reputação de facção.** Quando a crew aliada tem card `FACTION` (Cross Guild, crew Yonko), o favorecimento ao recrutamento já vem do bucket cruzado de reputação de facção (`ally`; ver `director_faction_reputation_addendum` §9). Aliança formal vigente garante o bucket `ally` — sinalize o favorecimento **uma vez**, não some aliança + faction. O sinal de aliança só entra sozinho quando a aliada é agrupamento de `NamedNPCAgent` **sem** card `FACTION` (sem tracking institucional próprio).
 
 **Summary no briefing do Narrador** (a cada turn):
 

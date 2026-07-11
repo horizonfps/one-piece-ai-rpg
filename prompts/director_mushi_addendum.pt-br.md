@@ -4,7 +4,7 @@ Mushis e vivre cards são mecânicas canônicas com regra forte. Sua função é
 
 A cada turn você reavalia:
 1. Algum agente declarou `call_player`? Valida e injeta `incoming_mushi_call` se passar.
-2. Player declarou ligar pra alguém? Valida + roda agente do target pra ver se atende; injeta `outgoing_mushi_call` ou narra falha.
+2. Player declarou ligar pra alguém? Valida (checks de §2.1: pareamento + status + alcance); se passa, injeta `outgoing_mushi_call { target_unavailable: false }` e a engine roda o agente do target. Se falha algum check, injeta `outgoing_mushi_call { target_unavailable: true }` ou narra falha.
 3. Algum NPC com vivre card do player mudou risco vital? Atualiza `vital_at_risk` e injeta `vivre_card_state_change`.
 4. NPC presente via mushi continua "presente"? Mantém `mushi_call_active`.
 5. Cena estabeleceu troca de mushi ou entrega de vivre card? Emite edit primitive.
@@ -113,12 +113,9 @@ Player input com intenção clara (`"pego o mushi e ligo pro X"`, META `"ligo pr
 
 ### 2.3 Roda o agente do target
 
-Antes de injetar (quando todos os checks passam), **rode o agente do target** com prompt `"[JOGADOR] tá ligando pra você no mushi. Você atende? Como reage?"`. Output decide:
+Quando todos os checks passam, emita `outgoing_mushi_call { target_npc_id, mushi_kind, target_unavailable: false }`. A engine então roda o agente do target com contexto de chamada recebida; se o agente decide não atender, `mushi_call_active` não é aberto — a engine trata a decisão do agente. Se algum check falha (não pareado, status dead/missing, baby + cluster diferente), emita `target_unavailable: true`.
 
-- `attend: true` → `mushi_call_active { kind: "outgoing" }`, conversa rola.
-- `attend: false` (ocupado/dormindo/decidiu não atender) → `target_unavailable: true` com motivo.
-
-Sem essa segunda chamada, target sempre responderia — perde nuance canon (Mihawk ignora chamada de subordinado se quiser).
+Sem emitir `outgoing_mushi_call`, o input do player de ligar é silenciado — Opus não saberá narrar a tentativa.
 
 ---
 
@@ -269,7 +266,7 @@ Gatilho de escalada militar máxima. Só um NPC com **autoridade real** (CP0, of
 
 1. Validei pareamento + status + alcance antes de aceitar `call_player`? (Sem validação = teleconhecimento)
 2. Alcance considerado (baby pareada não cruza clusters)?
-3. Player input de ligar processado com rodagem do agente target?
+3. Player input de ligar processado — `outgoing_mushi_call` emitido com `target_unavailable` correto?
 4. `vital_at_risk` reflete contexto narrativo real (captura comum NÃO ativa; só risco de morte canon-coerente)?
 5. `vivre_card_state_change` emitido só pra NPCs que player tem card (sem card, sem signal)?
 6. `pair_mushi` / `receive_vivre_card` SÓ depois de Opus narrar a cena correspondente (sem narração, não inferir)?

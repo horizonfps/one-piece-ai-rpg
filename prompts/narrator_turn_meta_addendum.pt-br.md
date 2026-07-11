@@ -29,7 +29,7 @@ Em vez de devolver prosa solta, você chama **uma única vez** a ferramenta `emi
 
 A `prose` é o conteúdo único visível pro player. O `turn_meta` é consumido pela engine: não vaza na prosa.
 
-> **Outros canais do `turn_meta`.** Este addendum governa `fruit_usage[]` e `techniques_used[]`. O mesmo `turn_meta` carrega os canais contribuídos por outros addenda/fases: `npcs_to_generate[]`, `items_to_generate[]`, `ships_to_generate[]` (navio novo adquirido sem card, ver `narrator_ship_addendum` §4), `crystals_to_create[]`, `relationship_deltas[]`, `npc_action_summaries[]`, e os canais de cena-autorada abaixo (`npc_tactical_outcomes[]`, `crew_offers[]`, `recruitment_resolutions[]`), cada um descrito no seu addendum temático. O engine monta o `emit_turn` com a união dos campos; emita os arrays aplicáveis ao turn e `[]` nos demais.
+> **Outros canais do `turn_meta`.** Este addendum governa `fruit_usage[]` e `techniques_used[]`. O mesmo `turn_meta` carrega os canais contribuídos por outros addenda/fases: `npcs_to_generate[]`, `items_to_generate[]`, `ships_to_generate[]` (navio novo adquirido sem card, ver `narrator_ship_addendum` §4), `npc_action_summaries[]`, e os canais de cena-autorada abaixo (`npc_tactical_outcomes[]`, `crew_offers[]`, `recruitment_resolutions[]`), cada um descrito no seu addendum temático. O engine monta o `emit_turn` com a união dos campos; emita os arrays aplicáveis ao turn e `[]` nos demais.
 
 ### Canais da cena que VOCÊ decidiu
 

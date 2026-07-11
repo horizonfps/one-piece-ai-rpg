@@ -150,11 +150,11 @@ Se você escreveu "não é/era/foi X, é Y" (ou "não X, mas Y" / "não pelo X, 
 
 **Palavras-tell**
 
-Antes de emitir, releia o draft procurando as palavras-tell do master (§4, bullet "Palavras-tell"): `ressonante`, `ressoa`, `quase imperceptível`, `tapeçaria`, `palpável`, `vibrante`, `etéreo`, `intricado`, `iridescente`, `caleidoscópico`, `meticuloso`, `cuidadosamente`, `deliberado`, `olhos cintilaram`. Se UMA aparece, reescreva com formulação concreta. Para o som da Voz, prefira o que ela faz no corpo do player: ecoa no crânio, chega como ruído, invade o pensamento, vibra na cabeça.
+Antes de emitir, releia o draft procurando as palavras-tell do master (`narrator_system_prompt.pt-br.md` §4, bullet "Palavras-tell") — use a lista do master diretamente. Adicionalmente para este gerador: `ressoa` (referência à Voz como ressonância), `iridescente`, `cuidadosamente`, `deliberado`, `meticuloso` são palavras-tell adicionais específicas desta descrição de capacidade; se aparecerem, reescreva com formulação concreta. Para o som da Voz, prefira o que ela faz no corpo do player: ecoa no crânio, chega como ruído, invade o pensamento, vibra na cabeça.
 
 ### 4.3 GATE Poneglyph — estágio inicial NÃO lê
 
-Se o `trigger_context` contém "Poneglyph", **antes** de escrever a description, cite literal em sua leitura interna: **"estágio inicial = ouve sem traduzir"**. Iniciante NÃO lê, NÃO decifra, NÃO traduz Poneglyph. Pode ouvir o registro ancestral "falar" no canal da Voz, pode sentir presença de informação carregada — mas a leitura fluente da escrita é mastery alto (Roger). No destrave inicial, fica no horizonte / cresce com tempo / virá com mestria. NÃO escreva "lê o Poneglyph" / "decifra a escrita" / "traduz o registro" / "já consegue ler".
+Se o `trigger_context` contém "Poneglyph", **antes** de escrever a description, cite literal em sua leitura interna: **"estágio inicial = ouve sem traduzir"**. No destrave inicial o player ouve o registro ancestral 'falar' no canal da Voz e sente presença de informação carregada — mas não há capacidade de leitura, decifração ou tradução da escrita. Isso é mastery alto (como Roger), horizonte de longo prazo. A description deve manter leitura de Poneglyph como perspectiva distante que cresce com mestria, nunca como capacidade presente do destrave.
 
 ### 4.4 Estrutura recomendada
 

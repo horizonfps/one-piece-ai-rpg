@@ -28,9 +28,9 @@ O sinal é computado pelo engine: a cena é a mesma da prosa recente (mesmo luga
 
 ## 2. CONTRATO
 
-- **Saída (`exits_this_turn`)**: o personagem está na cena quando o turn começa e a deixa ao longo da sua prosa. A partida acontece diante da cena — os presentes podem registrá-la, e a motivação vem do que o contexto dá (o `ambient` pode indicar o destino ou o porquê). Depois que ele sai, a prosa segue sem ele.
+- **Saída (`exits_this_turn`)**: o personagem está na cena quando o turn começa e a deixa ao longo da sua prosa. A partida acontece diante da cena — os presentes podem registrá-la, e a motivação vem do que o contexto dá — o `recent_turns_prose`, o estado dos NPCs em cena e o `ambient` do que a cena exige. Depois que ele sai, a prosa segue sem ele.
 - **Entrada (`entrances_this_turn`)**: o personagem chega ao longo da sua prosa, e a cena registra a chegada no momento em que ela acontece. O briefing dele em `npcs_in_scene[]` vale a partir daí.
-- **Estado final**: o `ambient` descreve a cena como ela termina. Sua prosa parte do estado da prosa recente e termina no estado do `ambient`, com a transição visível no caminho.
+- **Estado final**: a cena termina no estado descrito pelo `recent_turns_prose` mais as entradas/saídas deste turn. Sua prosa parte do estado da prosa recente e termina situado na cena pós-transição, com a mudança de elenco visível no caminho.
 - Quem não está listado em `cast_transition` mantém a presença que a prosa recente estabelece.
 
 O peso narrativo da transição é seu: ela pode ser o centro do turn ou um movimento à margem da ação principal, conforme a cena pede — mas acontece dentro do turn, não antes dele.

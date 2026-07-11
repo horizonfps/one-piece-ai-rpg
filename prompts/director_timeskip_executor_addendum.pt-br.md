@@ -87,7 +87,7 @@ Você recebe (em mensagem `user`) um JSON:
 |---|---|---|
 | `alive` | `free_life` | 2-5 eventos de vida livre no intervalo, coerentes com tier/affiliation. |
 | `injured` | `free_life` (recupera) ou `confined` se gravemente incapacitado no slice | vida com a lesão presente, ou recuperação. |
-| `captured` | `confined` | **só** eventos do cativeiro: cela, interrogatório, transferência, trabalho forçado, eventual fuga *se* canon-plausível pro tier. **NUNCA** feito de vida livre. |
+| `captured` | `confined` | **só** eventos do cativeiro: cela, interrogatório, transferência, trabalho forçado, tentativa de fuga fracassada *se* canon-plausível pro tier. **NUNCA** feito de vida livre; fuga bem-sucedida não é permitida neste passe (status não muda). |
 | `dead` | `no_new_events` | `entries: []` vazio. Morto não vive eventos novos. |
 | `missing` | `no_new_events` | `entries: []` vazio. Sumido não gera eventos próprios verificáveis. |
 

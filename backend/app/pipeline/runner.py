@@ -754,6 +754,8 @@ async def _run_dispatched_jobs(
         # Existing cast + world memory in one cached block (shared breakpoint), built once and used
         # by the turn's parallel NPCs. Feeds cast awareness so the generator can dedup.
         npc_cached_sections: list | None = None
+        # Divergence ledger: age/craft/temperament of the latest generated NPCs (§0.1 axis).
+        recent_arch = npc_generator.recent_archetype_lines(npcs_known) or None
         # Ids the dedup must never mint as an NPC: the protagonist (any form).
         _player_ids = {
             str(x) for x in (
@@ -782,6 +784,7 @@ async def _run_dispatched_jobs(
                     scene_prose_anchor=scene_prose or None,
                     anchor_location=anchor_location or None,
                     peers_this_turn=peers,
+                    recent_archetypes=recent_arch,
                 )
                 parsed = await npc_generator.call_generate_npc(
                     npc_input, cached_sections=npc_cached_sections
@@ -1426,6 +1429,11 @@ async def _apply_bounty_hunters(
     allied_ids = {a.get("crew_b_id") for a in (crew_alliances or [])}
     scene_loc = scene.get("location", "")
 
+    recent_arch: list | None = None
+    if appearances:
+        _npcs = {aid: i["data"] for aid, i in (await repo.get_npc_agents(conn, campaign_id)).items()}
+        recent_arch = npc_generator.recent_archetype_lines(_npcs) or None
+
     for ev in appearances:
         archetype = (ev.get("hunter_archetype") or "").strip()
         scene_hint = (ev.get("scene_hint") or "").strip()
@@ -1454,6 +1462,7 @@ async def _apply_bounty_hunters(
             try:
                 npc_input = npc_generator.build_npc_input(
                     entry, arc_context=arc_context, affiliation_hint=_aff, expected_recurrence="low",
+                    recent_archetypes=recent_arch,
                 )
                 # No cast-dedup block here on purpose: a bounty hunter is always a fresh spawn.
                 parsed = await npc_generator.call_generate_npc(npc_input)
@@ -2378,6 +2387,14 @@ async def _run_turn_events_inner(
         island_briefing = await plots.get_island_briefing(conn, campaign_id, _briefing_slug)
         if island_briefing:
             turn_state["island_briefing"] = island_briefing
+    # A cape/mountain/archipelago is not an ordinary island: tag the briefing so the Narrator
+    # names the place for what it is. Forces the island addendum even without a canon briefing.
+    _landform_kind = world_map.landform_kind_of(_briefing_slug)
+    if _landform_kind:
+        if not isinstance(island_briefing, dict):
+            island_briefing = {"briefing_md": "", "quality": "degraded", "invented_context": None}
+            turn_state["island_briefing"] = island_briefing
+        island_briefing["landform_kind"] = _landform_kind
 
     # Open continuity threads (FASE 30): raw projection of the foreshadow pool (no buckets/TTL; the
     # Narrator decides relevance). The Narrator weaves a thread only when the player touches it, and

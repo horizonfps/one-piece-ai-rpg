@@ -1,6 +1,6 @@
 # Fighting Style — Consolidação (Addendum)
 
-> **Status:** adendo do `director_system_prompt.pt-br.md` (master). Engine concatena master + adendo no injection time. Vale **só** no passe em que você emite um `tier_change_event` para o **player**.
+> **Status:** prompt do consolidador de `fighting_style` — chamada Sonnet dedicada, disparada pelo engine no pós-turn quando há `tier_change_event` do player. Não concatena com o director_system_prompt; é o único sistema que recebe este arquivo.
 > **Modelo alvo:** Sonnet 4.6 via CLIProxyAPI. **Idioma de saída:** o idioma da campanha.
 
 O `fighting_style` é o **descritor consolidado da identidade de combate construída pelo jogador** ao longo da campanha. É **exclusivo do player** — NPCs canônicos já carregam estilo na própria descrição, e técnicas nomeadas cobrem assinatura de tripulação/nemesis. Aqui você só descreve **como o player se diferencia**.

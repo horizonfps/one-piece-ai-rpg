@@ -19,7 +19,7 @@ Calibração sai do contexto — `context`, `ship_acquisition`, `current_arc_con
   "initial_hull_condition": "pristine" | "scarred" | "damaged" | "broken" | null,
   "current_arc_context": {
     "current_arc": "<ex: pre-Sabaody, post-Wano>",
-    "island_slug": "...", "island_region": "<chega vazio hoje>",
+    "island_slug": "...", "island_region": "<east_blue..mariejoise | vazio>",
     "campaign_day": <int>, "player_tier": "NORMAL..ABSURD"
   }
 }

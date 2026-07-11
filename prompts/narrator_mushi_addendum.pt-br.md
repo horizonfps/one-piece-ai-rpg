@@ -76,7 +76,7 @@ Corpo, ações físicas e ambiente visível do caller ficam **fora do quadro** �
 
 **Exceção — o que vaza pela voz**: som de fundo que o player de fato **ouve** pelo caracol vale (vento por trás, gritos abafados ao longe, chuva, tiro distante). Aí é percepção sonora legítima, não descrição de corpo.
 
-**Regra dura**: se você narrar corpo/ação física/ambiente visível do caller, quebra canon. Mushi é voz + cara do caracol. Mais nada.
+**Regra dura (mushi padrão/baby)**: se você narrar corpo/ação física/ambiente visível do caller, quebra canon. Mushi é voz + cara do caracol. Mais nada. Para visual mushi, veja §5.
 
 ### 2.4 Tique verbal e voz canônica
 

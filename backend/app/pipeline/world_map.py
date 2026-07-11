@@ -35,6 +35,7 @@ NON_NAVIGABLE_CONTAINERS = frozenset({
     "calm-belt", "calm-belt-2", "calm-belt-3", "calm-belt-4", "sambas-sea-region",
     # continent wall / planet markers
     "bluestar", "red-line", "red-line-2", "red-line-3", "red-line-4", "red-line-5", "red-line-6",
+    "north-pole", "south-pole",
     # landmass / archipelago umbrellas (real docks are their settlement circles)
     "dawn-island", "yotsuba-island", "conomi-archipelago", "gecko-archipelago",
     "organ-archipelago", "pole-star-archipelago", "island-of-women", "totto-land",
@@ -50,6 +51,31 @@ GRAND_LINE_PARADISE_ROUTE = (
     "long-ring-long-land", "water-seven", "enies-lobby", "thriller-bark",
     "sabaody-archipelago",
 )
+
+# Navigable places that are NOT ordinary islands: a canon fact per id (like the route above),
+# not per-save state. The map marker (data-landform) and the island briefing carry the kind so the
+# Narrator names a cape a cape and a mountain a mountain instead of "the island". Missing id
+# defaults to island.
+LANDFORM_KINDS = {
+    "twin-capes": "cape",
+    "reverse-mountain": "mountain",
+    "sabaody-archipelago": "archipelago",
+    "sea-trench": "sea",
+    "deep-sea": "sea",
+    "sky-sea": "sea",
+    "hot-hot-sea": "sea",
+    "tarai-current": "sea",
+    "red-desert": "desert",
+    "red-port-e": "port",
+    "red-port-w": "port",
+    "shade-port": "port",
+}
+
+
+def landform_kind_of(island_id: str | None) -> str:
+    """Canon landform kind for a place id (cape/mountain/archipelago/sea/desert/port), or '' for
+    an ordinary island."""
+    return LANDFORM_KINDS.get(island_id or "", "")
 
 # Map-coord distance to sailing days. Provisional calibration; magnitude tunes in playtest.
 _UNITS_PER_TRAVEL_DAY = 2000.0
@@ -733,10 +759,12 @@ def world_map_svg(metadata: dict) -> str:
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}">',
         "<style>circle{r:120}</style>",
-        ("<!-- MAPA-MUNDO navegavel (One Piece). Cada <circle> e uma ilha-destino: id = o "
+        ("<!-- MAPA-MUNDO navegavel (One Piece). Cada <circle> e um destino acostavel: id = o "
          "destination_id que voce emite, cx/cy = posicao, data-name, data-region, data-canon. "
          "data-canon=1 e ilha CANONICA de One Piece (na chegada dispara research_pipeline); "
-         "circle SEM data-canon e terra a inventar (dispara island_designer). Eixo cx: oeste "
+         "circle SEM data-canon e terra a inventar (dispara island_designer). data-landform "
+         "(cape/mountain/archipelago/sea/desert/port) marca destino que NAO e ilha comum (cabo, "
+         "montanha, arquipelago...); a narracao o trata pelo tipo via island_briefing. Eixo cx: oeste "
          "(menor) -> leste (maior). Ilhas agrupadas por <g data-sea> (o mar: os quatro Blues, "
          "Paradise, New World, Calm Belt, etc.). <g id=reference-geography> tem a Red Line como <line> "
          "verticais (muralha-continente; o Blue so cruza para a Grand Line em Reverse Mountain, "
@@ -760,9 +788,11 @@ def world_map_svg(metadata: dict) -> str:
             # data-canon=1 marks a canonical One Piece island: the Director routes its arrival to
             # research_pipeline. Absence (generated/blank land) routes to island_designer.
             canon = ' data-canon="1"' if (i.get("canonical") == "canon") else ""
+            lf = landform_kind_of(i.get("id"))
+            landform = f' data-landform="{_svg_attr(lf)}"' if lf else ""
             lines.append(
                 f'<circle id="{_svg_attr(i.get("id"))}" cx="{x}" cy="{y}" '
-                f'data-name="{_svg_attr(i.get("name"))}" data-region="{_svg_attr(i.get("region"))}"{canon}/>'
+                f'data-name="{_svg_attr(i.get("name"))}" data-region="{_svg_attr(i.get("region"))}"{canon}{landform}/>'
             )
         lines.append("</g>")
 

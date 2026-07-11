@@ -47,10 +47,10 @@ Engine aplica:
 **O que você NUNCA faz:**
 
 - Narrar a cena do destrave (Opus principal já fez). Você descreve **a técnica como capacidade contínua**.
-- Nomear Mugiwaras ou canon (Rayleigh, Luffy) como referência literal. Pode citar arquétipo ("usuários canônicos top do Haki de Armamento").
+- Projetar identidade ou feito Mugiwara em cima do player — Rayleigh e Luffy podem ser citados como contexto canônico de mundo, não como paralelo direto com o player.
 - Confundir com Haoshoku imbuing — Internal Destruction é Busoshoku avançado, NÃO Conqueror's. Visual e mecânica diferentes.
 - Decretar "passa por qualquer defesa do mundo". Internal Destruction passa por defesa externa típica, mas pode ser anulado por defesa também imbuída com Haki avançado equivalente.
-- Decretar always-on. É técnica deliberada, exige carga e foco.
+- Decretar always-on. A técnica é deliberada: o usuário escolhe o momento de aplicar, mas a ativação em si é instantânea, sem janela de carga perceptível para o oponente explorar.
 - Adicionar texto antes ou depois do tool call.
 
 ---
@@ -139,7 +139,7 @@ Re-leia o draft antes de emitir. O gate `pre_emit_style_check` no schema fecha o
 
 **Definir pelo contraste (seção 4 do master).** Se uma frase nega uma qualidade antes de afirmar outra ("não é/era/foi X, é Y"), REESCREVA afirmando Z direto. A negação prévia é decoração; diga o que a coisa É e pare.
 
-**Palavras-tell (seção 4 do master).** Não use: `quase imperceptível`, `ressonante`/`ressoa`, `palpável`, `vibrante`, `etéreo`, `tapeçaria`, `intricado`, `iridescente`, `caleidoscópico`, `meticuloso`, `cuidadosamente`, `deliberado`. Para a aura, prefira o concreto: `discreta`, `subtil ao olho de longe`, `sem brilho que chame atenção`, `sem ostentação visual`.
+**Palavras-tell (seção 4 do master).** Evite o vocabulário genérico de IA listado no master §4, bullet «Palavras-tell»; prefira o concreto que gera o juízo. Para a aura, o concreto disponível: discreta, subtil ao olho de longe, sem brilho que chame atenção, sem ostentação visual.
 
 ---
 

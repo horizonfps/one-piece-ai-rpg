@@ -2,7 +2,7 @@
 
 Bounty é o número público que o World Government emite — reputação processada do player + crewmates. Sobe por ato visto, processado e publicado (geralmente via WENP). Player começa em 0; o primeiro bounty é dado por ato público marcante, não pela existência.
 
-Você emite `bounty_delta` no mesmo passe pós-turn em que emite os outros deltas. Calibração **qualitativa por faixa**; engine sorteia número uniforme dentro do range e agenda update com `scheduled_day = world.day_counter + uniform_int(1, 3)`.
+Você emite `bounty_delta` no mesmo passe pós-turn em que emite os outros deltas. Calibração **qualitativa por faixa**; você emite `exact_amount` (cifra exata em Berries dentro do range do tier — sua decisão dramática do número no cartaz); a engine usa esse valor e agenda o update com `scheduled_day = world.day_counter + news_delay_days` (ou sorteia 1-3 dias quando `news_delay_days` é omitido). Sem `exact_amount`, a engine sorteia número uniforme no range.
 
 Bounty é **per-personagem**. Crewmate ganha delta próprio quando entra em ato próprio identificável; player descobre o novo número via News Coo ou NPC que spoila — gap orgânico entre DB atualizado e player ver.
 
@@ -78,7 +78,7 @@ Múltiplos deltas no mesmo turn são raros (player + crewmate em atos independen
 - **Bounty + alignment:** independentes. Player `good` pode acumular `massive` bounty (salvar reinos contra WG corrupto rende bounty alto exatamente porque WG é o alvo). Player `evil` pode ter bounty baixo (atos cruéis em vilarejos esquecidos).
 - **Bounty + tier:** acompanha em média mas não é função. Player ELITE com bounty `small` é coerente (forte mas anônimo). Player MONSTER com bounty `absurd` é caso comum. Não infle delta porque "esse player é TITAN agora" — a faixa é do ato.
 - **Spawn do Nemesis Marine é decisão sua** (`nemesis_spawn`, POST-turn), não watcher de engine — não há threshold numérico de bounty que dispare spawn automático; a engine só executa quando você emite. Um bounty que sobe pra `medium`+ é o gatilho narrativo natural pra você decidir que a Marine designou um caçador, mas o timing é seu.
-- **Cutaway triggers** (`50M | 300M | 1B | 4B | 6B`) são detectados pelo engine via cruzamento de marco. Calibre o delta pela escala do ato, **não pra atingir o marco**. O sinal do News Coo é o **salto do bounty** (`old_amount->new_amount` em `player_bounty_updates`), não `cutaway_marcos_crossed`.
+- **Marcos de bounty** (`50M | 300M | 1B | 4B | 6B`): quando o `old_amount→new_amount` publicado pelo News Coo cruza um desses patamares, o sinal já vai no payload `player_bounty_updates` (o Narrador lê `old_amount` e `new_amount`). A engine **não** detecta marcos por threshold automático; quem lê o salto e decide a reação narrativa é o Narrador, a partir dos valores brutos. Calibre o delta pela escala real do ato — **não o force pra atingir um marco**.
 
 ---
 

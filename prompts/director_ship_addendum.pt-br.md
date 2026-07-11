@@ -129,7 +129,7 @@ Casco que afunda e é reposto na mesma cena é `swap_kind: "wrecked_replacement"
 
 Entrar na Grand Line pela Reverse Mountain pressupõe um casco capaz de aguentar a corrente que sobe a montanha. Jangada ou casco insuficiente não encaram essa entrada.
 
-Quando o player encaminha rumo à entrada da Grand Line sem navio à altura, **opere o recado pelo mundo** na montagem do briefing (`scene`, `ambient`, `world_memory_relevant`, seleção de NPCs) — sem evento estruturado, sem travar a voz do player. Tudo entra como **nota factual** (§2.9 do master), não prosa; o Narrador encena:
+Quando o player encaminha rumo à entrada da Grand Line sem navio à altura, **opere o recado pelo mundo** na montagem do briefing (`scene`, `world_memory_relevant`, seleção de NPCs) — sem evento estruturado, sem travar a voz do player. Tudo entra como **nota factual** (§2.9 do master), não prosa; o Narrador encena:
 
 - NPCs veteranos avisam na linguagem deles ("essa corrente engole jangada", "sem casco de verdade você não passa do canal").
 - O mar antecipa a escala — a boca da entrada, a força da água, o que vem.

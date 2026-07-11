@@ -412,6 +412,7 @@ async def _mint_npc(conn, campaign_id: str, c: dict, mint_context: dict | None, 
             affiliation_hint=role or None,
             active_fruit_removal_hook=active_hook,
             scene_prose_anchor=scene_prose or None, anchor_location=anchor or None,
+            recent_archetypes=npc_generator.recent_archetype_lines(npcs_known) or None,
         )
         cached = npc_generator.build_npc_cached_block(npcs_known, ctx.get("crystals") or [])
         parsed = await npc_generator.call_generate_npc(npc_input, cached_sections=cached)

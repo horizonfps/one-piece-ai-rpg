@@ -16,7 +16,7 @@ Este adendo **não substitui** o master. Tudo do master continua valendo: anti-v
 - `breakthrough_imminent` presente
 - `surprise_actions[]` não vazio
 - `player_condition` diferente de `normal` (player neutralizado / limitado)
-- Algum crewmate off-screen com periferia de combate entregue no briefing
+- Algum crewmate off-screen com periferia de combate entregue no briefing (nesse caso só §4 se aplica; as demais seções deste adendo são inativas se a cena do player for calma)
 
 Em turn fora desses, o adendo é inerte: você narra pelo master direto.
 

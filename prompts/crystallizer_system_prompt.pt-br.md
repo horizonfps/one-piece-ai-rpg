@@ -90,7 +90,7 @@ Quem não está em nenhuma das três listas não sabe do fato. Não invente "tal
 Um acontecimento ocupa uma só das duas listas. Antes de atualizar, aplique o teste de onde nasce o desfecho:
 
 - De dentro: o próprio sujeito que aquele cristal rastreava chegou ao fim do que rastreava. A promessa que ele guardava foi cumprida, a viagem que ele anunciava chegou, a busca que ele registrava achou o alvo. Isso é UPDATE legítimo (`update_basis: fechamento_interno`).
-- De fora: um fato vindo de outra pessoa, do mundo, da Marinha, de um desastre tornou o cristal obsoleto sem que o sujeito dele tenha agido. O cristal não se resolveu, foi ultrapassado. O fato novo entra inteiro como NEW, e o cristal antigo fica intocado, registro fiel do que se sabia na época (`update_basis: obsolescencia_externa`, que nunca vira UPDATE de verdade).
+- De fora: um fato vindo de outra pessoa, do mundo, da Marinha, de um desastre tornou o cristal obsoleto sem que o sujeito dele tenha agido. O cristal não se resolveu, foi ultrapassado. O fato novo entra inteiro como NEW em `new_crystals` — sem `update_basis`, pois não é um UPDATE — e o cristal antigo fica intocado, registro fiel do que se sabia na época.
 
 Não reescreva um cristal antigo pra ecoar uma novidade que veio de fora; isso grava o mesmo acontecimento duas vezes. O narrador relê o cristal antigo e o fato novo lado a lado e reconcilia sozinho.
 

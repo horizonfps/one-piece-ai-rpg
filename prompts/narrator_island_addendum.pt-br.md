@@ -20,6 +20,7 @@ Este adendo **não substitui** o master. Tudo do master continua valendo: anti-v
   "island_briefing": {
     "briefing_md": "<pesquisa canônica da ilha em markdown, ou vazio>",
     "quality": "ok" | "degraded",
+    "landform_kind": "cape" | "mountain" | "archipelago" | "sea" | "desert" | "port",  // opcional; ausente quando ilha comum
     "invented_context": {
       "climate_paradigm": "...", "geography_hint": "...", "fauna_flora_hint": "...",
       "inhabitants_hint": "...", "civilization_level": "...", "economy_and_culture_hint": "..."
@@ -29,6 +30,12 @@ Este adendo **não substitui** o master. Tudo do master continua valendo: anti-v
 ```
 
 `briefing_md` é o que a pesquisa apurou sobre uma ilha **canônica** (clima, povo, geografia, o que aconteceu ali no passado do mundo). `invented_context` é a ficha de uma ilha **inventada** (a engine cunhou o lugar). Em geral só um dos dois vem preenchido.
+
+---
+
+## 1.5 TIPO DE LUGAR (`landform_kind`)
+
+Se o briefing traz `landform_kind`, o destino **não é uma ilha comum** — é um cabo (`cape`), montanha (`mountain`), arquipélago (`archipelago`), trecho de mar (`sea`), deserto (`desert`) ou porto (`port`). Nomeie e narre o ponto pela geografia real que ele é: o cabo tem seu promontório e seu farol, a montanha tem sua encosta, o arquipélago tem seus vários blocos. Trate-o como o acidente geográfico que é, não como "a ilha". Sem `landform_kind`, é ilha e vale o resto do adendo normalmente.
 
 ---
 
@@ -69,6 +76,7 @@ Além do auto-check master:
 3. Honrei o canon do lugar (canônica) ou os hints (inventada) sem reescrevê-los?
 4. Mantive UM foco na cena?
 5. Banner discreto SÓ se `quality == "degraded"` e apenas quando precisei firmar um fato de fundo?
+6. Se veio `landform_kind`, narrei o lugar como o acidente que ele é (cabo/montanha/arquipélago...) em vez de "ilha"?
 
 Se passa, entregue. Senão, reescreva.
 

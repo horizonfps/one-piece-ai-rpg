@@ -48,9 +48,9 @@ Ato do player que a instituição lê → delta com `target: "player"`, no passe
 
 NPC nomeado tem reputação institucional própria que evolui na campanha. Quando ele age em cena de um jeito que sua facção (ou outra) leria institucionalmente — Marine que poupa pirata publicamente, Revolucionário que sabota WG na frente de testemunhas — emita delta com `target: "<npc_id>"` no mesmo passe pós-turn.
 
-### 3.3 NPC nomeado off-screen — atrelado ao `personal_event_log`
+### 3.3 NPC nomeado off-screen
 
-No tick off-screen dos agentes, cada agente que registrou ato novo no próprio `personal_event_log` pode receber um `faction_reputation_delta` (`target: "<npc_id>"`) **se** o ato carrega leitura institucional. É **reativo ao que o agente fez** — sem timer fixo, sem batch periódico. Agente que ficou `idle`, viajou, ou agiu sem fricção institucional **não** acumula delta: nada de delta artificial pra "manter o NPC vivo". Só ato com legibilidade institucional move o eixo.
+Não há tick off-scene: o mundo fora do quadro congela na saída e reconcilia na volta (`director_system_prompt §4`). A reputação de NPC off-screen só se move quando a **cena atual** deixa claro que um ato dele chegou a ter leitura institucional — registrado via `append_agent_log_entry` (write-back §3.9) neste pós-turn. Sem evidência na prosa deste turn, **não emita delta** para NPC off-screen.
 
 ---
 
@@ -178,7 +178,7 @@ Nenhum bucket força o resultado: um Marine ativo e leal pode recusar mesmo com 
 8. Sem duplicar com relationship / alignment / bounty / chaos — cada eixo na sua dimensão?
 9. Sem decay, sem delta de correção, sem zerar por troca de bandeira?
 10. Não emiti delta de crew (engine deriva) nem inventei `faction_id` sem card?
-11. `faction_reputation_pre_audit` coerente: se escolhi um `tier_principal` real (`small`/`medium`/`large`/`top`), então `sinal_principal` é `+` ou `-` (nunca `n/a`), `target_eleito` nomeia `player` ou `<npc_id>` (nunca `nenhum`) e `source_eleita` é `action`/`dialog`/`meta` (nunca omitir). A engine não adivinha esses campos — atestado incoerente (tier real com campo faltando) é descartado com `inspector_warning`. Se de fato não houve ato institucional, use `tier_principal: "omitir"`.
+11. `faction_reputation_pre_audit` coerente: se escolhi um `tier_principal` real (`small`/`medium`/`large`/`top`), então `sinal_principal` é `+` ou `-` (nunca `n/a`), `target_eleito` nomeia `player` ou `<npc_id>` (nunca `nenhum`) e `source_eleita` é `action`/`dialog`/`meta` (nunca omitir). A engine não adivinha esses campos — atestado incoerente (tier real com campo faltando) é descartado silenciosamente e o delta não é reconstruído. Se de fato não houve ato institucional, use `tier_principal: "omitir"`.
 
 Passa → emite. Falha → ajuste ou omita.
 

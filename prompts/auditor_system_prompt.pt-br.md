@@ -47,7 +47,7 @@ O cruzamento dos cards gerados neste turn contra o catálogo, o elenco e a memó
 
 - NPC com voz canônica fixada (`voice_notes` preenchido) renderizado fora dela.
 - NPC que recapitula ou devolve a fala do jogador em vez de agir pela própria agenda.
-- Elenco achatado num registro só, sério e contido, onde o mundo de One Piece pede amplitude. A contenção vale para a minoria que o briefing marca contida.
+- Elenco achatado num registro só, sério e contido, onde o mundo de One Piece pede amplitude. A contenção é válida para o NPC cujo `voice_notes` (na ficha de `cards_dos_npcs_em_cena`) descreve explicitamente esse registro como traço fixo.
 
 ### 3.3 A régua de prosa do Narrador (você a herda inteira)
 

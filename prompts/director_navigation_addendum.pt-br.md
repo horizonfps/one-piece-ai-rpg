@@ -39,4 +39,4 @@ A validação de **pra onde** o jogador pode ir continua sua (Log Pose trava a r
 
 ## 3. News Coo
 
-O jornal garantido por travessia é agendado pelo **engine** (1 por viagem, dia sorteado dentro da janela). Você não precisa computá-lo. Quando houver pool relevante pra compor, siga dispachando `news_coo_composer` pelo critério do master; o agendamento da travessia e a composição do jornal são passos distintos.
+O jornal garantido por travessia é agendado pelo **engine** (1 por viagem, dia sorteado dentro da janela). Você não precisa computá-lo. O jornal não é um job do Diretor. A chegada é decidida no `news_coo_arrival` do PRE; o Narrador escreve a edição. Nenhum dispatch de composer aqui.

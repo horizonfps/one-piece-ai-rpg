@@ -156,6 +156,434 @@ _PLANT_THREAD = {
     "required": ["hook_summary"],
 }
 
+# Reflexive scratchpad of the PRE tool: literal input citations that gate the pre-turn
+# flags. First property of the schema so the model emits it BEFORE deciding the flags
+# (schema order = emission order). Engine discards on parse.
+_PRE_EMIT_AUDIT = {
+    "type": "object",
+    "description": (
+        "Scratchpad OBRIGATORIO. Trace de auditoria: cite LITERAL os valores "
+        "do input que travam gates ANTES de decidir flags abaixo. Engine "
+        "ignora este campo; objetivo e forcar comparacao literal em vez de "
+        "inferir do contexto. Preencher TODOS os campos required mesmo "
+        "quando arrays sao vazios — escreva '[]' explicito."
+    ),
+    "properties": {
+        "paired_mushis_literal": {
+            "type": "string",
+            "description": (
+                "Copia textual de player.paired_mushis. Vazio = '[]' literal. "
+                "NAO interprete; copie."
+            ),
+        },
+        "player_position_cluster_literal": {
+            "type": "string",
+            "description": "Copia textual de player.position_cluster. Ausente = 'AUSENTE'.",
+        },
+        "incoming_callers_evaluation": {
+            "type": "array",
+            "description": (
+                "Pra CADA agent_tick_outputs[] com action_type=call_player, "
+                "uma row. Vazio se nenhum tentou."
+            ),
+            "items": {
+                "type": "object",
+                "properties": {
+                    "agent_id": {"type": "string"},
+                    "in_paired_mushis": {
+                        "type": "boolean",
+                        "description": "true SO se agent_id em paired_mushis_literal literal. '[]' = sempre false.",
+                    },
+                    "agent_status_literal": {"type": "string"},
+                    "agent_cluster_literal": {"type": "string"},
+                    "passes_all_three_gates": {
+                        "type": "boolean",
+                        "description": (
+                            "TRUE so se in_paired_mushis=true E status in "
+                            "{alive,injured} E (baby => cluster string-igual)."
+                        ),
+                    },
+                    "blocked_reason": {
+                        "type": ["string", "null"],
+                        "description": "Se false: pairing_missing/status_dead/status_missing/cluster_mismatch/status_captured_no_evidence. Se true, null.",
+                    },
+                },
+                "required": [
+                    "agent_id", "in_paired_mushis", "agent_status_literal",
+                    "agent_cluster_literal", "passes_all_three_gates", "blocked_reason",
+                ],
+            },
+        },
+        "crew_in_combat_scene_literal": {
+            "type": "array",
+            "description": (
+                "agent_ids de crew[] cuja current_location bate com a cena "
+                "de combate atual. Vazio fora de combate. TODA entrada aqui "
+                "DEVE aparecer em npcs_in_scene[] com skip_agent_call=true E em "
+                "crew_present_in_scene[]."
+            ),
+            "items": {"type": "string"},
+        },
+        "npcs_in_scene_planned_ids": {
+            "type": "array",
+            "description": (
+                "TODOS os agent_ids que vao em npcs_in_scene[]. Inclui: cada "
+                "inimigo on-scene + cada id em crew_in_combat_scene_literal. "
+                "Omitir id de crew_in_combat_scene_literal = output errado."
+            ),
+            "items": {"type": "string"},
+        },
+        "scene_cast_audit": {
+            "type": "array",
+            "description": (
+                "Planta de posicao da cena. Uma row por CANDIDATO a estar no "
+                "quadro: cada NPC presente no turn anterior MAIS cada NPC que "
+                "voce traz agora. Confronta a posicao REGISTRADA com onde o NPC "
+                "fica ao fim deste turn, NPC a NPC, ANTES de montar npcs_in_scene "
+                "e npc_location_updates. Regra de saida: todo agent_id com "
+                "moves_this_turn=true E location_now != registered_location_literal "
+                "DEVE ter entry correspondente em npc_location_updates (mesmo "
+                "new_location). Quem fica (moves_this_turn=false) nao precisa de "
+                "update nem de aparecer em npcs_in_scene se nao esta no setor da "
+                "cena. Vazio so no 1o turn de uma cena sem elenco anterior."
+            ),
+            "items": {
+                "type": "object",
+                "properties": {
+                    "agent_id": {"type": "string"},
+                    "registered_location_literal": {
+                        "type": "string",
+                        "description": (
+                            "Copia literal da current_location deste NPC em "
+                            "AGENTS-LOCATIONS (formato 'ilha/sub-area')."
+                        ),
+                    },
+                    "moves_this_turn": {
+                        "type": "boolean",
+                        "description": (
+                            "A cena ou uma acao desloca este NPC neste turn — "
+                            "ele entra no setor da cena, sai dele, ou vai embora? "
+                            "false = permanece exatamente onde o registro aponta."
+                        ),
+                    },
+                    "location_now": {
+                        "type": "string",
+                        "description": (
+                            "Sub-area 'ilha/sub-area' onde o NPC esta ao FIM do "
+                            "turn. Igual a registered_location_literal se "
+                            "moves_this_turn=false. Se a cena o trouxe, "
+                            "'ilha/<scene.area_slug>'. Se ele saiu, o setor de "
+                            "destino."
+                        ),
+                    },
+                },
+                "required": [
+                    "agent_id", "registered_location_literal",
+                    "moves_this_turn", "location_now",
+                ],
+            },
+        },
+        "hostage_grab_evaluation": {
+            "type": "array",
+            "description": (
+                "FASE 12 §A: pra CADA NPC que voce considerou pra hostage_grab "
+                "(antagonista on-scene sem escrupulos perdendo posicao), uma row "
+                "citando persona+tiers literais. Vazio ('[]') se nenhum "
+                "hostage_grab no turn. Forca a comparacao literal antes de decidir."
+            ),
+            "items": {
+                "type": "object",
+                "properties": {
+                    "actor_npc_id": {"type": "string"},
+                    "actor_alignment_literal": {"type": "string"},
+                    "actor_voice_notes_literal": {"type": "string"},
+                    "actor_tier_literal": {"type": "string"},
+                    "candidate_hostage_id": {"type": "string"},
+                    "candidate_hostage_tier_literal": {"type": "string"},
+                    "persona_permits_hostage": {
+                        "type": "boolean",
+                        "description": (
+                            "false se actor alignment >= +0.5 OU voice_notes traz "
+                            "codigo de honra/aversao a refem. true so se persona "
+                            "sem escrupulos."
+                        ),
+                    },
+                    "hostage_dominable": {
+                        "type": "boolean",
+                        "description": "true so se tier(refem) <= tier(ator).",
+                    },
+                    "emits_hostage_grab": {
+                        "type": "boolean",
+                        "description": (
+                            "TRUE so se persona_permits_hostage E hostage_dominable. "
+                            "Se TRUE, surprise_actions DEVE ter 1 entry hostage_grab "
+                            "com esse actor."
+                        ),
+                    },
+                },
+                "required": [
+                    "actor_npc_id", "actor_alignment_literal",
+                    "actor_voice_notes_literal", "actor_tier_literal",
+                    "candidate_hostage_id", "candidate_hostage_tier_literal",
+                    "persona_permits_hostage", "hostage_dominable",
+                    "emits_hostage_grab",
+                ],
+            },
+        },
+        "recruitment_intent_audit": {
+            "type": "object",
+            "description": (
+                "FASE 13 — scratchpad de classificacao do intent de crew no input do "
+                "player. Preencha ANTES de player_recruitment_intent e "
+                "player_offer_response. Forca a distinguir convite REAL (o player "
+                "oferece a um NPC presente entrar no bando dele) de elogio, pergunta, "
+                "mera mencao do bando, recusa ou hipotese. Engine ignora este campo."
+            ),
+            "properties": {
+                "player_input_literal": {
+                    "type": "string",
+                    "description": "Copia textual de player_input.raw.",
+                },
+                "is_directed_crew_invite": {
+                    "type": "boolean",
+                    "description": (
+                        "TRUE so se o player, neste input, OFERECE a um NPC presente "
+                        "entrar no bando dele (qualquer redacao). false pra elogio, "
+                        "pergunta, mencao do bando, recusa ou hipotese."
+                    ),
+                },
+                "invite_target_npc_id": {
+                    "type": ["string", "null"],
+                    "description": (
+                        "Se is_directed_crew_invite=true, o agent_id (de "
+                        "npcs_in_scene) do alvo; senao null. DEVE bater com "
+                        "player_recruitment_intent.target_npc_id."
+                    ),
+                },
+                "pending_offers_literal": {
+                    "type": "string",
+                    "description": (
+                        "Copia textual de world_state.pending_crew_offers (ids+nomes). "
+                        "'[]' literal se vazio."
+                    ),
+                },
+                "is_response_to_pending_offer": {
+                    "type": "boolean",
+                    "description": (
+                        "TRUE so se ha oferta pendente E o player, neste input, aceita "
+                        "ou recusa entrar. '[]' em pending_offers => sempre false."
+                    ),
+                },
+                "offer_response_target_npc_id": {
+                    "type": ["string", "null"],
+                    "description": (
+                        "Se is_response_to_pending_offer=true, o npc_id da oferta "
+                        "respondida; senao null. DEVE bater com "
+                        "player_offer_response.target_npc_id."
+                    ),
+                },
+            },
+            "required": [
+                "player_input_literal",
+                "is_directed_crew_invite",
+                "invite_target_npc_id",
+                "pending_offers_literal",
+                "is_response_to_pending_offer",
+                "offer_response_target_npc_id",
+            ],
+        },
+        "timeskip_intent_audit": {
+            "type": "object",
+            "description": (
+                "Scratchpad de classificacao do engajamento de treino/timeskip no "
+                "input do player. Preencha ANTES de timeskip_intent. Forca a distinguir "
+                "pedido/aceite REAL de mera mencao, pergunta ou recusa. Engine ignora."
+            ),
+            "properties": {
+                "player_input_literal": {
+                    "type": "string",
+                    "description": "Copia textual de player_input.raw.",
+                },
+                "pending_training_offer_literal": {
+                    "type": "string",
+                    "description": (
+                        "Copia textual de world_state.pending_training_offer "
+                        "(mentor + foco). 'null' literal se nao ha oferta pendente."
+                    ),
+                },
+                "classification": {
+                    "type": "string",
+                    "enum": ["accepted", "requested", "none"],
+                    "description": (
+                        "DEVE bater com timeskip_intent. 'accepted' exige "
+                        "pending_training_offer_literal != 'null' E o input respondendo "
+                        "a ela."
+                    ),
+                },
+            },
+            "required": [
+                "player_input_literal",
+                "pending_training_offer_literal",
+                "classification",
+            ],
+        },
+        "player_engaged_cast_audit": {
+            "type": "array",
+            "description": (
+                "Uma row por personagem que o player_input DESTE turn engaja "
+                "diretamente (dirige fala, ajuda, toca, carrega, ataca, protege, "
+                "age sobre). Forca a promover ao elenco quem o player interage, "
+                "em vez de deixar so no ambient/world_memory_relevant (master "
+                "§2.1). Vazio ('[]') so se o player nao engaja personagem nenhum "
+                "(age sobre objeto/ambiente ou so se desloca)."
+            ),
+            "items": {
+                "type": "object",
+                "properties": {
+                    "engaged_descriptor": {
+                        "type": "string",
+                        "description": (
+                            "Como o input ou a cena se refere a quem o player "
+                            "engaja, na linguagem da cena."
+                        ),
+                    },
+                    "matched_card_id": {
+                        "type": ["string", "null"],
+                        "description": (
+                            "id de agents-known/active_cards que corresponde a "
+                            "esse personagem (copy-paste), ou null se figurante "
+                            "anonimo sem card."
+                        ),
+                    },
+                    "has_card": {"type": "boolean"},
+                    "physically_in_scene": {
+                        "type": "boolean",
+                        "description": (
+                            "true se esta no setor da cena atual (mesmo que "
+                            "tenha chegado ou saido neste turn)."
+                        ),
+                    },
+                    "in_npcs_in_scene": {
+                        "type": "boolean",
+                        "description": (
+                            "TRUE obrigatorio se has_card=true E "
+                            "physically_in_scene=true: ai o matched_card_id DEVE "
+                            "aparecer em npcs_in_scene_planned_ids (e em "
+                            "npcs_in_scene[]). Personagem com card que o player "
+                            "engaja nao pode ficar so em world_memory_relevant "
+                            "ou no ambient."
+                        ),
+                    },
+                },
+                "required": [
+                    "engaged_descriptor", "matched_card_id", "has_card",
+                    "physically_in_scene", "in_npcs_in_scene",
+                ],
+            },
+        },
+        "npcs_in_scene_reference_only": {
+            "type": "string",
+            "enum": ["aponto_agent_id_de_card_real_a_mente_e_do_narrador"],
+            "description": (
+                "Releia cada entry de npcs_in_scene[] antes de emitir. Cada uma e so "
+                "REFERENCIA: agent_id (copy-paste de agents-known/active_cards) + "
+                "skip_agent_call. A ficha, a persona, a mente e a fala do NPC sao do "
+                "Narrador (mind-snapshot montado pela engine), nao entram na entry. "
+                "Personagem sem card nao entra em npcs_in_scene."
+            ),
+        },
+        "arrival_scene_audit": {
+            "type": ["object", "null"],
+            "description": (
+                "Preencha SO quando QUALQUER campo de arrival_triggers != null (o "
+                "player CHEGA a uma ilha neste turn, por mar/deriva/elipse). null "
+                "quando nao ha chegada. Forca a cena a nascer NA ilha de chegada, "
+                "nao no porto/ilha de partida nem no mar."
+            ),
+            "properties": {
+                "arriving_island_slug": {
+                    "type": "string",
+                    "description": "Slug de arrival_triggers (research_pipeline ou island_designer).",
+                },
+                "scene_location_literal": {
+                    "type": "string",
+                    "description": "Copia textual de scene.location que voce vai emitir.",
+                },
+                "scene_is_at_arriving_island": {
+                    "type": "boolean",
+                    "description": (
+                        "TRUE so se scene.location descreve a ILHA DE CHEGADA (terra "
+                        "nova), nao a ilha/porto de partida nem o mar. Se voce salta "
+                        "tempo/mar pra chegar (elipse_de_tempo), monte JA a cena na "
+                        "ilha nova: scene.location, area_slug e npcs_in_scene do "
+                        "lugar novo."
+                    ),
+                },
+            },
+            "required": [
+                "arriving_island_slug", "scene_location_literal",
+                "scene_is_at_arriving_island",
+            ],
+        },
+        "scene_location_audit": {
+            "type": "object",
+            "description": (
+                "Releia a string scene.location que vai emitir e ateste que ela nomeia "
+                "SO o lugar — sem acao, sem NPC, sem verbo de movimento/combate. A acao "
+                "da cena e do Narrador, nao do rotulo de lugar."
+            ),
+            "properties": {
+                "scene_location_literal": {
+                    "type": "string",
+                    "description": "Copia textual de scene.location que voce vai emitir.",
+                },
+                "names_place_only": {
+                    "type": "string",
+                    "enum": ["nomeio_so_o_lugar_sem_acao_nem_npc"],
+                },
+            },
+            "required": ["scene_location_literal", "names_place_only"],
+        },
+        "news_coo_decision": {
+            "type": "object",
+            "description": (
+                "Releia world_state.news_signals ANTES de decidir news_coo_arrival. "
+                "Ateste o que ha de peso e a decisao. Sem peso, news_coo_arrival e null."
+            ),
+            "properties": {
+                "peso_atestado": {
+                    "type": "string",
+                    "description": "O que ha de noticia de peso agora (bounty/marco/evento/NPC), ou 'nada'.",
+                },
+                "decision": {
+                    "type": "string",
+                    "enum": [
+                        "emito_jornal_com_noticia_de_peso",
+                        "sem_peso_deixo_null",
+                    ],
+                },
+            },
+            "required": ["peso_atestado", "decision"],
+        },
+    },
+    "required": [
+        "paired_mushis_literal",
+        "player_position_cluster_literal",
+        "incoming_callers_evaluation",
+        "crew_in_combat_scene_literal",
+        "npcs_in_scene_planned_ids",
+        "scene_cast_audit",
+        "hostage_grab_evaluation",
+        "recruitment_intent_audit",
+        "timeskip_intent_audit",
+        "player_engaged_cast_audit",
+        "npcs_in_scene_reference_only",
+        "arrival_scene_audit",
+        "scene_location_audit",
+        "news_coo_decision",
+    ],
+}
+
 EMIT_PRE_TURN_TOOL = {
     "name": "emit_pre_turn_decisions",
     "description": (
@@ -183,6 +611,7 @@ EMIT_PRE_TURN_TOOL = {
     "input_schema": {
         "type": "object",
         "properties": {
+            "pre_emit_audit": _PRE_EMIT_AUDIT,
             "thread_reasoning": _THREAD_REASONING,
             "plant_thread": _PLANT_THREAD,
             "scene": {
@@ -753,430 +1182,6 @@ EMIT_PRE_TURN_TOOL = {
                 },
                 "required": ["trigger_reason", "cover_focus", "headline_seed"],
             },
-            "pre_emit_audit": {
-                "type": "object",
-                "description": (
-                    "Scratchpad OBRIGATORIO. Trace de auditoria: cite LITERAL os valores "
-                    "do input que travam gates ANTES de decidir flags abaixo. Engine "
-                    "ignora este campo; objetivo e forcar comparacao literal em vez de "
-                    "inferir do contexto. Preencher TODOS os campos required mesmo "
-                    "quando arrays sao vazios — escreva '[]' explicito."
-                ),
-                "properties": {
-                    "paired_mushis_literal": {
-                        "type": "string",
-                        "description": (
-                            "Copia textual de player.paired_mushis. Vazio = '[]' literal. "
-                            "NAO interprete; copie."
-                        ),
-                    },
-                    "player_position_cluster_literal": {
-                        "type": "string",
-                        "description": "Copia textual de player.position_cluster. Ausente = 'AUSENTE'.",
-                    },
-                    "incoming_callers_evaluation": {
-                        "type": "array",
-                        "description": (
-                            "Pra CADA agent_tick_outputs[] com action_type=call_player, "
-                            "uma row. Vazio se nenhum tentou."
-                        ),
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "agent_id": {"type": "string"},
-                                "in_paired_mushis": {
-                                    "type": "boolean",
-                                    "description": "true SO se agent_id em paired_mushis_literal literal. '[]' = sempre false.",
-                                },
-                                "agent_status_literal": {"type": "string"},
-                                "agent_cluster_literal": {"type": "string"},
-                                "passes_all_three_gates": {
-                                    "type": "boolean",
-                                    "description": (
-                                        "TRUE so se in_paired_mushis=true E status in "
-                                        "{alive,injured} E (baby => cluster string-igual)."
-                                    ),
-                                },
-                                "blocked_reason": {
-                                    "type": ["string", "null"],
-                                    "description": "Se false: pairing_missing/status_dead/status_missing/cluster_mismatch/status_captured_no_evidence. Se true, null.",
-                                },
-                            },
-                            "required": [
-                                "agent_id", "in_paired_mushis", "agent_status_literal",
-                                "agent_cluster_literal", "passes_all_three_gates", "blocked_reason",
-                            ],
-                        },
-                    },
-                    "crew_in_combat_scene_literal": {
-                        "type": "array",
-                        "description": (
-                            "agent_ids de crew[] cuja current_location bate com a cena "
-                            "de combate atual. Vazio fora de combate. TODA entrada aqui "
-                            "DEVE aparecer em npcs_in_scene[] com skip_agent_call=true E em "
-                            "crew_present_in_scene[]."
-                        ),
-                        "items": {"type": "string"},
-                    },
-                    "npcs_in_scene_planned_ids": {
-                        "type": "array",
-                        "description": (
-                            "TODOS os agent_ids que vao em npcs_in_scene[]. Inclui: cada "
-                            "inimigo on-scene + cada id em crew_in_combat_scene_literal. "
-                            "Omitir id de crew_in_combat_scene_literal = output errado."
-                        ),
-                        "items": {"type": "string"},
-                    },
-                    "scene_cast_audit": {
-                        "type": "array",
-                        "description": (
-                            "Planta de posicao da cena. Uma row por CANDIDATO a estar no "
-                            "quadro: cada NPC presente no turn anterior MAIS cada NPC que "
-                            "voce traz agora. Confronta a posicao REGISTRADA com onde o NPC "
-                            "fica ao fim deste turn, NPC a NPC, ANTES de montar npcs_in_scene "
-                            "e npc_location_updates. Regra de saida: todo agent_id com "
-                            "moves_this_turn=true E location_now != registered_location_literal "
-                            "DEVE ter entry correspondente em npc_location_updates (mesmo "
-                            "new_location). Quem fica (moves_this_turn=false) nao precisa de "
-                            "update nem de aparecer em npcs_in_scene se nao esta no setor da "
-                            "cena. Vazio so no 1o turn de uma cena sem elenco anterior."
-                        ),
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "agent_id": {"type": "string"},
-                                "registered_location_literal": {
-                                    "type": "string",
-                                    "description": (
-                                        "Copia literal da current_location deste NPC em "
-                                        "AGENTS-LOCATIONS (formato 'ilha/sub-area')."
-                                    ),
-                                },
-                                "moves_this_turn": {
-                                    "type": "boolean",
-                                    "description": (
-                                        "A cena ou uma acao desloca este NPC neste turn — "
-                                        "ele entra no setor da cena, sai dele, ou vai embora? "
-                                        "false = permanece exatamente onde o registro aponta."
-                                    ),
-                                },
-                                "location_now": {
-                                    "type": "string",
-                                    "description": (
-                                        "Sub-area 'ilha/sub-area' onde o NPC esta ao FIM do "
-                                        "turn. Igual a registered_location_literal se "
-                                        "moves_this_turn=false. Se a cena o trouxe, "
-                                        "'ilha/<scene.area_slug>'. Se ele saiu, o setor de "
-                                        "destino."
-                                    ),
-                                },
-                            },
-                            "required": [
-                                "agent_id", "registered_location_literal",
-                                "moves_this_turn", "location_now",
-                            ],
-                        },
-                    },
-                    "hostage_grab_evaluation": {
-                        "type": "array",
-                        "description": (
-                            "FASE 12 §A: pra CADA NPC que voce considerou pra hostage_grab "
-                            "(antagonista on-scene sem escrupulos perdendo posicao), uma row "
-                            "citando persona+tiers literais. Vazio ('[]') se nenhum "
-                            "hostage_grab no turn. Forca a comparacao literal antes de decidir."
-                        ),
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "actor_npc_id": {"type": "string"},
-                                "actor_alignment_literal": {"type": "string"},
-                                "actor_voice_notes_literal": {"type": "string"},
-                                "actor_tier_literal": {"type": "string"},
-                                "candidate_hostage_id": {"type": "string"},
-                                "candidate_hostage_tier_literal": {"type": "string"},
-                                "persona_permits_hostage": {
-                                    "type": "boolean",
-                                    "description": (
-                                        "false se actor alignment >= +0.5 OU voice_notes traz "
-                                        "codigo de honra/aversao a refem. true so se persona "
-                                        "sem escrupulos."
-                                    ),
-                                },
-                                "hostage_dominable": {
-                                    "type": "boolean",
-                                    "description": "true so se tier(refem) <= tier(ator).",
-                                },
-                                "emits_hostage_grab": {
-                                    "type": "boolean",
-                                    "description": (
-                                        "TRUE so se persona_permits_hostage E hostage_dominable. "
-                                        "Se TRUE, surprise_actions DEVE ter 1 entry hostage_grab "
-                                        "com esse actor."
-                                    ),
-                                },
-                            },
-                            "required": [
-                                "actor_npc_id", "actor_alignment_literal",
-                                "actor_voice_notes_literal", "actor_tier_literal",
-                                "candidate_hostage_id", "candidate_hostage_tier_literal",
-                                "persona_permits_hostage", "hostage_dominable",
-                                "emits_hostage_grab",
-                            ],
-                        },
-                    },
-                    "recruitment_intent_audit": {
-                        "type": "object",
-                        "description": (
-                            "FASE 13 — scratchpad de classificacao do intent de crew no input do "
-                            "player. Preencha ANTES de player_recruitment_intent e "
-                            "player_offer_response. Forca a distinguir convite REAL (o player "
-                            "oferece a um NPC presente entrar no bando dele) de elogio, pergunta, "
-                            "mera mencao do bando, recusa ou hipotese. Engine ignora este campo."
-                        ),
-                        "properties": {
-                            "player_input_literal": {
-                                "type": "string",
-                                "description": "Copia textual de player_input.raw.",
-                            },
-                            "is_directed_crew_invite": {
-                                "type": "boolean",
-                                "description": (
-                                    "TRUE so se o player, neste input, OFERECE a um NPC presente "
-                                    "entrar no bando dele (qualquer redacao). false pra elogio, "
-                                    "pergunta, mencao do bando, recusa ou hipotese."
-                                ),
-                            },
-                            "invite_target_npc_id": {
-                                "type": ["string", "null"],
-                                "description": (
-                                    "Se is_directed_crew_invite=true, o agent_id (de "
-                                    "npcs_in_scene) do alvo; senao null. DEVE bater com "
-                                    "player_recruitment_intent.target_npc_id."
-                                ),
-                            },
-                            "pending_offers_literal": {
-                                "type": "string",
-                                "description": (
-                                    "Copia textual de world_state.pending_crew_offers (ids+nomes). "
-                                    "'[]' literal se vazio."
-                                ),
-                            },
-                            "is_response_to_pending_offer": {
-                                "type": "boolean",
-                                "description": (
-                                    "TRUE so se ha oferta pendente E o player, neste input, aceita "
-                                    "ou recusa entrar. '[]' em pending_offers => sempre false."
-                                ),
-                            },
-                            "offer_response_target_npc_id": {
-                                "type": ["string", "null"],
-                                "description": (
-                                    "Se is_response_to_pending_offer=true, o npc_id da oferta "
-                                    "respondida; senao null. DEVE bater com "
-                                    "player_offer_response.target_npc_id."
-                                ),
-                            },
-                        },
-                        "required": [
-                            "player_input_literal",
-                            "is_directed_crew_invite",
-                            "invite_target_npc_id",
-                            "pending_offers_literal",
-                            "is_response_to_pending_offer",
-                            "offer_response_target_npc_id",
-                        ],
-                    },
-                    "timeskip_intent_audit": {
-                        "type": "object",
-                        "description": (
-                            "Scratchpad de classificacao do engajamento de treino/timeskip no "
-                            "input do player. Preencha ANTES de timeskip_intent. Forca a distinguir "
-                            "pedido/aceite REAL de mera mencao, pergunta ou recusa. Engine ignora."
-                        ),
-                        "properties": {
-                            "player_input_literal": {
-                                "type": "string",
-                                "description": "Copia textual de player_input.raw.",
-                            },
-                            "pending_training_offer_literal": {
-                                "type": "string",
-                                "description": (
-                                    "Copia textual de world_state.pending_training_offer "
-                                    "(mentor + foco). 'null' literal se nao ha oferta pendente."
-                                ),
-                            },
-                            "classification": {
-                                "type": "string",
-                                "enum": ["accepted", "requested", "none"],
-                                "description": (
-                                    "DEVE bater com timeskip_intent. 'accepted' exige "
-                                    "pending_training_offer_literal != 'null' E o input respondendo "
-                                    "a ela."
-                                ),
-                            },
-                        },
-                        "required": [
-                            "player_input_literal",
-                            "pending_training_offer_literal",
-                            "classification",
-                        ],
-                    },
-                    "player_engaged_cast_audit": {
-                        "type": "array",
-                        "description": (
-                            "Uma row por personagem que o player_input DESTE turn engaja "
-                            "diretamente (dirige fala, ajuda, toca, carrega, ataca, protege, "
-                            "age sobre). Forca a promover ao elenco quem o player interage, "
-                            "em vez de deixar so no ambient/world_memory_relevant (master "
-                            "§2.1). Vazio ('[]') so se o player nao engaja personagem nenhum "
-                            "(age sobre objeto/ambiente ou so se desloca)."
-                        ),
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "engaged_descriptor": {
-                                    "type": "string",
-                                    "description": (
-                                        "Como o input ou a cena se refere a quem o player "
-                                        "engaja, na linguagem da cena."
-                                    ),
-                                },
-                                "matched_card_id": {
-                                    "type": ["string", "null"],
-                                    "description": (
-                                        "id de agents-known/active_cards que corresponde a "
-                                        "esse personagem (copy-paste), ou null se figurante "
-                                        "anonimo sem card."
-                                    ),
-                                },
-                                "has_card": {"type": "boolean"},
-                                "physically_in_scene": {
-                                    "type": "boolean",
-                                    "description": (
-                                        "true se esta no setor da cena atual (mesmo que "
-                                        "tenha chegado ou saido neste turn)."
-                                    ),
-                                },
-                                "in_npcs_in_scene": {
-                                    "type": "boolean",
-                                    "description": (
-                                        "TRUE obrigatorio se has_card=true E "
-                                        "physically_in_scene=true: ai o matched_card_id DEVE "
-                                        "aparecer em npcs_in_scene_planned_ids (e em "
-                                        "npcs_in_scene[]). Personagem com card que o player "
-                                        "engaja nao pode ficar so em world_memory_relevant "
-                                        "ou no ambient."
-                                    ),
-                                },
-                            },
-                            "required": [
-                                "engaged_descriptor", "matched_card_id", "has_card",
-                                "physically_in_scene", "in_npcs_in_scene",
-                            ],
-                        },
-                    },
-                    "npcs_in_scene_reference_only": {
-                        "type": "string",
-                        "enum": ["aponto_agent_id_de_card_real_a_mente_e_do_narrador"],
-                        "description": (
-                            "Releia cada entry de npcs_in_scene[] antes de emitir. Cada uma e so "
-                            "REFERENCIA: agent_id (copy-paste de agents-known/active_cards) + "
-                            "skip_agent_call. A ficha, a persona, a mente e a fala do NPC sao do "
-                            "Narrador (mind-snapshot montado pela engine), nao entram na entry. "
-                            "Personagem sem card nao entra em npcs_in_scene."
-                        ),
-                    },
-                    "arrival_scene_audit": {
-                        "type": ["object", "null"],
-                        "description": (
-                            "Preencha SO quando QUALQUER campo de arrival_triggers != null (o "
-                            "player CHEGA a uma ilha neste turn, por mar/deriva/elipse). null "
-                            "quando nao ha chegada. Forca a cena a nascer NA ilha de chegada, "
-                            "nao no porto/ilha de partida nem no mar."
-                        ),
-                        "properties": {
-                            "arriving_island_slug": {
-                                "type": "string",
-                                "description": "Slug de arrival_triggers (research_pipeline ou island_designer).",
-                            },
-                            "scene_location_literal": {
-                                "type": "string",
-                                "description": "Copia textual de scene.location que voce vai emitir.",
-                            },
-                            "scene_is_at_arriving_island": {
-                                "type": "boolean",
-                                "description": (
-                                    "TRUE so se scene.location descreve a ILHA DE CHEGADA (terra "
-                                    "nova), nao a ilha/porto de partida nem o mar. Se voce salta "
-                                    "tempo/mar pra chegar (elipse_de_tempo), monte JA a cena na "
-                                    "ilha nova: scene.location, area_slug e npcs_in_scene do "
-                                    "lugar novo."
-                                ),
-                            },
-                        },
-                        "required": [
-                            "arriving_island_slug", "scene_location_literal",
-                            "scene_is_at_arriving_island",
-                        ],
-                    },
-                    "scene_location_audit": {
-                        "type": "object",
-                        "description": (
-                            "Releia a string scene.location que vai emitir e ateste que ela nomeia "
-                            "SO o lugar — sem acao, sem NPC, sem verbo de movimento/combate. A acao "
-                            "da cena e do Narrador, nao do rotulo de lugar."
-                        ),
-                        "properties": {
-                            "scene_location_literal": {
-                                "type": "string",
-                                "description": "Copia textual de scene.location que voce vai emitir.",
-                            },
-                            "names_place_only": {
-                                "type": "string",
-                                "enum": ["nomeio_so_o_lugar_sem_acao_nem_npc"],
-                            },
-                        },
-                        "required": ["scene_location_literal", "names_place_only"],
-                    },
-                    "news_coo_decision": {
-                        "type": "object",
-                        "description": (
-                            "Releia world_state.news_signals ANTES de decidir news_coo_arrival. "
-                            "Ateste o que ha de peso e a decisao. Sem peso, news_coo_arrival e null."
-                        ),
-                        "properties": {
-                            "peso_atestado": {
-                                "type": "string",
-                                "description": "O que ha de noticia de peso agora (bounty/marco/evento/NPC), ou 'nada'.",
-                            },
-                            "decision": {
-                                "type": "string",
-                                "enum": [
-                                    "emito_jornal_com_noticia_de_peso",
-                                    "sem_peso_deixo_null",
-                                ],
-                            },
-                        },
-                        "required": ["peso_atestado", "decision"],
-                    },
-                },
-                "required": [
-                    "paired_mushis_literal",
-                    "player_position_cluster_literal",
-                    "incoming_callers_evaluation",
-                    "crew_in_combat_scene_literal",
-                    "npcs_in_scene_planned_ids",
-                    "scene_cast_audit",
-                    "hostage_grab_evaluation",
-                    "recruitment_intent_audit",
-                    "timeskip_intent_audit",
-                    "player_engaged_cast_audit",
-                    "npcs_in_scene_reference_only",
-                    "arrival_scene_audit",
-                    "scene_location_audit",
-                    "news_coo_decision",
-                ],
-            },
         },
         "required": [
             "pre_emit_audit",
@@ -1640,6 +1645,9 @@ def _world_state(
         "crew_fleet": ship.fleet_summary(ship.get_crew(metadata), ship_cards or {}),
         # Open continuity threads (age_in_turns crus, sem buckets); o Diretor pesa qualitativamente.
         "foreshadow_pool": plots.build_foreshadow_pool(metadata, current_turn_index),
+        # Themes of threads already paid off (resolved leaves the pool projection); informational,
+        # so a new thread does not replant a closed theme.
+        "resolved_thread_themes_recent": plots.recent_resolved_theme_tags(metadata),
         "events_background_recent": metadata.get("events_background_recent") or [],
         "visited_islands": metadata.get("visited_islands") or [],
         # Active alliances for matchmaking + allied-faction hunter spawn-blocking.

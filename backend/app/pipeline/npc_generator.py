@@ -3,6 +3,8 @@ StoryCard) + agent (private NamedNPCAgent) sharing one id, merged into a single
 `npc_agent` story_cards row by `merge_card_agent`."""
 from __future__ import annotations
 
+import random
+
 from .. import config
 from ..proxy import client
 from . import language
@@ -492,10 +494,12 @@ async def call_generate_npc(
             )
             parsed = parse_emit_npc(emitted)
             if _is_valid(parsed):
+                _clamp_age_to_band(parsed, npc_input)
                 return parsed
         except Exception as e:  # noqa: BLE001 retry covers truncation/parse
             last_exc = e
     if _is_valid(parsed):
+        _clamp_age_to_band(parsed, npc_input)
         return parsed
     if last_exc is not None:
         raise last_exc
@@ -546,6 +550,68 @@ def build_npc_cached_block(
     ]
 
 
+_AGE_BANDS = ((16, 24), (25, 33), (34, 44), (45, 58), (59, 74))
+# Roles whose age the prompt rules (player-age cohort / Ohara canon): no band for those.
+_AGE_RULED_ROLES = ("ally", "potential_crew_member", "ohara_survivor_scholar")
+
+
+def roll_age_band(role: str | None) -> dict | None:
+    """Engine-rolled adult age band (mechanical spread, same class as the belly/bounty rolls)."""
+    r = (role or "").strip()
+    if r in _AGE_RULED_ROLES or r.startswith("recrutavel"):
+        return None
+    lo, hi = random.choice(_AGE_BANDS)
+    return {"min": lo, "max": hi}
+
+
+def _clamp_age_to_band(parsed: dict, npc_input: dict) -> None:
+    """Redraw age inside the engine-rolled band when the model emitted outside it, shifting
+    birth_year_canon by the same delta."""
+    band = (npc_input or {}).get("age_band_hint") or {}
+    lo, hi = band.get("min"), band.get("max")
+    if not (isinstance(lo, int) and isinstance(hi, int) and lo <= hi):
+        return
+    agent = (parsed or {}).get("agent") or {}
+    age = agent.get("age_at_creation")
+    if not isinstance(age, int) or lo <= age <= hi:
+        return
+    new_age = random.randint(lo, hi)
+    if isinstance(agent.get("birth_year_canon"), int):
+        agent["birth_year_canon"] += age - new_age
+    agent["age_at_creation"] = new_age
+
+
+def recent_archetype_lines(npcs_known: dict, *, limit: int = 8) -> list[str]:
+    """Age/craft/temperament lines of the latest generated NPCs, newest first, feeding the
+    input's recent_archetypes divergence axis (model-authored fields only)."""
+    rows = [
+        d for d in (npcs_known or {}).values()
+        if isinstance(d, dict) and d.get("canonical") == "generated"
+        and (d.get("entity_kind") or "person") != "creature"
+    ]
+    rows.sort(
+        key=lambda d: (int(d.get("created_at_turn_index", 0) or 0), str(d.get("id", ""))),
+        reverse=True,
+    )
+    out: list[str] = []
+    for d in rows[:limit]:
+        disposition = str((d.get("personality") or {}).get("disposition") or "").strip()
+        if not disposition:
+            disposition = ", ".join(
+                t.strip() for t in (d.get("traits") or []) if isinstance(t, str) and t.strip()
+            )
+        age = d.get("age_at_creation")
+        bits = [
+            str(d.get("subtype") or d.get("class") or "").strip(),
+            f"{age} anos" if isinstance(age, int) and age > 0 else "",
+            disposition,
+        ]
+        line = "; ".join(b for b in bits if b)
+        if line:
+            out.append(line)
+    return out
+
+
 def build_npc_input(
     entry: dict,
     *,
@@ -584,4 +650,8 @@ def build_npc_input(
         "naming_hint": naming_hint,
         "nemesis_context": nemesis_context,
         "recent_archetypes": recent_archetypes or None,
+        # Age band only when nothing else rules the age (prose anchor, role rule, canon fruit owner).
+        "age_band_hint": (
+            None if (scene_prose_anchor or active_fruit_removal_hook) else roll_age_band(role)
+        ),
     }

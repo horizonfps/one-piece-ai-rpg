@@ -132,6 +132,25 @@ def build_foreshadow_pool(metadata: dict, current_turn_index: int) -> list[dict]
     return out
 
 
+def recent_resolved_theme_tags(metadata: dict, *, limit: int = 8) -> list[str]:
+    """theme_tags of the latest resolved threads, newest first. Informational projection so the
+    Director sees which themes already paid off before planting a new thread."""
+    resolved = [
+        h for h in ((metadata or {}).get("foreshadow_pool") or [])
+        if isinstance(h, dict) and h.get("resolved_at_turn_index") is not None
+        and str(h.get("theme_tag") or "").strip()
+    ]
+    resolved.sort(key=lambda h: int(h.get("resolved_at_turn_index") or 0), reverse=True)
+    out: list[str] = []
+    for h in resolved:
+        tag = str(h["theme_tag"]).strip()
+        if tag not in out:
+            out.append(tag)
+        if len(out) >= limit:
+            break
+    return out
+
+
 def _update_foreshadow_pool(
     metadata: dict, *, add: list[dict] | None = None, remove_ids: set | None = None
 ) -> None:

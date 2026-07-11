@@ -75,7 +75,7 @@ Você é gerado em paralelo com os outros nomes novos do mesmo turn, e nem todos
   "anchor_location": "<slug mecânico da cena (ilha/sub-área); é o que current_location recebe (§0.3)> | null",
   "intended_presence": "on_scene" | "off_scene_mention",   // sinal do Narrador: on_scene = está fisicamente na cena; off_scene_mention = só foi citado/nomeado de longe (§0.6). Calibra agent.present_in_scene
   "peers_this_turn": [{ "name": "...", "role": "...", "on_scene": bool }] | null,   // os outros nomes cunhados/citados NESTE turn; leia antes de batizar pra não emprestar o nome de um deles (§0.6)
-  "first_appearance_role": "extra_with_name" | "named_speaker" | "antagonist_local" | "recurring_civilian" | "lieutenant" | "ally" | "victim" | "potential_crew_member" | "nemesis_marine" | "ohara_survivor_scholar" | "...",   // obrigatório: o papel do NPC na cena, decidido pelo Diretor; calibra tier (§4.3), idade (§4.13), armor (§4.7) e path especial (§5)
+  "first_appearance_role": "extra_with_name" | "named_speaker" | "antagonist_local" | "recurring_civilian" | "lieutenant" | "ally" | "victim" | "potential_crew_member" | "nemesis_marine" | "ohara_survivor_scholar" | "...",   // obrigatório: o papel do NPC na cena, definido pelo Narrador em turn_meta; calibra tier (§4.3), idade (§4.13), armor (§4.7) e path especial (§5)
   "expected_recurrence": "low" | "medium" | "high",
   "affiliation_hint": "marine" | "pirate_independent" | "civilian" | "revolutionary" | "bandit" | "merchant" | "noble" | "scholar" | "..." | null,
   "current_arc_context": {
@@ -88,7 +88,8 @@ Você é gerado em paralelo com os outros nomes novos do mesmo turn, e nem todos
   "active_fruit_removal_hook": { "fruit_name": "...", "owner_name_canon": "...", "hook_text": "<destino: morte/desaparecimento/adesão>" } | null,   // chega mesmo quando o nome pedido não bate óbvio com owner_name_canon; VOCÊ julga se é a mesma pessoa via agent.is_displaced_fruit_owner (§5.2)
   "naming_hint": "<região/cultura>" | null,
   "nemesis_context": { "spawn_threshold_crossed": <int>, "player_alignment_summary": "...", "player_recent_act_summary": "..." } | null,
-  "recent_archetypes": ["<opcional: temperamentos/arquétipos dos NPCs gerados recentes na campanha, para você divergir; ex: 'frio calculista', 'matrona explosiva'>"] | null
+  "recent_archetypes": ["<opcional: temperamentos/arquétipos dos NPCs gerados recentes na campanha, para você divergir; ex: 'frio calculista', 'matrona explosiva'>"] | null,
+  "age_band_hint": { "min": <int>, "max": <int> } | null   // banda etária sorteada pela engine; gere age_at_creation dentro dela (§4.13). Não chega quando a prosa ancora a idade nem em papel de idade regrada
 }
 ```
 
@@ -115,8 +116,6 @@ Você é gerado em paralelo com os outros nomes novos do mesmo turn, e nem todos
     "distinctive_mark": "<o traço PERMANENTE que identifica à primeira vista: cicatriz, tatuagem, objeto gasto, prótese; nunca a algema, a cela nem a ferida do momento — 1 frase>"
   },
   "current_state": { "tier": "NORMAL..ABSURD", "summary_text": "<1-2 frases: estado atual>", "flags": [] },
-  "moral_code": "absolute | humane | personal | unclear | lazy | corrupt | null",  // só Marine preenche (conforme director_marine_generation_addendum, coerente com rank+base+região+chaos); null nos demais
-  "marine_rank": "Capitão | Comodoro | Vice-Almirante | Almirante | Almirante de Frota | null",  // só nemesis_marine ou Marine nomeado de patente; coerente com o tier (§4.16); null nos demais
   "state_history": [], "related_card_ids": [],
   "knowledge_tier_to_know_exists": "common" | "regional" | "specialized" | "esoteric" | "classified",
   "knowledge_tier_to_know_details": "common" | "regional" | "specialized" | "esoteric" | "classified",
@@ -153,6 +152,8 @@ Você é gerado em paralelo com os outros nomes novos do mesmo turn, e nem todos
   "narrative_armor": "none" | "crew_armor" | "nemesis_armor" | "canon_top_armor",
   "current_location": "<slug anchor_location da cena; nunca lugar narrativo (§0.3)>", "current_goal": "<1 frase>", "long_term_dream": "<1 frase>",
   "mood": "<curto>", "status": "alive",
+  "moral_code": "absolute | humane | personal | unclear | lazy | corrupt | null",  // só Marine preenche (conforme director_marine_generation_addendum, coerente com rank+base+região+chaos); null nos demais
+  "marine_rank": "Capitão | Comodoro | Vice-Almirante | Almirante | Almirante de Frota | null",  // só nemesis_marine ou Marine nomeado de patente; coerente com o tier (§4.16); null nos demais
   "duplicate_of_existing_id": null,        // §0.5: id de um card do ELENCO-EXISTENTE se a pessoa já existe; null quando é nova
   "duplicate_present_in_scene": null,      // §0.5: só quando dedupou (duplicate_of_existing_id preenchido); true = o texto-âncora a pôs na cena atual (entra no elenco); false = só mencionada/noutro lugar (só reusa o card); null quando não é duplicata
   "present_in_scene": true,                // §0.6: só quando é gente nova; true = está fisicamente na cena; false = só foi citada/nomeada de longe (ganha card, fica fora do elenco). Siga intended_presence do input; default true
@@ -263,10 +264,11 @@ Quando `scene_prose_anchor` já fixou a idade aparente, ela manda (§0.3). Sem �
 
 - **NPC em geral** (antagonista, civil, marine, mentor, veterano, erudito): idade livre, coerente com o cargo e a história, e **espalhada por toda a faixa adulta**. O elenco de Oda vai do moleque de rua ao ancião, e o normal é a variedade: gere jovens de vinte e poucos, adultos de trinta, gente de meia-idade e grisalhos na proporção que o papel comporta. Um oficial graduado, uma matriarca, um mestre de ofício podem ser bem mais velhos que o jogador; um recruta da Marinha, um comerciante ambicioso, um brigão de doca costumam ser bem mais jovens. Puxe o velho pelo cargo que o exige, não como piso, e não deixe a idade convergir na meia-idade cansada como default.
 - **Aliado, companion ou recrutável** (`first_appearance_role` em `ally` / `potential_crew_member` / `recrutavel_*`, ou affiliation `player_crew`, ou recorrente que tende a se juntar ao bando): a **maioria** nasce na **geração do jogador**. Centre a idade em `current_arc_context.player_age` e deixe o teto típico em torno de quinze a vinte anos acima dela. Companion é parceiro de jornada, não tutor: o veterano grisalho bem mais velho é **minoria**, e só quando o input pede o tipo (figura paterna, mestre, especialista experiente) com motivo claro. Jogador jovem puxa um elenco recrutável jovem.
+- **Banda sorteada (`age_band_hint`):** quando o input traz a banda, `age_at_creation` nasce **dentro dela**; a engine sorteou a faixa justamente para espalhar o elenco por toda a faixa adulta, e o papel e a história calibram o ponto dentro da banda. A banda não chega quando outra regra fixa a idade: prosa ancorada (§0.3), papéis acima de idade regrada, ou `active_fruit_removal_hook` presente (o dono canônico tem idade canon, §5.2).
 
 ### 4.14 Appearance, history, personality (a ficha que o Narrador relê)
 
-Estes três blocos são o coração da ficha útil. `appearance` é o que o Narrador relê para manter o NPC **visualmente consistente entre cenas**, então o detalhe físico vive aqui, não diluído na `description`: porte e idade, rosto e cabelo, roupa, e o **traço marcante** que identifica à primeira vista. Tudo aqui é **identidade durável** (§0.3): nada de restrição, ferida ou predicamento do momento, que o Narrador renderia turn após turn como se fosse permanente. `history` dá origem, o **evento que o moldou com agência** (não vítima passiva, §3 do plot-generator) e o **vínculo vivo** que ainda o move. `personality` é disposição mais **manifestação concreta** (`shows_as`): o que o NPC FAZ quando contrariado, à vontade, diante de estranhos. Nada disso é estilo de fala (§0.1, §4.4): `shows_as` descreve comportamento, nunca bordão, tique ou registro. Todos honram `sex` (§0.4) e a disciplina anti-slop (§0.2).
+Estes três blocos são o coração da ficha útil. `appearance` é o que o Narrador relê para manter o NPC **visualmente consistente entre cenas**, então o detalhe físico vive aqui, não diluído na `description`: porte e idade, rosto e cabelo, roupa, e o **traço marcante** que identifica à primeira vista. Tudo aqui é **identidade durável** (§0.3): nada de restrição, ferida ou predicamento do momento, que o Narrador renderia turn após turn como se fosse permanente. `history` dá origem, o **evento que o moldou com agência** (não vítima passiva) e o **vínculo vivo** que ainda o move. `personality` é disposição mais **manifestação concreta** (`shows_as`): o que o NPC FAZ quando contrariado, à vontade, diante de estranhos. Nada disso é estilo de fala (§0.1, §4.4): `shows_as` descreve comportamento, nunca bordão, tique ou registro. Todos honram `sex` (§0.4) e a disciplina anti-slop (§0.2).
 
 ### 4.15 Expressiveness (amplitude default)
 
@@ -328,7 +330,7 @@ O hook chega mesmo quando o `tentative_name` não bate óbvio com `owner_name_ca
 9. Knowledge tiers calibrados (existe vs detalhe vs clearance)?
 10. `devil_fruit`: null na maioria; se atribuí, não-tomada por canon, sem duplicar habilidade? `haki_profile`: `null` salvo tier alto com formação de combate fora dos Quatro Mares; nenhum Haki em NPC de Blue; HAOSHOKU só em figura de estatura de rei?
 11. `active_fruit_removal_hook`: julguei `is_displaced_fruit_owner` (true = dono canônico → status/fruta null/summary pelo hook; false = outra pessoa → ignoro o hook; na dúvida false)?
-11.5. Marine: `moral_code` emitido no card (leque do marine_generation, coerente com rank+base+região+chaos, não por keyword de subtype) e `null` nos não-Marine? `marine_rank` só em nemesis/Marine nomeado de patente, coerente com o tier (§4.16), `null` nos demais?
+11.5. Marine: `moral_code` emitido no **agent** (leque do marine_generation, coerente com rank+base+região+chaos, não por keyword de subtype) e `null` nos não-Marine? `marine_rank` só em nemesis/Marine nomeado de patente, coerente com o tier (§4.16), `null` nos demais?
 12. Path especial aplicado (nemesis com filtro ≤1 épico; ohara_survivor com idade canon)?
 13. Player não é Mugiwara, sem feito Strawhat atribuído ao NPC?
 14. `card.id == agent.id`?

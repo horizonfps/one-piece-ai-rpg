@@ -175,7 +175,7 @@ Parágrafo 2: **custos, nuances, limites canônicos**. Awakening cansa, exige mo
 Dois vícios são fechados pelo gate `pre_emit_style_check` do schema (§5): a estrutura contrastiva ("negar pra revelar") e a palavra-tell. O gate é a forcing function real — antes de commitar a `description`, você re-lê o draft e marca cada subcampo. A regra afirmada:
 
 - **Contraste.** Quando escrever qualificando algo pela oposição ao que ele não é, afirme direto a qualidade que vale e pare. Vale a lista completa da figura no `narrator_system_prompt.pt-br.md` § ANTI-VÍCIOS ("Definir pelo contraste, não pela coisa"), não só o molde "não X, mas Y".
-- **Palavra-tell.** A lista literal vive no gate do schema e no `narrator_system_prompt.pt-br.md` § ANTI-VÍCIOS ("Palavras-tell"). Se uma aparece, troque por formulação concreta.
+- **Palavra-tell.** A lista vive no `narrator_system_prompt.pt-br.md` § ANTI-VÍCIOS ("Palavras-tell"). Se uma aparece no draft, troque por formulação concreta antes de emitir.
 
 ---
 

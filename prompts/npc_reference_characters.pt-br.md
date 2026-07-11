@@ -67,8 +67,6 @@ de Deus (Nobre Mundial).
 
 ## Nefertari Vivi — mulher jovem, princesa (altruísta, corajosa, diplomática)
 
-Nota: a página pt desta personagem é mais tosca (tradução automática com erros de concordância). Mantido verbatim; dá para trocar por versão limpa ou pela wiki em inglês se preferir.
-
 **Lead:** Nefertari Vivi é a princesa do Reino de Alabasta. Ela é filha de Nefertari Cobra e Titi; junto com o resto de sua família, carrega a inicial D. em seu nome. Vivi estreou como uma das principais antagonistas do Arco Reverse Mountain, sendo uma Caçadora de Recompensas da Baroque Works sob o codinome de Miss Wednesday.
 
 **Aparência:** Vivi é uma jovem de olhos castanhos com longos cabelos azuis claros ondulados, e costuma usa-lo preso em um rabo de cavalo, com uma mecha de cada lado da cabeça. Ela tem um corpo esguio, mas tende a usar roupas menos reveladoras do que Nami e Robin. Vivi foi vista usando vários sapatos de salto alto diferentes, incluindo botas brancas, sandálias brancas e cunhas azuis. Embora ela seja uma princesa, raramente usava roupas que sugerissem seu status real enquanto viajava com os Chapéus de Palha.

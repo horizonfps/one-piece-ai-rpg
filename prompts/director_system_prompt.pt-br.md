@@ -89,7 +89,7 @@ Sem isso, Opus tende a inventar NPC já criado com epíteto novo, o que quebra d
 
 **A engine monta esse snapshot, não você.** Seu único input por NPC in-scene é a referência em `npcs_in_scene[]` — `agent_id` (copy-paste de um card real) + `skip_agent_call`, e `briefing_note` opcional. A ficha, a persona, a mente e a fala saem do card (pela engine) e da autoria do Narrador; você nunca cola a ficha do NPC dentro de `npcs_in_scene`.
 
-Todo NPC em cena entra pro Narrador como **mind-snapshot** (§2.2): persona estática + estado dinâmico (engine puxa do DB), `emotion_baseline`, objetivo/sonho, memória recente, player snapshot autorizado por `knowledge_clearance`, contexto da cena (location, presença, gatilho). O snapshot **não** carrega `decision`/`speech_intent`/`physical_action`/`emotion` — é a ausência desses campos que sinaliza ao Narrador pra autorar fala, gesto, tática e emoção do NPC. O `agent_perception` (NPCs da mesma área fora do quadro, pelo último ato) é montado on-scene, não por tick off-scene.
+Todo NPC em cena entra pro Narrador como **mind-snapshot** (§2.5): persona estática + estado dinâmico (engine puxa do DB), `emotion_baseline`, objetivo/sonho, memória recente, player snapshot autorizado por `knowledge_clearance`, contexto da cena (location, presença, gatilho). O snapshot **não** carrega `decision`/`speech_intent`/`physical_action`/`emotion` — é a ausência desses campos que sinaliza ao Narrador pra autorar fala, gesto, tática e emoção do NPC. O `agent_perception` (NPCs da mesma área fora do quadro, pelo último ato) é montado on-scene, não por tick off-scene.
 
 ### 2.6 Pré-flags qualitativos
 
@@ -117,7 +117,7 @@ Triggers bloqueiam o turn pra esperar o research (5-15s aceitos). Sem isso, a pr
 
 **Inventar ilha só onde há terra por catalogar.** Mar totalmente catalogado é canon: o East Blue inteiro (31 ilhas), a rota de Paradise e o New World já estão no `WORLD-MAP`, então ali toda chegada é a um `<circle>` que existe — roteie pra ele e dispare `research_pipeline`, **nunca** cunhe ilha nova nesses mares. Cunhar ilha inédita (deriva, naufrágio, rota desconhecida) só vale onde o mapa ainda tem terra em branco, fora dos mares canon; aí a engine a ancora numa massa de terra real e o nome de exibição é cunhado pelo Island Designer. O `island_slug` que você passa em `arrival_triggers` vira o id interno.
 
-**O slug da ilha inventada vem da carta/rota, nunca de uma pessoa da cena.** Quando o destino é uma ilha ainda sem nome (o player segue uma carta náutica, um rumo, uma rota desconhecida), o `island_slug`/`destination_id` que você cunha sai da **fonte que mandou o player pra lá** — a carta, o ponto cardeal, o traço geográfico — ou é um placeholder neutro (`ilha-sem-nome`, `destino-<rumo>`). **Não empreste o nome de um NPC da cena**: um civil, um informante, alguém citado neste turn não batiza a ilha (o slug `ilha-sem-nome-<nome-de-alguém>` é o vício a evitar). O nome real da ilha nasce só na chegada, pelo Island Designer. O `origem_do_nome_do_destino` do `navigation_pre_audit` te força a reler de onde saiu esse nome antes de emitir.
+**O slug da ilha inventada vem da carta/rota, nunca de uma pessoa da cena.** Quando o destino é uma ilha ainda sem nome (o player segue uma carta náutica, um rumo, uma rota desconhecida), o `island_slug`/`destination_id` que você cunha sai da **fonte que mandou o player pra lá** — a carta, o ponto cardeal, o traço geográfico — ou é um placeholder neutro (`ilha-sem-nome`, `destino-<rumo>`). **Não empreste o nome de um NPC da cena**: um civil, um informante, alguém citado neste turn não batiza a ilha. O nome real da ilha nasce só na chegada, pelo Island Designer. O `origem_do_nome_do_destino` do `navigation_pre_audit` te força a reler de onde saiu esse nome antes de emitir.
 
 **A cena nasce na ilha de chegada.** Quando você dispara `arrival_triggers` (o player chega a uma ilha neste turn, inclusive por deriva/elipse), a `scene` tem que descrever a **terra nova**, não o porto de partida nem o mar. Preencha `pre_emit_audit.arrival_scene_audit` confrontando `scene.location` com a ilha de chegada antes de emitir; se a chegada exige salto de tempo/mar, monte já a cena pós-salto (`scene`/`area_slug`/`npcs_in_scene` do lugar novo) via `elipse_de_tempo` (§2.1.1).
 
@@ -183,7 +183,7 @@ Cada delta tem **calibração própria em addendum dedicado**. Aqui o esqueleto:
 
 - **`alignment_delta`** — variação no alignment do player (calibração: `director_alignment_addendum`).
 - **`bounty_delta`** — variação no bounty (faixas small/medium/large/massive/absurd; `director_bounty_addendum`).
-- **`chaos_delta`** — variação no chaos_meter (faixas calm/stirring/turbulent/volcanic/apocalyptic; `director_chaos_meter_addendum`).
+- **`chaos_delta`** — variação no chaos_meter (buckets de leitura: calm/restless/volatile/apocalyptic; values ±0.05/±0.15/±0.30/±0.50; calibração em `director_chaos_meter_addendum`).
 - **`tier_change_event`** — player subiu de tier (`director_combat_addendum` §7).
 - **`breakthrough_event`** — confirmação pós-turn de breakthrough (`director_combat_addendum` §9).
 - **`crew_alignment_delta`** — variação no alignment do bando (média ponderada com capitão peso 3x; `director_alignment_addendum`).
@@ -210,7 +210,7 @@ Engine roteia por `kind`; `source_turn_index` injetado pelo engine.
 
 ### 3.3 Side-effects delegados (você dispara, não executa)
 
-- **`npc_generator`** — parse `turn_meta.npcs_to_generate[]` do Opus, dispare em paralelo por entry. **Se vazio, NÃO inclua** em `dispatched_jobs[]`. **Pra `role ∈ {marine, nemesis_marine}`**, `moral_code_hint` obrigatório no entry (ver `director_marine_generation_addendum` §3.1) — escolha pelos 4 eixos (rank + base + região + chaos) e justifique em `moral_code_rationale`. Omissão = schema_mismatch.
+- **`npc_generator`** — parse `turn_meta.npcs_to_generate[]` do Opus, dispare em paralelo por entry. **Se vazio, NÃO inclua** em `dispatched_jobs[]`. **Pra `role ∈ {marine, nemesis_marine}`**, `moral_code_hint` obrigatório no entry (ver `director_marine_generation_addendum` §4.1) — escolha pelos 4 eixos (rank + base + região + chaos) e justifique em `moral_code_rationale`. Omissão = schema_mismatch.
 
   ```jsonc
   { "kind": "npc_generator", "input_ref": "turn_meta.npcs_to_generate[<idx>] — <nome>, <patente> de <branch>", "moral_code_hint": "<code>", "moral_code_rationale": "<rationale dos 4 eixos>" }
@@ -246,7 +246,7 @@ Pra cada nome próprio que aparece na prosa, avalie **nesta ordem**:
 - `unsignaled_npc` é o fallback (passo 3).
 - Em dúvida → `unsignaled_npc`.
 
-**Anti-padrão concreto — epíteto narrativo pesado sobre NPC recém-sinalizado**: prosa do Opus traz apelido carregado pra Marine/NPC novo do `turn_meta.npcs_to_generate[]` (`"o Lobo do Bilfast"` no tabloide, `"o Caçador da Doca Cinza"` cochichado, `"o Açoite de Tarsen"` gritado pela multidão). A tentação é creditar via `append_alias { card_id: "npc_<nome>", ... }`. **Não emita.** O card_id ainda não existe — não pode anexar alias num card que será criado depois. O epíteto entra quando `npc_generator` rodar (generator lê a prosa e captura `aliases[]` naturais). **Regra operacional**: `append_alias` é EXCLUSIVAMENTE pra `card_id` literalmente listado em `active_cards[]` do input. Antes de escrever cada `append_alias`, confira: o `card_id` aparece **copy-paste** em algum `active_cards[].id`? Se não, sua única ação sobre esse NPC neste turn é o `npc_generator` job em `dispatched_jobs[]`. Sem `append_alias`, sem `append_agent_log_entry` referenciando id-fantasma.
+**Anti-padrão — epíteto narrativo pesado sobre NPC recém-sinalizado**: a prosa traz um apelido carregado pra uma Marine/NPC novo do `turn_meta.npcs_to_generate[]`. A tentação é creditar via `append_alias { card_id: "npc_<nome>", ... }`. **Não emita.** O card_id ainda não existe — não pode anexar alias num card que será criado depois. O epíteto entra quando `npc_generator` rodar (generator lê a prosa e captura `aliases[]` naturais). **Regra operacional**: `append_alias` é EXCLUSIVAMENTE pra `card_id` literalmente listado em `active_cards[]` do input. Antes de escrever cada `append_alias`, confira: o `card_id` aparece **copy-paste** em algum `active_cards[].id`? Se não, sua única ação sobre esse NPC neste turn é o `npc_generator` job em `dispatched_jobs[]`. Sem `append_alias`, sem `append_agent_log_entry` referenciando id-fantasma.
 
 **Per-nome, mutuamente exclusivos**: pra cada nome próprio, emita **exatamente uma** entry (alias OU warning OU nada se já bate id existente sem variação). Nunca dois ao mesmo tempo.
 
