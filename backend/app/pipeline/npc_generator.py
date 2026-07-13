@@ -551,14 +551,29 @@ def build_npc_cached_block(
 
 
 _AGE_BANDS = ((16, 24), (25, 33), (34, 44), (45, 58), (59, 74))
-# Roles whose age the prompt rules (player-age cohort / Ohara canon): no band for those.
-_AGE_RULED_ROLES = ("ally", "potential_crew_member", "ohara_survivor_scholar")
+# Companion-cohort roles: near the player but SPREAD, not collapsed onto player_age by the prompt.
+_COMPANION_AGE_ROLES = ("ally", "potential_crew_member")
+# Roles whose age a canon rule fixes (Ohara survivor): no engine band, prompt rules it.
+_AGE_RULED_ROLES = ("ohara_survivor_scholar",)
 
 
-def roll_age_band(role: str | None) -> dict | None:
-    """Engine-rolled adult age band (mechanical spread, same class as the belly/bounty rolls)."""
+def _companion_age_bands(player_age: int) -> tuple[tuple[int, int], ...]:
+    """Random narrow sub-bands near the player (older is the minority, §4.13)."""
+    p = player_age
+    return ((max(16, p - 3), p + 1), (p + 1, p + 5), (p + 5, p + 10), (p + 10, p + 16))
+
+
+def roll_age_band(role: str | None, player_age: int | None = None) -> dict | None:
+    """Engine-rolled adult age band (mechanical spread, same class as the belly/bounty rolls).
+    Companion-cohort roles get a random player-centered sub-band so the cast spreads near the
+    player, instead of the prompt collapsing every recruit onto a single modal age."""
     r = (role or "").strip()
-    if r in _AGE_RULED_ROLES or r.startswith("recrutavel"):
+    if r in _COMPANION_AGE_ROLES or r.startswith("recrutavel"):
+        if isinstance(player_age, int) and player_age > 0:
+            lo, hi = random.choice(_companion_age_bands(player_age))
+            return {"min": lo, "max": hi}
+        return None
+    if r in _AGE_RULED_ROLES:
         return None
     lo, hi = random.choice(_AGE_BANDS)
     return {"min": lo, "max": hi}
@@ -652,6 +667,7 @@ def build_npc_input(
         "recent_archetypes": recent_archetypes or None,
         # Age band only when nothing else rules the age (prose anchor, role rule, canon fruit owner).
         "age_band_hint": (
-            None if (scene_prose_anchor or active_fruit_removal_hook) else roll_age_band(role)
+            None if (scene_prose_anchor or active_fruit_removal_hook)
+            else roll_age_band(role, (arc_context or {}).get("player_age"))
         ),
     }
