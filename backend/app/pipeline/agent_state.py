@@ -187,6 +187,25 @@ def append_log_entry(agent: dict, entry: dict) -> dict:
     return out
 
 
+def split_merged(npcs: dict) -> tuple[dict, dict]:
+    """Split the roster into live cards and a duplicate->canonical redirect map (chains
+    collapsed). Merged duplicates leave every catalog/prompt; writes addressed to them
+    follow the redirect to the canonical card."""
+    redirects: dict = {}
+    for aid, d in (npcs or {}).items():
+        tgt = (d or {}).get("merged_into")
+        if isinstance(tgt, str) and tgt and tgt != aid:
+            redirects[aid] = tgt
+    for aid in list(redirects):
+        tgt, hops = redirects[aid], 0
+        while tgt in redirects and hops < 8:
+            tgt = redirects[tgt]
+            hops += 1
+        redirects[aid] = tgt
+    live = {aid: d for aid, d in (npcs or {}).items() if aid not in redirects}
+    return live, redirects
+
+
 # relationships: per-NPC affinity (per-faction lives in faction.py).
 def clamp_affinity(value: float) -> float:
     return round(max(-1.0, min(1.0, value)), 4)

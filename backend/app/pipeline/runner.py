@@ -126,7 +126,9 @@ async def _load_state(conn: aiosqlite.Connection, campaign_id: str) -> dict:
     player_card = next((c["data"] for c in cards if c["kind"] == "player"), None)
     if player_card is None:
         raise LookupError(f"campanha '{campaign_id}' sem story_card 'player'")
-    npcs = {c["data"]["id"]: c["data"] for c in cards if c["kind"] == "npc_agent"}
+    npcs, merged_redirects = agent_state.split_merged(
+        {c["data"]["id"]: c["data"] for c in cards if c["kind"] == "npc_agent"}
+    )
     item_cards = {
         c["data"]["id"]: c["data"]
         for c in cards
@@ -147,6 +149,7 @@ async def _load_state(conn: aiosqlite.Connection, campaign_id: str) -> dict:
         "campaign": campaign,
         "player_card": player_card,
         "npcs": npcs,
+        "merged_redirects": merged_redirects,
         "item_cards": item_cards,
         "ship_cards": ship_cards,
         "faction_cards": faction_cards,
@@ -700,6 +703,7 @@ async def _run_dispatched_jobs(
     scene_location: str = "",
     anchor_location: str = "",
     scene_prose: str = "",
+    present_npc_ids: set | None = None,
 ) -> dict:
     """Runs the dispatched jobs: npc_generator, item_generator, ship_generator.
     All gated by the Director (dispatched_jobs): no dispatch, no run. Generated NPC becomes an
@@ -754,6 +758,17 @@ async def _run_dispatched_jobs(
         # Existing cast + world memory in one cached block (shared breakpoint), built once and used
         # by the turn's parallel NPCs. Feeds cast awareness so the generator can dedup.
         npc_cached_sections: list | None = None
+        # Cast physically in the scene: the strongest dedup signal (a request whose role matches
+        # someone already on scene is usually that same person).
+        scene_cast = [
+            {
+                "id": aid,
+                "name": (npcs_known.get(aid) or {}).get("name", ""),
+                "role_hint": (npcs_known.get(aid) or {}).get("subtype", ""),
+            }
+            for aid in sorted(present_npc_ids or set())
+            if aid in npcs_known
+        ] or None
         # Divergence ledger: age/craft/temperament of the latest generated NPCs (§0.1 axis).
         recent_arch = npc_generator.recent_archetype_lines(npcs_known) or None
         # Ids the dedup must never mint as an NPC: the protagonist (any form).
@@ -785,6 +800,7 @@ async def _run_dispatched_jobs(
                     anchor_location=anchor_location or None,
                     peers_this_turn=peers,
                     recent_archetypes=recent_arch,
+                    scene_cast=scene_cast,
                 )
                 parsed = await npc_generator.call_generate_npc(
                     npc_input, cached_sections=npc_cached_sections
@@ -1126,8 +1142,20 @@ async def _apply_world_navigation(
     )
     days_for_arrival = None  # sea days to sample on arrival (None = not an arrival)
     if mv_kind == "arrive_island":
-        if at_sea_directed:
+        if at_sea_directed and movement.get("destination_id") == pos.get("dest_id"):
             days_for_arrival = remaining  # completes what the in-progress voyage owed
+        elif at_sea_directed:
+            # Landfall off the planned route (stopover/diversion): owe the leg from the trip
+            # origin to the actual landfall minus days already sailed, never the planned
+            # route's full remainder.
+            elapsed = max(0, int(pos.get("days_elapsed") or 0))
+            leg = world_map.crossing_days_hint(
+                world, pos.get("origin_id"), movement.get("destination_id")
+            )
+            owed = max(0, leg - elapsed) if leg >= 1 else 0
+            days_for_arrival = max(advance_days, owed)
+            if days_for_arrival == 0 and elapsed == 0:
+                days_for_arrival = 1
         else:
             # Compressed into one turn (skipped without boarding): engine imposes the duration
             # (firm hint); an explicit number from prose (advance_days) wins only if larger.
@@ -1397,6 +1425,14 @@ async def _apply_crew_recruitment(
     fresh = {aid: i["data"] for aid, i in agents_map.items()}
     # Prune orphan offers (dead/gone/missing/already-member target) from the persisted queue.
     offers = crew.prune_pending_offers(offers, fresh)
+    if report["joined"]:
+        player_sc = await repo.get_player_story_card(conn, campaign_id)
+        if player_sc is not None:
+            pdata = dict(player_sc["data"])
+            snap = dict(pdata.get("crew_snapshot") or {})
+            snap.update(crew.crew_snapshot_of(fresh))
+            pdata["crew_snapshot"] = snap
+            await repo.update_story_card(conn, player_sc["id"], pdata)
     crew_align = world_state.compute_crew_alignment(player_alignment_value, crew.member_alignment_values(fresh))
     campaign = await repo.get_campaign(conn, campaign_id)
     meta = dict((campaign or {}).get("metadata") or {})
@@ -1786,6 +1822,7 @@ async def _run_turn_events_inner(
     if alliances.active_parallel_nemeses(state["npcs"]):
         director_post_addenda = director_post_addenda + [_DIRECTOR_NEMESIS_PARALELO_ADDENDUM]
     npcs_known = state["npcs"]
+    merged_redirects = state.get("merged_redirects") or {}
     # Tier/condition from the player card. tier_before feeds fighting_style consolidation on
     # tier-up; player_condition goes to agent/Narrator.
     real_player_snapshot = state["player_card"].get("player_snapshot") or {}
@@ -1871,8 +1908,11 @@ async def _run_turn_events_inner(
             _info["data"]["current_location"] = _u["new_location"]
             await repo.update_story_card(conn, _info["story_card_id"], _info["data"])
         await conn.commit()
-        npcs_known = {aid: info["data"] for aid, info in _agents_now.items()}
+        npcs_known, merged_redirects = agent_state.split_merged(
+            {aid: info["data"] for aid, info in _agents_now.items()}
+        )
         state["npcs"] = npcs_known
+        state["merged_redirects"] = merged_redirects
 
     # --- Timeskip (adult world) --------------------------------------------------
     # Fires on a valid training offer (this turn's offer_training or a pending one) AND player
@@ -1947,13 +1987,18 @@ async def _run_turn_events_inner(
     # Malformed npcs_in_scene diagnostics for turn_state (never a silent skip). Covers entries the
     # parser dropped for a missing agent_id plus ids matching no known card (stale or forged).
     _malformed_nis: list[dict] = list(decisions.get("malformed_npcs_in_scene") or [])
+    _resolved_ids: set = set()
     for entry in decisions.get("npcs_in_scene") or []:
         aid = entry.get("agent_id") if isinstance(entry, dict) else None
+        aid = merged_redirects.get(aid, aid)
         data = npcs_known.get(aid)
         if data is None:
             if aid:
                 _malformed_nis.append({"agent_id": aid, "reason": "no_matching_card"})
             continue
+        if aid in _resolved_ids:
+            continue
+        _resolved_ids.add(aid)
         resolved.append((aid, data, bool(entry.get("skip_agent_call")), entry.get("briefing_note", "")))
 
     scene_location = scene.get("location", "")
@@ -2676,6 +2721,7 @@ async def _run_turn_events_inner(
             item_cards=state.get("item_cards") or {},
             ship_cards=state.get("ship_cards") or {},
             faction_cards=state.get("faction_cards") or {},
+            merged_redirects=merged_redirects,
         )
         # tier-up regenerates fighting_style; a confirmed breakthrough fires the kind's
         # generator and applies the state patch. Best-effort. Breakthrough BEFORE fighting_style
@@ -2736,6 +2782,7 @@ async def _run_turn_events_inner(
             scene_location=scene.get("location", ""),
             anchor_location=anchor_location,
             scene_prose=prose,
+            present_npc_ids=present_set,
         )
         # Bounty hunters: appearance generates NPCs, promoted marks the card. Gated by the Director's
         # bounty_hunter_events. Best-effort.
@@ -2855,6 +2902,18 @@ async def _run_turn_events_inner(
                 if _row:
                     generated_for_audit.append(_row["data"])
         audit_crystals = await repo.get_all_crystals_for_narrator(conn, campaign_id)
+        # NPCs materialized post-prose (generator/dedup) join the cast BEFORE the audit, so the
+        # Auditor reconciles presence against the roster the engine persists at turn end.
+        _gen_names: dict = {}
+        for _g in (jobs_report.get("generated_npcs") or []):
+            _gid = _g.get("id")
+            if not _gid:
+                continue
+            _gen_names[_gid] = _g.get("name", "")
+            if _g.get("present_in_scene", True):
+                present_set.add(_gid)
+        for _dgid in (jobs_report.get("deduped_present_ids") or []):
+            present_set.add(_dgid)
         # In-scene NPCs with their FULL card (reloaded fresh so post-turn deltas show), so the
         # Auditor can reconcile a card whose descriptive fields drifted from the crystallized
         # memory (a freed captive whose appearance still reads "wearing handcuffs").
@@ -2865,7 +2924,7 @@ async def _run_turn_events_inner(
         _player_sc_audit = await repo.get_player_story_card(conn, campaign_id)
         # Scene cast the engine currently holds, so the Auditor can reconcile presence against prose.
         audit_present_cast = [
-            {"id": aid, "name": (npcs_known.get(aid) or {}).get("name", "")}
+            {"id": aid, "name": (npcs_known.get(aid) or {}).get("name") or _gen_names.get(aid, "")}
             for aid in sorted(present_set)
         ]
         # Context the Auditor needs to mint a missing card via the real generator (model decision).
@@ -3332,11 +3391,15 @@ async def _run_opening_events_inner(
     # Resolve the Director-chosen cast against known cards (anonymous cardless extras go to Opus via
     # active_cards). Respects skip_agent_call.
     resolved: list[tuple] = []
+    _merged_redirects = state.get("merged_redirects") or {}
+    _resolved_ids: set = set()
     for entry in decisions.get("npcs_in_scene") or []:
         aid = entry.get("agent_id") if isinstance(entry, dict) else None
+        aid = _merged_redirects.get(aid, aid)
         data = npcs_known.get(aid)
-        if data is None:
+        if data is None or aid in _resolved_ids:
             continue
+        _resolved_ids.add(aid)
         resolved.append((aid, data, bool(entry.get("skip_agent_call")), entry.get("briefing_note", "")))
     # Same authoritative-presence rule as a normal turn: never expel a listed NPC. Seed cast sits at
     # a bare island slug (no sub-area), so it never diverges anyway.

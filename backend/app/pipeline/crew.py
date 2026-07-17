@@ -169,6 +169,20 @@ def mark_reconciled(npc: dict) -> dict:
     return out
 
 
+def crew_snapshot_of(npcs: dict) -> dict:
+    """Mechanical roster snapshot for the player card: size + member identity."""
+    members = []
+    for aid, d in (npcs or {}).items():
+        if (d or {}).get("affiliation") != CREW_AFFILIATION:
+            continue
+        m = {"id": aid, "name": d.get("name", ""), "role": d.get("crew_role", "crewmate")}
+        if d.get("specialty"):
+            m["specialty"] = d["specialty"]
+        members.append(m)
+    members.sort(key=lambda m: m["name"])
+    return {"size": len(members), "members": members}
+
+
 # =====================================================================================
 # Dissatisfaction: clamp / delta / decay / bucket
 # =====================================================================================

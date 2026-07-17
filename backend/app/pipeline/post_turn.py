@@ -159,6 +159,7 @@ async def apply_post_turn(
     item_cards: dict | None = None,
     ship_cards: dict | None = None,
     faction_cards: dict | None = None,
+    merged_redirects: dict | None = None,
 ) -> dict:
     """Apply the deltas/events to state and persist. Returns a report of what changed.
 
@@ -270,8 +271,8 @@ async def apply_post_turn(
                         alias_appends.setdefault(cid, []).append(p["epithet"].strip())
         elif kind == "append_agent_log_entry":
             # Log of an NPC narrated on-scene. Gate: agent_id must exist; agents that ran are
-            # already logged by the runner.
-            aid = p.get("agent_id")
+            # already logged by the runner. A merged duplicate id redirects to its canonical card.
+            aid = (merged_redirects or {}).get(p.get("agent_id"), p.get("agent_id"))
             if not aid or aid not in npcs:
                 report["rejected"].append({"primitive": p, "why": "append_agent_log_entry.agent_id inexistente"})
             elif aid in ran:
@@ -593,8 +594,24 @@ async def apply_post_turn(
                 report["rejected"].append({"inventory_event": ev, "why": f"{kind} de item fora do inventário"})
                 continue
             inventory, applied = economy.apply_inventory_event(inventory, ev, turn_index=turn_index)
-            if applied:
-                report["inventory_changes"].append(applied)
+            if not applied:
+                continue
+            report["inventory_changes"].append(applied)
+            # Mirror the possession on the ITEM card, so its state never contradicts the
+            # inventory (a consumed fruit's card kept reading "intact" forever).
+            possession = None
+            if kind == "acquired" and not applied.get("noop"):
+                possession = "held_by_player"
+            elif kind != "acquired" and applied.get("removed"):
+                possession = kind
+            if possession:
+                item_row = await repo.get_card_by_entity_id(conn, campaign_id, iid)
+                if item_row is not None:
+                    new_item = economy.apply_item_possession(
+                        item_row["data"], possession, turn_index=turn_index
+                    )
+                    if new_item != item_row["data"]:
+                        await repo.update_story_card(conn, item_row["id"], new_item)
         psnap["inventory"] = inventory
 
     # 7. breakthrough_event (unique per kind).
@@ -771,7 +788,8 @@ async def apply_post_turn(
             report["fruit_usage_logged"] = added
 
     # News Coo: the Narrator staged the paper inline and reported the edition here. Register the
-    # record in news_editions[], drain the consumed pool, mark unpublished events published.
+    # record in news_editions[], drain the consumed pool, mark published ONLY the events the
+    # edition attests it covered (covered_event_ids); the rest stays newsworthy.
     edition_in = (turn_meta or {}).get("news_coo_edition")
     if isinstance(edition_in, dict) and (edition_in.get("headline") or "").strip():
         from . import news_coo  # late import (mirror settle_day_advance)
@@ -783,8 +801,12 @@ async def apply_post_turn(
         news_pool["bounty_updates"] = []
         news_pool["last_news_turn"] = turn_index
         meta["news_pool"] = news_pool
+        covered = {
+            s.strip() for s in (edition_in.get("covered_event_ids") or [])
+            if isinstance(s, str) and s.strip()
+        }
         for ev in meta.get("events_background") or []:
-            if isinstance(ev, dict) and not ev.get("published_in_news"):
+            if isinstance(ev, dict) and ev.get("id") in covered and not ev.get("published_in_news"):
                 ev["published_in_news"] = True
         report["news_coo"] = record
 
@@ -828,6 +850,11 @@ async def apply_post_turn(
         new_data = dict(player_sc["data"])
         fresh_snapshot = new_data.get("player_snapshot") or {}
         new_data["player_snapshot"] = _merge_player_snapshot(fresh_snapshot, snapshot_base, psnap)
+        # Roster snapshot recomputed every turn from the live cards, so it follows joins and
+        # departures instead of freezing at creation.
+        crew_snap = dict(new_data.get("crew_snapshot") or {})
+        crew_snap.update(crew.crew_snapshot_of(npcs))
+        new_data["crew_snapshot"] = crew_snap
         if report.get("tier_change") and report["tier_change"].get("new_tier"):
             new_tier = report["tier_change"]["new_tier"]
             char = dict(new_data.get("player_character") or {})

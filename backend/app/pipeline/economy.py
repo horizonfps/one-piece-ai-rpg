@@ -218,6 +218,28 @@ def apply_inventory_event(
     return inv, {"kind": kind, "item_card_id": item_id, "removed": True}
 
 
+ITEM_POSSESSION_STATES = ("held_by_player", "lost", "consumed", "given_away")
+
+
+def apply_item_possession(card_data: dict, state: str, *, turn_index: int) -> dict:
+    """Record the possession fate on the ITEM card (new copy): current_state.possession + flag,
+    mirroring ship.apply_disposition. Off-enum state is a no-op."""
+    data = dict(card_data)
+    if state not in ITEM_POSSESSION_STATES:
+        return data
+    cs = dict(data.get("current_state") or {})
+    cs["possession"] = {"state": state, "turn_index": int(turn_index)}
+    flags = [
+        f for f in (cs.get("flags") or [])
+        if isinstance(f, str) and f not in ITEM_POSSESSION_STATES
+    ]
+    if state != "held_by_player":
+        flags.append(state)
+    cs["flags"] = flags
+    data["current_state"] = cs
+    return data
+
+
 def inventory_ids(inventory: list[dict]) -> set[str]:
     """Set of item_card_id present in the inventory (gate for lost/consumed/given_away)."""
     return {

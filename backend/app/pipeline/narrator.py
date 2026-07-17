@@ -457,6 +457,15 @@ EMIT_TURN_TOOL = {
                                     "required": ["name"],
                                 },
                             },
+                            "covered_event_ids": {
+                                "type": "array",
+                                "items": {"type": "string"},
+                                "description": (
+                                    "Ids de pool.major_events que a SUA edição de fato noticiou "
+                                    "(capa ou nota interna). Os demais continuam inéditos para "
+                                    "edições futuras. Vazio quando a edição não tocou evento do pool."
+                                ),
+                            },
                         },
                         "required": ["headline", "primary_subject"],
                     },

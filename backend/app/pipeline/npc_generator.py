@@ -273,8 +273,12 @@ EMIT_NPC_TOOL = {
                         "description": (
                             "Decisao sua. Se a pessoa pedida JA e um card do ELENCO-EXISTENTE "
                             "(mesma pessoa, nao so papel parecido), ecoe aqui o id dela: o engine "
-                            "reusa o card existente em vez de criar um segundo. null quando e gente "
-                            "nova. Na duvida, null: so marque quando for inequivocamente a mesma pessoa."
+                            "reusa o card existente em vez de criar um segundo. Cruze PRIMEIRO com "
+                            "scene_cast do input (quem ja esta fisicamente na cena): um pedido cujo "
+                            "papel e continuidade da conversa casam com alguem dali e essa mesma "
+                            "pessoa. null quando e gente nova. Na duvida entre dois cards, null; na "
+                            "duvida entre gente nova e alguem do scene_cast com o mesmo papel, o id "
+                            "do scene_cast."
                         ),
                     },
                     "duplicate_present_in_scene": {
@@ -640,13 +644,15 @@ def build_npc_input(
     scene_prose_anchor: str | None = None,
     anchor_location: str | None = None,
     peers_this_turn: list | None = None,
+    scene_cast: list | None = None,
 ) -> dict:
     """Build the generator input contract from a `npcs_to_generate[]` entry plus arc_context
     and optional Director hints. scene_prose_anchor is the turn prose the Narrator already wrote;
     appearance/age there is scene canon the generator must match, not reinvent. anchor_location is
     the mechanical scene slug the NPC's current_location must take (the engine also enforces it
     post-merge). peers_this_turn are the other names minted/named THIS turn (name/role/on_scene) so
-    a parallel gen sees siblings and off-scene mentions and never borrows their name. intended_presence
+    a parallel gen sees siblings and off-scene mentions and never borrows their name. scene_cast is
+    the cast already physically on scene (primary dedup anchor). intended_presence
     carries the Narrator's on_scene flag for this entry. The existing cast + world memory travel in
     cached_sections, not here."""
     role = (entry.get("role") or "").strip() or None
@@ -658,6 +664,7 @@ def build_npc_input(
         "first_appearance_role": role,
         "intended_presence": ("on_scene" if bool(entry.get("on_scene", True)) else "off_scene_mention"),
         "peers_this_turn": (peers_this_turn or None),
+        "scene_cast": (scene_cast or None),
         "expected_recurrence": expected_recurrence or "medium",
         "affiliation_hint": affiliation_hint,
         "current_arc_context": arc_context,

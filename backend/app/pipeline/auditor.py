@@ -343,6 +343,17 @@ def _csv(s: str) -> list[str]:
     return [x.strip() for x in (s or "").split(",") if x.strip()]
 
 
+def _clean_tool_text(s: str) -> str:
+    """Trim tool-call syntax leaked into a streamed string value."""
+    s = str(s or "")
+    cut = len(s)
+    for marker in ("</", "<parameter"):
+        i = s.find(marker)
+        if i != -1:
+            cut = min(cut, i)
+    return s[:cut].strip()
+
+
 def _correction_to_patch(path: str, val: str) -> dict | None:
     """Map an Auditor (field_path, new_value) to a merge_card_edit patch. None when the path is
     immutable (id/type). Lists and floats parse from the string; merge_card_edit validates enums,
@@ -476,6 +487,33 @@ async def _apply_merge_card(conn, campaign_id: str, c: dict) -> dict:
     cs["flags"] = flags
     data["current_state"] = cs
     await repo.update_story_card(conn, row["id"], data)
+    # The duplicate's lived history and identity handles migrate to the canonical card, so the
+    # story keeps accruing on the card that stays.
+    canon_data = dict(canon["data"])
+    dup_log = [e for e in (data.get("personal_event_log") or []) if isinstance(e, dict)]
+    if dup_log:
+        canon_log = [e for e in (canon_data.get("personal_event_log") or []) if isinstance(e, dict)]
+        seen = {(e.get("turn_index"), e.get("action_summary"), e.get("source")) for e in canon_log}
+        moved = [
+            e for e in dup_log
+            if (e.get("turn_index"), e.get("action_summary"), e.get("source")) not in seen
+        ]
+        if moved:
+            canon_data["personal_event_log"] = sorted(
+                canon_log + moved, key=lambda e: e.get("turn_index") or 0
+            )
+    aliases = list(canon_data.get("aliases") or [])
+    seen_alias = {str(a).strip().lower() for a in aliases if isinstance(a, str)}
+    seen_alias.add(str(canon_data.get("name", "")).strip().lower())
+    for handle in [data.get("name", "")] + list(data.get("aliases") or []):
+        h = str(handle or "").strip()
+        if h and h.lower() not in seen_alias:
+            seen_alias.add(h.lower())
+            aliases.append(h)
+    if aliases:
+        canon_data["aliases"] = aliases
+    if canon_data != canon["data"]:
+        await repo.update_story_card(conn, canon["id"], canon_data)
     return {**base, "ok": True, "presence_remove": dup_id}
 
 
@@ -612,7 +650,7 @@ async def apply_audit(
     report = {
         "verdict": "corrected" if (applied or final_prose != original_prose) else "clean",
         "model_verdict": audit.get("verdict"),
-        "reasoning_summary": audit.get("reasoning_summary", ""),
+        "reasoning_summary": _clean_tool_text(audit.get("reasoning_summary", "")),
         "prose_rewritten": final_prose != original_prose,
         "applied": applied,
         "rejected": rejected,
